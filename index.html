@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title changed as requested -->
     <title>SIGIT N. MASHARY PROFILE</title>
     <style>
         * {
@@ -61,12 +60,14 @@
             color: #e74c3c;
         }
 
+        /* Change 1: Adjusted TM size */
         .logo-text sup {
-            font-size: 0.4em;
+            font-size: 0.3em; /* Made smaller, around 30% */
             font-weight: 600;
             position: relative;
-            top: -0.6em;
-            left: 1px;
+            top: -0.8em;
+            margin-left: 1px;
+            margin-right: 2px;
         }
         
         .nav-links {
@@ -247,14 +248,16 @@
         <div class="logo">
             <div class="logo-icon">I</div>
             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <div class="logo-text">IMPERIAL<sup>™</sup></div>
+                <!-- Change 1: Logo text updated -->
+                <div class="logo-text">IMPERIAL<sup>™</sup> Group</div>
             </a>
         </div>
         <div class="nav-links">
             <a href="https://bdcmagazine.com/" target="_blank" rel="noopener noreferrer">Beranda</a>
-            <a href="https://polpindo.github.io/Polpindo/DATA%20PERUSAHAAN.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Layanan</a>
+            <a href="https://polpindo.github.io/Polpindo/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%202025.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
+            <!-- Change 2: Portfolio link gets an ID -->
+            <a id="portfolioBtn">Portfolio</a>
+            <a href="https://youtube.com/@constructionworldmagazine" target="_blank" rel="noopener noreferrer">Layanan</a>
             <a id="kontakBtn">Kontak</a>
         </div>
     </div>
@@ -292,6 +295,16 @@
             <span class="modal-close" id="closeContactBtn">×</span>
             <p style="font-size: 18px; margin-bottom: 8px;"><strong>Email:</strong> itk.ykoffice@gmail.com</p>
             <p style="font-size: 18px;"><strong>Phone:</strong> 0812-1782-6755 (hunting)</p>
+        </div>
+    </div>
+
+    <!-- Change 2: Portfolio Pop-up Modal Added -->
+    <div id="portfolio-popup" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closePortfolioBtn">×</span>
+            <p style="font-size: 18px; margin-bottom: 12px;"><strong>ACCOUNTS:</strong></p>
+            <p style="font-size: 16px; margin-bottom: 8px;">1. BANK BRI No. Rek. 023601001084565</p>
+            <p style="font-size: 16px;">2. BANK MAYBANK No. Rek. 2726000197</p>
         </div>
     </div>
 
@@ -335,10 +348,27 @@
                 contactPopup.style.display = 'none';
             });
 
+            // Change 2: Portfolio Pop-up Logic Added
+            const portfolioBtn = document.getElementById('portfolioBtn');
+            const portfolioPopup = document.getElementById('portfolio-popup');
+            const closePortfolioBtn = document.getElementById('closePortfolioBtn');
+
+            portfolioBtn.addEventListener('click', () => {
+                portfolioPopup.style.display = 'flex';
+            });
+
+            closePortfolioBtn.addEventListener('click', () => {
+                portfolioPopup.style.display = 'none';
+            });
+
             // Close modal if clicked outside of content
             window.addEventListener('click', (event) => {
                 if (event.target == contactPopup) {
                     contactPopup.style.display = 'none';
+                }
+                // Also close portfolio popup if clicked outside
+                if (event.target == portfolioPopup) {
+                    portfolioPopup.style.display = 'none';
                 }
             });
         });
