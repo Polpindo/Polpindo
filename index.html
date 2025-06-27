@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMPRO PT. IMPERIAL TATA KONSTRUKSI</title>
+    <title>IMPERIAL - Profile</title>
     <style>
         * {
             margin: 0;
@@ -49,16 +49,15 @@
             font-size: 18px;
         }
         
-        /* Change 1: Added style for the logo link */
         .logo-link {
-            text-decoration: none; /* Removes underline from the link */
+            text-decoration: none;
         }
         
         .logo-text {
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #e74c3c; /* Warna merah untuk IMPERIAL */
+            color: #e74c3c;
         }
 
         .logo-text sup {
@@ -78,7 +77,7 @@
             color: #ecf0f1;
             text-decoration: none;
             font-weight: 500;
-            font-size: 13px; /* Ukuran font diperkecil */
+            font-size: 13px;
             transition: color 0.3s;
             position: relative;
             padding: 5px 0;
@@ -155,7 +154,7 @@
         }
         
         .btn {
-            padding: 12px 40px; /* Dibuat lebih lebar */
+            padding: 12px 40px;
             background: linear-gradient(135deg, #27ae60, #219653);
             color: white;
             border: none;
@@ -185,7 +184,6 @@
             font-size: 0.7em;
         }
         
-        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -193,7 +191,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.85);
-            display: none; /* Hidden by default */
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -205,7 +203,7 @@
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.4);
             position: relative;
-            text-align: left; /* Konten pop-up rata kiri */
+            text-align: left;
         }
         .modal-close {
             position: absolute;
@@ -223,15 +221,15 @@
         
         @media (max-width: 768px) {
             .header {
-                flex-direction: column; /* Menumpuk logo dan menu secara vertikal */
+                flex-direction: column;
                 gap: 15px;
                 padding: 15px;
             }
             
             .nav-links {
-                justify-content: center; /* Memastikan menu tetap di tengah */
+                justify-content: center;
                 width: 100%;
-                flex-wrap: wrap; /* Izinkan menu membungkus jika tidak muat */
+                flex-wrap: wrap;
                 gap: 15px;
             }
 
@@ -247,7 +245,6 @@
     <div class="header">
         <div class="logo">
             <div class="logo-icon">I</div>
-            <!-- Change 1: "IMPERIAL" text is now a link to google.com -->
             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="logo-link">
                 <div class="logo-text">IMPERIAL<sup>™</sup></div>
             </a>
@@ -264,14 +261,16 @@
     <!-- Image Display -->
     <div class="image-container">
         <div class="image-wrapper">
+            <!-- Change 1: Image URL has been updated -->
             <img 
-                src="https://raw.githubusercontent.com/Polpindo/Polpindo/main/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%20(FULL%20DOCUMENT)_1-picsay.jpg" 
-                alt="COMPRO PT. IMPERIAL TATA KONSTRUKSI" 
+                src="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" 
+                alt="Sigit N. Mashary - Profile" 
                 class="fullscreen-image" 
                 id="mainImage"
             >
+            <!-- Info text updated for the new image -->
             <div class="image-info">
-                PT. IMPERIAL TATA KONSTRUKSI.  All rights reserved © 2025
+                Sigit N. Mashary
             </div>
         </div>
     </div>
@@ -305,7 +304,8 @@
             // Download Gambar
             downloadBtn.addEventListener('click', function() {
                 const imageUrl = image.src;
-                const fileName = 'COMPRO_PT_IMPERIAL_TATA_KONSTRUKSI.jpg';
+                // Change 2: Download filename updated
+                const fileName = 'SIGIT_N_MASHARY.jpg';
                 
                 fetch(imageUrl)
                     .then(response => response.blob())
