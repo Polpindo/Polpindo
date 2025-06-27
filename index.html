@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPRO PT. IMPERIAL TATA KONSTRUKSI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #1a1a1a);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db, #1a5276);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #e74c3c; /* Warna merah untuk IMPERIAL */
+        }
+
+        .logo-text sup {
+            font-size: 0.4em;
+            font-weight: 600;
+            position: relative;
+            top: -0.6em;
+            left: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px; /* Ukuran font diperkecil */
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .fullscreen-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .image-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px 20px;
+            font-size: 14px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+        
+        .btn {
+            padding: 12px 40px; /* Dibuat lebih lebar */
+            background: linear-gradient(135deg, #27ae60, #219653);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #bdc3c7;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer sup {
+            font-size: 0.7em;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            color: #333;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+            position: relative;
+            text-align: left; /* Change 2: Konten pop-up rata kiri */
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Menumpuk logo dan menu secara vertikal */
+                gap: 15px;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                justify-content: center; /* Memastikan menu tetap di tengah */
+                width: 100%;
+                flex-wrap: wrap; /* Izinkan menu membungkus jika tidak muat */
+                gap: 15px;
+            }
+
+            .btn {
+                width: 80%;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">I</div>
+            <div class="logo-text">IMPERIAL<sup>™</sup></div>
+        </div>
+        <div class="nav-links">
+            <a href="https://bdcmagazine.com/" target="_blank" rel="noopener noreferrer">Beranda</a>
+            <!-- Change 1: "Tentang Kami" langsung membuka PDF di tab baru -->
+            <a href="https://polpindo.github.io/Polpindo/DATA%20PERUSAHAAN.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Layanan</a>
+            <a id="kontakBtn">Kontak</a>
+        </div>
+    </div>
+    
+    <!-- Image Display -->
+    <div class="image-container">
+        <div class="image-wrapper">
+            <img 
+                src="https://raw.githubusercontent.com/Polpindo/Polpindo/main/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%20(FULL%20DOCUMENT)_1-picsay.jpg" 
+                alt="COMPRO PT. IMPERIAL TATA KONSTRUKSI" 
+                class="fullscreen-image" 
+                id="mainImage"
+            >
+            <div class="image-info">
+                PT. IMPERIAL TATA KONSTRUKSI.  All rights reserved © 2025
+            </div>
+        </div>
+    </div>
+    
+    <!-- Controls -->
+    <div class="controls">
+        <button class="btn" id="downloadBtn">DOWNLOAD</button>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        © 2023 IMPERIAL<sup>™</sup> Group. Hak Cipta Dilindungi. | 
+        <a href="#" style="color: #3498db; text-decoration: none;">Kebijakan Privasi</a> | 
+        <a href="#" style="color: #3498db; text-decoration: none;">Syarat Penggunaan</a>
+    </div>
+
+    <!-- Contact Pop-up Modal -->
+    <div id="contact-popup" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closeContactBtn">×</span>
+            <p style="font-size: 18px; margin-bottom: 8px;"><strong>Email:</strong> itk.ykoffice@gmail.com</p>
+            <p style="font-size: 18px;"><strong>Phone:</strong> 0812-1782-6755 (hunting)</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const image = document.getElementById('mainImage');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Download Gambar
+            downloadBtn.addEventListener('click', function() {
+                const imageUrl = image.src;
+                const fileName = 'COMPRO_PT_IMPERIAL_TATA_KONSTRUKSI.jpg';
+                
+                fetch(imageUrl)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    })
+                    .catch(() => alert('Gagal mendownload gambar'));
+            });
+
+            // --- Modal Logic ---
+
+            // Contact Pop-up
+            const kontakBtn = document.getElementById('kontakBtn');
+            const contactPopup = document.getElementById('contact-popup');
+            const closeContactBtn = document.getElementById('closeContactBtn');
+
+            kontakBtn.addEventListener('click', () => {
+                contactPopup.style.display = 'flex';
+            });
+
+            closeContactBtn.addEventListener('click', () => {
+                contactPopup.style.display = 'none';
+            });
+
+            // Close modal if clicked outside of content
+            window.addEventListener('click', (event) => {
+                if (event.target == contactPopup) {
+                    contactPopup.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
