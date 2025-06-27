@@ -49,6 +49,11 @@
             font-size: 18px;
         }
         
+        /* Change 1: Added style for the logo link */
+        .logo-link {
+            text-decoration: none; /* Removes underline from the link */
+        }
+        
         .logo-text {
             font-size: 22px;
             font-weight: 700;
@@ -200,7 +205,7 @@
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.4);
             position: relative;
-            text-align: left; /* Change 2: Konten pop-up rata kiri */
+            text-align: left; /* Konten pop-up rata kiri */
         }
         .modal-close {
             position: absolute;
@@ -242,11 +247,13 @@
     <div class="header">
         <div class="logo">
             <div class="logo-icon">I</div>
-            <div class="logo-text">IMPERIAL<sup>™</sup></div>
+            <!-- Change 1: "IMPERIAL" text is now a link to google.com -->
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="logo-link">
+                <div class="logo-text">IMPERIAL<sup>™</sup></div>
+            </a>
         </div>
         <div class="nav-links">
             <a href="https://bdcmagazine.com/" target="_blank" rel="noopener noreferrer">Beranda</a>
-            <!-- Change 1: "Tentang Kami" langsung membuka PDF di tab baru -->
             <a href="https://polpindo.github.io/Polpindo/DATA%20PERUSAHAAN.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
             <a href="#">Portfolio</a>
             <a href="#">Layanan</a>
