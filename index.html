@@ -57,17 +57,7 @@
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #e74c3c;
-        }
-
-        /* Change 1: Adjusted TM size */
-        .logo-text sup {
-            font-size: 0.3em; /* Made smaller, around 30% */
-            font-weight: 600;
-            position: relative;
-            top: -0.8em;
-            margin-left: 1px;
-            margin-right: 2px;
+            color: #e74c3c; /* Warna merah */
         }
         
         .nav-links {
@@ -181,10 +171,6 @@
             font-size: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .footer sup {
-            font-size: 0.7em;
-        }
         
         .modal-overlay {
             position: fixed;
@@ -248,14 +234,13 @@
         <div class="logo">
             <div class="logo-icon">I</div>
             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-                <!-- Change 1: Logo text updated -->
-                <div class="logo-text">IMPERIAL<sup>™</sup> Group</div>
+                <div class="logo-text">IMPERIAL® Group</div>
             </a>
         </div>
         <div class="nav-links">
-            <a href="https://bdcmagazine.com/" target="_blank" rel="noopener noreferrer">Beranda</a>
+            <a href="https://www.bloomberg.com/profile/company/7605235Z:US" target="_blank" rel="noopener noreferrer">Beranda</a>
             <a href="https://polpindo.github.io/Polpindo/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%202025.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
-            <!-- Change 2: Portfolio link gets an ID -->
+            <!-- Link "Portfolio" dengan ID untuk JavaScript -->
             <a id="portfolioBtn">Portfolio</a>
             <a href="https://youtube.com/@constructionworldmagazine" target="_blank" rel="noopener noreferrer">Layanan</a>
             <a id="kontakBtn">Kontak</a>
@@ -284,7 +269,7 @@
     
     <!-- Footer -->
     <div class="footer">
-        © 2025 IMPERIAL<sup>™</sup> Group. Hak Cipta Dilindungi. | 
+        © 2025 IMPERIAL® Group. Hak Cipta Dilindungi. | 
         <a href="#" style="color: #3498db; text-decoration: none;">Kebijakan Privasi</a> | 
         <a href="#" style="color: #3498db; text-decoration: none;">Syarat Penggunaan</a>
     </div>
@@ -298,7 +283,7 @@
         </div>
     </div>
 
-    <!-- Change 2: Portfolio Pop-up Modal Added -->
+    <!-- Portfolio Pop-up Modal -->
     <div id="portfolio-popup" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close" id="closePortfolioBtn">×</span>
@@ -348,7 +333,7 @@
                 contactPopup.style.display = 'none';
             });
 
-            // Change 2: Portfolio Pop-up Logic Added
+            // Portfolio Pop-up Logic
             const portfolioBtn = document.getElementById('portfolioBtn');
             const portfolioPopup = document.getElementById('portfolio-popup');
             const closePortfolioBtn = document.getElementById('closePortfolioBtn');
@@ -366,7 +351,6 @@
                 if (event.target == contactPopup) {
                     contactPopup.style.display = 'none';
                 }
-                // Also close portfolio popup if clicked outside
                 if (event.target == portfolioPopup) {
                     portfolioPopup.style.display = 'none';
                 }
