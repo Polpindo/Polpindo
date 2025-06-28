@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duka yang Dirayakan, Syukur yang Disunyikan: Wajah Ganda Malam Satu Suro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f9f5f0;
+            color: #2c2c2c;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to bottom, #f9f5f0, #f1e8dc);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* Gaya dasar (Mobile First) */
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 800px;
+            margin: 10px;
+        }
+        
+        .header {
+            text-align: left;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #d4c9b8;
+            padding-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .appendix {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .title-container {
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .title, .subtitle {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 22px; /* Ukuran dasar judul */
+            font-weight: bold;
+            color: #b30000;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            margin: 10px 0 5px;
+        }
+        
+        .subtitle {
+            margin-top: 5px;
+        }
+        
+        .author-date {
+            text-align: left;
+            margin-top: 15px;
+            line-height: 1;
+            font-family: 'Arial', sans-serif;
+            font-style: normal;
+        }
+        
+        .author {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 2px;
+            line-height: 1;
+        }
+        
+        .date {
+            font-size: 14px;
+            color: #777;
+            line-height: 1;
+        }
+        
+        blockquote {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 18px;
+            margin: 30px 0;
+            padding: 10px 15px 10px 50px;
+            border: none;
+            background-color: #f9f5f0;
+            position: relative;
+            line-height: 1.2;
+            color: #5c4a36;
+            border-radius: 4px;
+        }
+        
+        blockquote::before {
+            content: "“";
+            font-family: 'Times New Roman', serif;
+            position: absolute;
+            font-size: 60px;
+            left: 10px;
+            top: 0;
+            line-height: 1;
+            color: #b30000;
+            opacity: 0.2;
+        }
+
+        blockquote footer {
+            text-align: right;
+            margin-top: 8px;
+            font-size: 0.8em;
+            font-style: normal;
+            font-weight: normal;
+            font-family: 'Arial', sans-serif; 
+            color: #5c4a36;
+            line-height: 1;
+        }
+        
+        .content {
+            font-family: 'Arial', sans-serif;
+            font-size: 15px;
+            color: #333;
+            line-height: 1;
+            text-align: left;
+            hyphens: auto;
+            padding-bottom: 20px;
+        }
+        
+        .content p {
+            margin-bottom: 1.2em;
+            text-indent: 0;
+            text-align: left;
+            line-height: 1;
+        }
+        
+        .drop-cap {
+            float: left;
+            font-size: 64px;
+            line-height: 1;
+            padding-top: 12px;
+            padding-right: 12px;
+            padding-bottom: 0;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            color: #b30000;
+        }
+        
+        .footnote-ref {
+            font-family: 'Arial', sans-serif;
+            font-size: 11px;
+            color: #b30000;
+            vertical-align: super;
+            line-height: 1;
+            font-weight: bold;
+        }
+        
+        .footnotes, .glossary {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e8e1d7;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #555;
+            line-height: 1;
+            text-align: left;
+        }
+        
+        .footnotes h2, .glossary h2 {
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #5c4a36;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+            text-align: left;
+            line-height: 1;
+        }
+        
+        .footnotes h2::after, .glossary h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #b30000;
+        }
+        
+        .footnotes p {
+            margin: 0 0 10px 0;
+            text-indent: -15px;
+            padding-left: 15px;
+            text-align: left;
+            line-height: 1;
+        }
+        
+        .glossary dt {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            color: #b30000;
+            font-size: 15px;
+            margin-top: 15px;
+            line-height: 1;
+            text-align: left;
+        }
+        
+        .glossary dd {
+            font-family: 'Arial', sans-serif;
+            color: #555;
+            font-size: 15px;
+            margin-left: 0;
+            padding-left: 20px;
+            border-left: 2px solid #e8e1d7;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            line-height: 1;
+            text-align: left;
+        }
+        
+        em, i {
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+            line-height: 1;
+        }
+        
+        strong, b {
+            font-weight: bold;
+        }
+        
+        .page-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4c9b8, transparent);
+            margin: 20px 0;
+        }
+        
+        .ornament {
+            text-align: center;
+            margin: 20px 0;
+            color: #d4c9b8;
+            font-size: 24px;
+            letter-spacing: 10px;
+            line-height: 1;
+        }
+        
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 120px;
+            font-weight: bold;
+            color: rgba(179, 0, 0, 0.03);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        /* 
+          MODIFIKASI DESKTOP: 
+          Aturan ini hanya berlaku pada layar dengan lebar 769px atau lebih.
+        */
+        @media (min-width: 769px) {
+            /* Membuat esai layar penuh */
+            .container {
+                max-width: none;
+                margin: 0;
+                border-radius: 0;
+                padding: 40px 60px;
+            }
+            
+            /* Memperbesar judul 2x */
+            .title, .subtitle {
+                font-size: 44px;
+            }
+
+            /* Memperbesar kutipan 2x */
+            blockquote {
+                font-size: 36px;
+                padding: 25px 25px 25px 80px; /* Padding disesuaikan */
+                line-height: 1.3;
+            }
+
+            /* Mengatur posisi tanda kutip */
+            blockquote::before {
+                font-size: 120px; /* Sedikit diperbesar agar proporsional */
+                left: 20px;
+                top: -15px; /* MODIFIKASI: Tanda kutip dinaikkan */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">ESSAY</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="appendix">APPENDIX 2</div>
+            <div class="title-container">
+                <div class="title">Duka yang Dirayakan, Syukur yang Disunyikan:</div>
+                <div class="subtitle">Wajah Ganda Malam Satu Suro</div>
+            </div>
+            
+            <div class="author-date">
+                <div class="author">SN. MASHARY</div>
+                <div class="date">Saturday, June 28, 2025 23:48 WIB</div>
+            </div>
+        </div>
+        
+        <blockquote>
+            Suro diro joyoningrat,<br>lebur dening pangastuti.
+            <footer>— <b>Ronggowarsito</b> dalam Serat Witaradya</footer>
+        </blockquote>
+        
+        <div class="content">
+            <p>
+                <span class="drop-cap">F</span>alsafah adiluhung Jawa ini—yang berarti "segala sifat angkara murka, kekuatan, dan kekuasaan akan lebur oleh kelembutan, kebijaksanaan, dan doa"—barangkali adalah kunci paling subti untuk membuka misteri Malam Satu Suro. Ia merangkum sebuah kebijaksanaan di mana gegap gempita dunia (<em>sura dira</em>) diluluhkan bukan oleh kekuatan yang lebih besar, melainkan oleh keheningan laku spiritual (<em>pangastuti</em>). Filosofi inilah yang menjadi napas dari paradoks Suro.
+            </p>
+            
+            <p>
+                Sejarawan Prancis, Fernand Braudel, pernah menulis tentang <em>longue durée</em>, arus waktu panjang di mana struktur mental dan budaya berubah dengan sangat lambat, seringkali tanpa disadari oleh mereka yang menjalaninya.<sup class="footnote-ref">1</sup> Dalam bingkai inilah kita harus menempatkan Malam Satu Suro. Ia bukan sekadar penanda kalender, melainkan sebuah artefak memori kolektif. Bagaimana mungkin sebuah peristiwa tragis di Padang Karbala, Irak, pada abad ke-7—sebuah duka yang menjadi inti identitas kaum Syiah—dapat meresapkan melankolianya ke dalam ritus tahun baru sebuah masyarakat di seberang samudra yang mayoritasnya adalah pengikut Sunni? Kenyataan ini mengusulkan sebuah spekulasi: bahwa Malam Satu Suro adalah bukti paling kuat dari <em>longue durée</em> tersebut, sebuah titik di mana duka sejarah menemukan rumah abadinya bukan dalam teks-teks teologis yang kaku, melainkan dalam ritual hening yang diwariskan dari generasi ke generasi.
+            </p>
+            
+            <div class="page-divider"></div>
+            
+            <p>
+                Secara formal, penetapan 1 Suro sebagai tahun baru Jawa adalah sebuah produk kebijakan politik yang terukur. Pada tahun 1633 M, Sultan Agung dari Mataram, dalam upayanya mengkonsolidasikan kekuatan politik dan legitimasi keislaman, mengagas sebuah kalender hybrid. Penanggalan Saka berbasis matahari yang berakar dari tradisi Hindu-Buddha dileburkan dengan kalender Hijriah Islam yang berbasis bulan. Bulan pertama, Muharram, kemudian di-Jawa-kan menjadi "Suro", yang secara etimologis merujuk langsung pada "Asyura" (hari kesepuluh Muharram).<sup class="footnote-ref">2</sup> Dari perspektif Islam Sunni—aliran yang dianut mayoritas masyarakat Jawa dan menjadi doktrin resmi negara—hari Asyura adalah hari yang dimuliakan. Ia diperingati dengan puasa sunnah sebagai ungkapan syukur atas diselamatkannya Nabi Musa dan kaumnya dari penindasan Fir'aun.<sup class="footnote-ref">3</sup> Semangat yang diusung adalah optimisme spiritual dan rasa terima kasih. Inilah tesis arus utama: Suro adalah Muharram-nya orang Jawa, sebuah awal tahun yang semestinya disambut dengan ibadah reflektif yang penuh syukur.
+            </p>
+            
+            <p>
+                Namun, di sinilah paradoks pertama dan paling tajam muncul. Praktik komunal yang mengitari Malam Satu Suro di jantung kebudayaan Jawa, seperti di lingkungan keraton Yogyakarta dan Surakarta, sama sekali tidak mencerminkan semangat syukur tersebut. Atmosfer yang terbangun justru sebaliknya: muram, khusyuk, introspektif, dan sarat dengan kewaspadaan. Ritual <em>laku bisu mubeng beteng</em> (berjalan dalam keheningan mengelilingi benteng keraton) adalah manifestasi keheningan total. Prosesi <em>jamasan pusaka</em> (penyucian benda-benda pusaka keraton) dilakukan dalam suasana sakral yang jauh dari keriuhan. Masyarakat awam pun terinternalisasi untuk "menyucikan" bulan Suro dengan tidak menggelar pesta pernikahan atau hajatan besar lainnya, menganggapnya sebagai bulan yang prihatin dan <em>wingit</em> (angker). Spirit ini jelas merupakan sebuah antitesis dari narasi syukur kaum Sunni. Bahkan, jika kita merujuk pada fikih Sunni arus utama, meratap atau mengekspresikan duka secara berlebihan sebagai sebuah ritual kolektif justru tidak dianjurkan.<sup class="footnote-ref">4</sup> Lalu, dari manakah datangnya ethos kesedihan kolektif ini?
+            </p>
+            
+            <div class="ornament">•••</div>
+            
+            <p>
+                Spekulasi ilmiah yang paling kuat menunjuk pada gema Asyura dalam tradisi Syiah. Bagi komunitas Muslim Syiah, 10 Muharram adalah puncak dari duka semesta, hari peringatan atas pembantaian brutal terhadap cucu Nabi Muhammad, Hussein bin Ali, beserta keluarga dan pengikut setianya di Karbala. Asyura adalah memori tentang pengkhianatan, pengorbanan heroik, dan tirani. Peringatannya di seluruh dunia Syiah ditandai dengan prosesi duka (<em>ma'tam</em>), teatrikal kisah tragedi (<em>ta'ziyah</em>), dan suasana berkabung yang pekat. Sebagaimana telah diungkap dalam analisis terdahulu yang meminjam lensa Clifford Geertz, kebudayaan Jawa adalah sebuah <em>palimpsest</em>,<sup class="footnote-ref">5</sup> maka sangat mungkin narasi tragis Karbala ini meresap ke dalam lapisan kesadaran kolektif Jawa melalui jalur para penyebar Islam awal yang kosmopolitan. Banyak dari mereka, para sufi dan pedagang, datang dari Persia dan wilayah-wilayah yang bersentuhan dengan pengaruh Syiah.<sup class="footnote-ref">6</sup> Kisah kepahlawanan Hussein—seorang ksatria luhur yang dikalahkan oleh kekuatan lalim—memiliki resonansi yang kuat dengan arketipe narasi pewayangan seperti gugurnya para pahlawan Pandawa dalam Bharatayuddha.
+            </p>
+            
+            <p>
+                Pada titik inilah sebuah sintesis budaya yang brilian terjadi. Sultan Agung menyediakan "wadah" resmi melalui kalender barunya. Tradisi Sunni memberikan "legitimasi" teologis melalui status suci bulan Muharram. Namun, tradisi Syiahlah yang memberikan "jiwa" emosionalnya. Suasana prihatin Suro menjadi cerminan dari duka Karbala. Ritual tirakat dan mawas diri menjadi sebangun dengan semangat refleksi atas pengorbanan Hussein. <em>Substratum</em> (realitas dasar yang menopang) kepercayaan Jawa kuno yang memandang pergantian waktu sebagai momen liminal (fase transisi atau ambang) yang berbahaya, di mana batas antara dunia nyata dan gaib menipis, menjadi lahan subur bagi ethos kewaspadaan ini. Semua elemen ini—politik, agama, mitologi, dan mistisisme—berpadu dan mengkristal dalam satu malam yang enigmatik (enigma—sukar dipahami, misterius).
+            </p>
+            
+            <div class="page-divider"></div>
+            
+            <p>
+                Maka, apa pelajaran terdalam dari wajah ganda Malam Suro bagi kita hari ini, di tengah zaman yang menuntut kejelasan dan keberpihakan yang bising? Barangkali, ia adalah undangan untuk masuk ke dalam ruang batin kita sendiri. Suro mengajarkan bahwa jiwa manusia, seperti halnya kebudayaan, bukanlah entitas yang monolitik. Di dalam diri kita pun terdapat dualitas antara duka dan syukur, antara kehilangan dan harapan. Tradisi Suro, dengan keheningan dan laku prihatinnya, menyediakan sebuah metode adiluhung: sebuah jeda untuk tidak memaksa salah satu perasaan menang atas yang lain, melainkan membiarkan keduanya berdialog dalam sunyi hingga melahirkan sebuah kesadaran yang lebih utuh dan bijaksana.
+            </p>
+            
+            <p>
+                Lebih jauh lagi, Malam Suro adalah sebuah monumen cair yang menentang segala bentuk puritanisme dan sekat-sekat identitas yang kaku. Di saat dunia modern seringkali terjebak dalam polarisasi—Sunni versus Syiah, tradisi versus modernitas, sakral versus profan—Suro hadir sebagai bukti bahwa harmoni tercipta bukan dari penyeragaman, melainkan dari kearifan untuk merengkuh kompleksitas. Ia adalah pengingat abadi bahwa kekuatan terbesar sebuah peradaban mungkin tidak terletak pada kemampuannya untuk berteriak paling lantang, melainkan pada kapasitasnya untuk mendengarkan gema-gema sejarah yang paling lirih sekalipun. Ia mengajarkan bahwa dalam sunyi, kita tidak hanya menemukan Tuhan atau leluhur, tetapi juga menemukan versi paling jujur dari kemanusiaan kita—sebuah kemanusiaan yang mampu menanggung duka tanpa pernah kehilangan rasa syukur.
+            </p>
+        </div>
+        
+        <div class="footnotes">
+            <h2>Catatan Kaki</h2>
+            <p><sup>1</sup> Fernand Braudel, "History and the Social Sciences: The Longue Durée," dalam <em>On History</em>, terj. Sarah Matthews (Chicago: University of Chicago Press, 1980). Konsep ini membantu menjelaskan bagaimana pengaruh kultural dapat bertahan melintasi abad dan geografi, tertanam dalam struktur mental masyarakat.</p>
+            <p><sup>2</sup> M.C. Ricklefs, <em>A History of Modern Indonesia since c. 1200</em>, 4th ed. (Palgrave Macmillan, 2008), hal. 51. Kebijakan Sultan Agung ini bertujuan untuk menyelaraskan perayaan keagamaan rakyat dengan struktur keraton.</p>
+            <p><sup>3</sup> Musa ini didasarkan pada hadis yang sangat populer, seperti yang diriwayatkan dalam <em>Sahih al-Bukhari</em> (hadis no. 3397) ketika Nabi Muhammad tiba di Madinah dan menemukan orang-orang Yahudi berpuasa pada hari Asyura untuk memperingati diselamatkannya Musa.</p>
+            <p><sup>4</sup> Kontradiksi ini sangat fundamental. Dalam mazhab Syafi'i yang dominan di Indonesia, praktik seperti <em>niyahah</em> (meratap) atau menunjukkan kesedihan secara berlebihan dilarang keras. Meskipun ritual Suro tidak melibatkan ratapan fisik, atmosfer emosionalnya jelas lebih condong pada duka daripada syukur yang dianjurkan dalam fikih Sunni.</p>
+            <p><sup>5</sup> Analisis ini merupakan kelanjutan dari sagasan Clifford Geertz dalam <em>The Religion of Java</em> (Chicago: University of Chicago Press, 1960), di mana kebudayaan Jawa dipandang sebagai lapisan-lapisan keyakinan yang saling tumpang tindih dan tidak pernah sepenuhnya menghilangkan unsur-unsur lamanya.</p>
+            <p><sup>6</sup> Azyumardi Azra, <em>Jaringan Ulama Timur Tengah dan Kepulauan Nusantara Abad XVII dan XVIII</em> (Jakarta: Kencana, 2004), hal. 35-39. Azra menunjukkan bahwa Islam awal di Nusantara dibawa oleh jaringan kosmopolitan yang tidak tunggal, termasuk dari wilayah Persia, memungkinkan unsur-unsur Syiah, terutama dalam bentuk tasawuf dan narasi heroik, ikut berpengaruh sebelum ortodoksi Sunni sepenuhnya mapan.</p>
+        </div>
+        
+        <div class="glossary">
+            <h2>Glosarium</h2>
+            <dl>
+                <dt>Antitesis</dt>
+                <dd>Suatu hal atau gagasan yang bertentangan atau merupakan kebalikan langsung dari hal lain. Dalam esai, digunakan untuk menggambarkan kontras tajam antara spirit duka Suro dengan spirit syukur Muharram Sunni.</dd>
+                
+                <dt>Asyura</dt>
+                <dd>Berasal dari bahasa Arab, 'Asyūrā', yang berarti 'kesepuluh'. Merujuk pada hari ke-10 bulan Muharram. Bagi Muslim Sunni, hari ini dimuliakan dengan puasa sunnah untuk mensyukuri diselamatkannya Nabi Musa. Bagi Muslim Syiah, ini adalah hari duka terbesar untuk memperingati tragedi Karbala.</dd>
+                
+                <dt>Enigmatik</dt>
+                <dd>Bersifat enigma; misterius, sukar untuk dipahami atau dijelaskan.</dd>
+                
+                <dt>Fikih</dt>
+                <dd>Ilmu yang membahas hukum-hukum praktis dalam Islam yang digali dari dalil-dalilnya yang terperinci.</dd>
+                
+                <dt>Hijriah (Kalender Hijriah)</dt>
+                <dd>Sistem penanggalan Islam yang perhitungannya berdasarkan pada peredaran bulan (lunar). Tahun pertamanya dimulai sejak peristiwa hijrah Nabi Muhammad dari Mekkah ke Madinah.</dd>
+                
+                <dt>Jamasan Pusaka (Bahasa Jawa)</dt>
+                <dd>Secara harfiah berarti 'penyucian benda pusaka'. Sebuah ritual sakral di lingkungan keraton Jawa yang biasanya dilakukan pada bulan Suro untuk membersihkan dan merawat benda-benda pusaka warisan leluhur.</dd>
+                
+                <dt>Laku Bisu Mubeng Beteng (Bahasa Jawa)</dt>
+                <dd>Secara harfiah berarti 'berjalan dalam diam mengelilingi benteng'. Ritual yang dilakukan oleh abdi dalem dan masyarakat di Keraton Yogyakarta dan Surakarta pada malam 1 Suro, di mana peserta berjalan kaki mengelilingi benteng keraton tanpa mengeluarkan sepatah kata pun sebagai bentuk introspeksi dan keprihatinan.</dd>
+                
+                <dt>Liminal</dt>
+                <dd>Fase transisi atau ambang antara dua keadaan. Dalam konteks antropologi, merujuk pada periode ritual di mana status normal seseorang atau waktu ditangguhkan. Dalam esai, merujuk pada pandangan bahwa waktu pergantian tahun adalah momen di mana batas dunia fisik dan gaib menipis.</dd>
+                
+                <dt>Longue Durée (Bahasa Prancis)</dt>
+                <dd>Istilah yang dipopulerkan oleh sejarawan Fernand Braudel untuk menggambarkan kerangka waktu sejarah yang sangat panjang. Digunakan untuk menganalisis perubahan struktur sosial dan mental yang lambat dan seringkali tidak disadari, yang mendasari peristiwa-peristiwa sejarah.</dd>
+                
+                <dt>Ma'tam (Bahasa Arab)</dt>
+                <dd>Istilah untuk ritual perkabungan kolektif dalam tradisi Syiah, khususnya selama bulan Muharram, yang diisi dengan ratapan, syair duka, dan prosesi untuk mengenang kesyahidan Hussein bin Ali.</dd>
+                
+                <dt>Niyahah (Bahasa Arab)</dt>
+                <dd>Istilah dalam fikih Islam yang berarti meratapi orang yang meninggal dengan suara keras, berteriak-teriak, atau tindakan lain yang menunjukkan kesedihan berlebihan. Praktik ini umumnya dilarang dalam pandangan Sunni.</dd>
+                
+                <dt>Palimpsest</dt>
+                <dd>Naskah kuno (biasanya perkamen) yang tulisannya telah dihapus atau dikikis untuk ditulisi kembali, namun jejak tulisan lamanya seringkali masih terlihat samar-samar. Dalam esai, digunakan sebagai metafora untuk menggambarkan kebudayaan Jawa di mana lapisan-lapisan keyakinan (animisme, Hindu-Buddha, Islam) saling tumpang tindih dan unsur-unsur lama tidak pernah hilang sepenuhnya.</dd>
+                
+                <dt>Pangastuti (Bahasa Jawa Kuno)</dt>
+                <dd>Doa, pujian, atau laku spiritual yang penuh dengan kelembutan, kebijaksanaan, dan permohonan.</dd>
+                
+                <dt>Prihatin (Bahasa Jawa)</dt>
+                <dd>Sikap batin dan laku hidup yang introspektif, menahan diri dari kesenangan duniawi, dan penuh keprihatinan atau kewaspadaan sebagai bentuk olah spiritual.</dd>
+                
+                <dt>Saka (Penanggalan Saka)</dt>
+                <dd>Sistem penanggalan pra-Islam di Jawa yang berasal dari India, perhitungannya berdasarkan pada peredaran matahari (solar).</dd>
+                
+                <dt>Sura Dira Jayaningrat, Lebur Dening Pangastuti</dt>
+                <dd>Pepatah adiluhung Jawa yang diatribusikan kepada Ranggawarsito. Artinya, "Segala sifat angkara murka, kekuatan, dan kekuasaan akan lebur (kalah) oleh sikap yang lemah lembut, bijaksana, dan penuh doa."</dd>
+                
+                <dt>Suro</dt>
+                <dd>Pelafalan khas Jawa dari kata Asyura. Menjadi nama untuk bulan pertama dalam sistem kalender Jawa-Islam yang diciptakan oleh Sultan Agung.</dd>
+                
+                <dt>Substratum</dt>
+                <dd>Lapisan dasar atau fondasi yang menopang sesuatu. Dalam esai, merujuk pada kepercayaan animisme-dinamisme Jawa kuno yang menjadi landasan bagi meresapnya suasana mistis dan prihatin pada bulan Suro.</dd>
+                
+                <dt>Ta'ziyeh (Bahasa Persia)</dt>
+                <dd>Drama teatrikal dalam tradisi Syiah yang mementaskan kembali kisah tragedi Karbala. Merupakan salah satu bentuk ritual penting dalam peringatan Asyura di Iran dan beberapa komunitas Syiah lainnya.</dd>
+                
+                <dt>Wingit (Bahasa Jawa)</dt>
+                <dd>Suasana atau tempat yang memiliki aura sakral, keramat, dan terkadang dianggap sedikit angker atau seram karena kekuatan gaib yang diyakini menyelimutinya.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>
