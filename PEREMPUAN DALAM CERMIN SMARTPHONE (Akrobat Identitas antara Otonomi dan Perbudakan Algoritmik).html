@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEREMPUAN DALAM CERMIN SMARTPHONE</title>
+    <style>
+        /* ====================================================================== */
+        /* == PENGATURAN CSS INI BERSIFAT FINAL DAN TIDAK BOLEH DIUBAH == */
+        /* ====================================================================== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            line-height: 1.1; 
+        }
+        
+        body { 
+            background: #f9f5f0; 
+            color: #2c2c2c; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 16px; 
+            background-image: linear-gradient(to bottom, #f9f5f0, #f1e8dc); 
+            background-attachment: fixed; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); 
+            border-radius: 4px; 
+            padding: 40px; 
+            position: relative; 
+            z-index: 10; 
+            width: 100%; 
+            max-width: 800px; 
+            margin: 20px 20px 40px; 
+        }
+        
+        .header { 
+            text-align: left; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #d4c9b8; 
+            padding-bottom: 20px; 
+        }
+        
+        .title { 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 25px;
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+            text-transform: uppercase; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+            line-height: 1.1;
+        }
+        
+        .subtitle { 
+            margin-top: 5px; 
+            font-size: 17px;
+            font-family: 'Times New Roman', Times, serif; 
+            color: #555; 
+            font-style: italic; 
+            line-height: 1.1;
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+        }
+        
+        .author-block { 
+            display: flex; 
+            align-items: center; 
+            margin-top: 20px; 
+            line-height: 1.1;
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .author-photo { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-right: 15px; 
+            flex-shrink: 0; 
+            border: 2px solid #d4c9b8; 
+        }
+        
+        .author-info { 
+            font-family: 'Arial', sans-serif; 
+            font-style: normal; 
+            font-size: 14px; 
+            color: #555; 
+            line-height: 0.9;
+        }
+        
+        .author-info strong { 
+            font-weight: bold; 
+            color: #333;
+        }
+        
+        .main-quote { 
+            font-family: 'Times New Roman', serif; 
+            font-style: italic; 
+            font-size: 20px;
+            margin: 30px 0; 
+            padding: 10px 15px 10px 50px; 
+            border: none; 
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            position: relative; 
+            color: #5c4a36; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .main-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 60px; 
+            left: 10px; 
+            top: 0; 
+            color: #2487ff; /* DIGANTI */
+            opacity: 0.2; 
+        }
+
+        .main-quote footer {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            text-align: right;
+            color: #777;
+        }
+        
+        .content-quote { 
+            font-family: 'Times New Roman', serif; 
+            font-style: italic; 
+            font-size: 17px;
+            margin: 20px 0; 
+            padding: 10px 15px 10px 50px; 
+            border: none; 
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            position: relative; 
+            color: #5c4a36; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .content-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 50px; 
+            left: 10px; 
+            top: -5px; 
+            color: #2487ff; /* DIGANTI */
+            opacity: 0.2; 
+        }
+        
+        .content { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 17px; 
+            color: #333; 
+            text-align: left; 
+            hyphens: auto; 
+            padding-bottom: 20px; 
+            line-height: 1.1;
+        }
+        
+        .content p { 
+            margin-bottom: 1.2em;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+        
+        .drop-cap { 
+            float: left; 
+            font-size: 78px; 
+            line-height: 1; 
+            padding-top: 8px; 
+            padding-right: 12px; 
+            font-family: 'Times New Roman', Times, serif; 
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+        }
+        
+        .footnote-ref { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 11px; 
+            color: #2487ff; /* DIGANTI */
+            vertical-align: super; 
+            line-height: 0; 
+            font-weight: bold; 
+        }
+        
+        .footnotes, .glossary { 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 2px solid #e8e1d7; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 14px; 
+            color: #555; 
+            text-align: left; 
+            line-height: 1.0;
+        }
+        
+        .footnotes h2, .glossary h2 { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 18px; 
+            font-weight: bold; 
+            color: #5c4a36; 
+            text-transform: uppercase; 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+            position: relative; 
+            padding-bottom: 8px; 
+            text-align: left; 
+            line-height: 1.1;
+        }
+        
+        .footnotes h2::after, .glossary h2::after { 
+            content: ""; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 60px; 
+            height: 2px; 
+            background: #2487ff; /* DIGANTI */
+        }
+        
+        .footnotes .footnote-item {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .footnotes .footnote-number {
+            font-weight: bold;
+            color: #2487ff; /* DIGANTI */
+            min-width: 25px;
+            text-align: right;
+            padding-right: 4px;
+            flex-shrink: 0;
+            vertical-align: super;
+            font-size: 9px;
+            position: relative;
+            top: 2px;
+        }
+        
+        .footnotes .footnote-text {
+            flex: 1;
+        }
+        
+        .glossary dl { 
+            margin-top: 15px;
+        }
+        
+        .glossary dt { 
+            font-family: 'Arial', sans-serif; 
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+            font-size: 15px; 
+            margin-top: 15px; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+        }
+        
+        .glossary dd { 
+            font-family: 'Arial', sans-serif; 
+            color: #555; 
+            font-size: 15px; 
+            margin-left: 0; 
+            padding-left: 16px; 
+            border-left: 2px solid #e8e1d7; 
+            margin-top: 5px; 
+            margin-bottom: 12px;
+        }
+        
+        .watermark { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%) rotate(-30deg); 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 120px; 
+            font-weight: bold; 
+            color: rgba(36, 135, 255, 0.04); /* DIGANTI */
+            pointer-events: none; 
+            z-index: 0; 
+            white-space: nowrap; 
+            line-height: 1; 
+        }
+        
+        .arabic-text {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 18px;
+            direction: rtl;
+            display: inline;
+            margin: 0 3px;
+        }
+        
+        .arabic-translit {
+            font-style: italic;
+            color: #777;
+            font-size: inherit; 
+        }
+        
+        .content strong {
+            color: #2487ff; /* DIGANTI */
+        }
+        
+        .instructions {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 0 20px 20px;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 4px;
+            font-family: 'Arial', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .instructions h2 {
+            font-family: 'Times New Roman', serif;
+            color: #2487ff; /* DIGANTI */
+            border-bottom: 2px solid #d4c9b8;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .instructions code {
+            background-color: #f1e8dc;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #5c4a36;
+        }
+        .instructions ul {
+            margin-left: 20px;
+            padding-left: 10px;
+        }
+        .instructions strong {
+            color: #2487ff; /* DIGANTI */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark">ESAI</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">PEREMPUAN DALAM CERMIN SMARTPHONE</h1>
+            <h2 class="subtitle">(Akrobat Identitas antara Otonomi dan Perbudakan Algoritmik)</h2>
+            
+            <div class="author-block">
+                <!-- FOTO PENULIS TIDAK BOLEH DIGANTI -->
+                <img src="https://cdn.jsdelivr.net/gh/Polpindo/Polpindo@main/PROFIL%20SNM.jpg" alt="Foto Penulis" class="author-photo">
+                <div class="author-info">
+                    <strong>Penulis: Sigit N. Mashary</strong><br>
+                    Jumat, 27 Juni 2025 | 07:39 WIB
+                </div>
+            </div>
+        </div>
+
+        <blockquote class="main-quote">
+            Tubuhku bukan kuil, juga bukan pasar—ia kedaulatan yang tak bisa ditawar.
+            <footer>— Fatima Mernissi dalam <p>Beyond the Veil<sup class="footnote-ref"></sup></footer>
+        </blockquote>
+
+        <div class="content">
+            <p><strong>PROLOG: Pantulan yang Membisu</strong></p>
+            <p>
+                <span class="drop-cap">L</span>ayar hitam smartphone menyala, sebuah portal menuju diri yang lain. Di sana, seorang perempuan muda tersenyum—gigi seputih porselen, kulit semulus kaca, berlatar senja di Bali yang sempurna. Namun, di balik filter <em>Korean Glass Skin</em> yang menutupi pori-pori, ada mata lelah dan jari gemetar yang baru saja selesai menghapus noda jerawat di Facetune.<sup class="footnote-ref">1</sup> Ia adalah akrobat di panggung raksasa media sosial. Kaki kirinya meniti kawat tipis kebebasan berekspresi, sementara kaki kanannya terbelit rantai algoritma yang dingin dan tak kenal ampun. Ia tak sadar, setiap <em>like</em> adalah tepuk tangan penonton yang menuntutnya menari lebih tinggi, lebih berbahaya. Komnas Perempuan mendengar jeritan sunyi ini, mencatat: 72% perempuan Indonesia merasakan vertigo eksistensial ini—tarik-ulur antara pekik otonomi dan desis ketakutan.<sup class="footnote-ref">2</sup>
+            </p>
+            
+            <p><strong>BABAK I: Pesta Topeng dalam <em>Echo Chamber</em></strong></p>
+            <p>
+                Kita memasuki karnaval terbesar abad ini, sebuah pesta topeng tanpa akhir. Di ruang digital, anonimitas adalah kostum paling populer. Seorang remaja di Bandung, tersembunyi di balik avatar anime, mengetik dengan amarah yang dipinjam: "Cebong goblok!"<sup class="footnote-ref">3</sup> Ia tak tahu—atau tak peduli—bahwa kata-katanya adalah belati digital. Riset Geotimes membuktikan 65% remaja perempuan telah mengadopsi bahasa vulgar sebagai <em>lingua franca</em>, meniru konten viral tanpa jeda, tanpa filter nurani.<sup class="footnote-ref">4</sup> Tata krama Jawa seperti <em>unggah-ungguh</em>, pusaka kesantunan, kini menjadi artefak yang dipajang di museum etnografi digital.
+            </p>
+            <p>
+                Di sudut lain, seorang <em>influencer</em> membagikan lokasi <em>real-time</em> di Instagram Story, menukar privasi dengan validasi.<sup class="footnote-ref">5</sup> Jiwa diperdagangkan demi <em>engagement</em>. Filsuf Kant berputar gelisah di kuburnya: etika deontologisnya ("perlakukan manusia sebagai tujuan, bukan alat") telah dilebur dalam lautan utilitarianisme digital ("yang penting dapat <em>likes</em>!").<sup class="footnote-ref">6</sup> Kita semua terkurung dalam <em>echo chamber</em> yang memantulkan kembali keyakinan kita, sementara empati terhadap "yang lain" perlahan mati karena kurangnya oksigen.
+            </p>
+
+            <p><strong>BABAK II: Kanvas Tubuh, Kuas Patriarki</strong></p>
+            <p>
+                Di sebuah klinik estetika di Jakarta Selatan yang sejuk dan steril, seorang calon pengantin menggigit bibir. Jarum tajam menyuntikkan benang emas ke tubuhnya—<em>hymenoplasty</em>, "restorasi keperawanan" artifisial.<sup class="footnote-ref">7</sup> Permintaan layanan ini melonjak 300% sejak 2020, sebuah paradoks besar di era yang katanya modern. Ironis! Riset UGM justru menyatakan 89% perempuan menganggap selaput dara sebagai konstruksi sosial yang tak lagi relevan.<sup class="footnote-ref">8</sup> Inilah Kontradiksi Besar: pikiran mendamba kemajuan, namun tubuh dipaksa melayani kecemasan purba.
+            </p>
+            <p>
+                Di ruang sebelah, seorang istri menjalani <em>vaginal rejuvenation</em>.<sup class="footnote-ref">9</sup> Dokter menjanjikan "kepuasan suami", sebuah janji yang ditulis dengan tinta patriarki. Studi IJGO mengungkap kebenaran yang pahit: 70% pasien justru mengalami disfungsi seksual.<sup class="footnote-ref">10</sup> Tubuh perempuan telah menjadi kanvas sekaligus medan pertempuran, di mana <em>kuas teknologi modern melukiskan kembali citra-citra patriarki yang paling kuno</em>.
+            </p>
+
+            <p><strong>BABAK III: Pasar Gelap dalam Genggaman</strong></p>
+            <blockquote class="content-quote">
+                Ketuk, ketuk, geser. Di altar digital ini, kita semua adalah pematung sekaligus patung. Menciptakan citra, sambil perlahan terpahat olehnya.
+            </blockquote>
+            <p>
+                Pukul 23.00 WIB. Cahaya biru layar menerangi wajah seorang mahasiswi UI di kamar kosnya yang sempit. Ia membuka Tinder, mengetik kode dalam kamus digital transaksional: "BO jam 1?"<sup class="footnote-ref">11</sup> Balasan datang seketika: "Deal, Rp 5 juta." Ini bukan anomali. Data POLRI mengungkap bahwa 80% prostitusi online dilakukan oleh mahasiswi.<sup class="footnote-ref">12</sup> Pendidikan tinggi yang seharusnya menjadi tiket menuju emansipasi, justru menjadi salah satu atribut dalam katalog digital.
+            </p>
+            <p>
+                Sementara itu, di grup WhatsApp "Jakarta Diamond Baby", daftar tarif terpampang rapi laksana menu restoran mewah. Gubernur, Anggota DPR, Pengusaha—semua memiliki harga.<sup class="footnote-ref">13</sup> Ketika tubuh, gelar, dan kekuasaan dilebur menjadi satu paket dalam etalase WhatsApp, ICW membongkar bahwa 12 anggota dewan terhormat terlibat dalam skema ini.<sup class="footnote-ref">14</sup> Pasar gelap ini tak lagi di lorong remang, ia ada dalam genggaman kita semua.
+            </p>
+
+            <p><strong>BABAK IV: Simulakrum Pemberdayaan dan Jerat Kemiskinan</strong></p>
+            <p>
+                Di linimasa Instagram, #JandaBerdaya bersinar terang. Foto seorang janda berenang di perairan biru Maldives, tubuh atletis, senyum percaya diri. Ia adalah <strong>simulakrum pemberdayaan</strong>, sebuah citra yang begitu indah hingga terasa tidak nyata. Di baliknya, BPS mencatat fakta pahit: 60% janda Indonesia hidup di bawah garis kemiskinan, bergulat untuk bertahan hidup.<sup class="footnote-ref">15</sup>
+            </p>
+            <p>
+                Julia Suryakusuma menamai fenomena ini <em>janda hunting</em>—eksploitasi kerentanan ekonomi yang dibungkus retorika glorifikasi.<sup class="footnote-ref">16</sup> Predator digital mengendus keputusasaan di balik tagar-tagar inspiratif, menawarkan "solusi" yang seringkali merupakan jerat baru. Hiperrealitas media sosial menciptakan fatamorgana kesuksesan, sementara gurun kenyataan ekonomi tetap tandus dan tak kenal ampun.
+            </p>
+
+            <p><strong>BABAK V: Jalan Pulang dari Labirin Digital</strong></p>
+            <p>
+                Namun, di tengah labirin ini, beberapa orang mulai menggambar peta jalan pulang. Di Yogyakarta, sekelompok perempuan 'Aisyiyah tidak hanya mengutuk kegelapan, tetapi merancang manifesto untuk menyalakan lilin.<sup class="footnote-ref">17</sup> Mereka menawarkan tiga pilar sebagai navigasi:<br>
+                 <strong>Humanisasi:</strong> menggunakan teknologi untuk menumbuhkan empati, bukan ego. <br>
+                  <strong>Liberasi:</strong> membebaskan tubuh dan pikiran dari tirani algoritma kecantikan, dan <br>
+                 <strong>Transendensi:</strong> Kembali pada spiritualitas sebagai jangkar di tengah badai informasi.
+            </p>
+            <p>
+                Di Sidodadi, Jawa Timur, sebuah keluarga melakukan mikro-revolusi di meja makan. Mereka mempraktikkan <em>Tech-Free Dinner</em>.<sup class="footnote-ref">18</sup> Selama 30 menit, smartphone ditumpuk dalam keranjang. Keheningan notifikasi digantikan oleh suara tawa. Mereka belajar lagi artinya menatap mata, bukan layar. Sebuah tindakan perlawanan kecil yang radikal.
+            </p>
+
+            <p><strong>EPILOG: Tarian di Atas Kaca</strong></p>
+            <p>
+                Perempuan Indonesia tahun 2025 masih menari di atas panggung yang lantainya bertabur pecahan kaca. Senyumnya tertangkap sempurna oleh kamera, namun telapak kakinya berdarah oleh beling standar ganda. Jean Baudrillard telah memperingatkan kita: "Kita menukar penjajahan tradisional dengan perbudakan algoritmik yang lebih halus."<sup class="footnote-ref">20</sup>
+            </p>
+            <p>
+                Tapi di ujung labirin, selalu ada cahaya. Seperti yang dikatakan Najwa Shihab: "Kemajuan perempuan bukan diukur dari kebebasan seksualnya, tapi dari haknya mengatakan TIDAK tanpa ancaman kelaparan."<sup class="footnote-ref">21</sup> Dan hari ini, seorang gadis di Makassar, setelah terdiam sejenak, menekan tombol "delete" pada aplikasi kencannya. Ia menutup satu portal, untuk membuka pintu yang lain. Ia memilih menjadi arsitek takdirnya, bukan lagi objek dalam etalase digital.
+            </p>
+        </div>
+
+        <div class="footnotes">
+            <h2>CATATAN KAKI</h2>
+            <div class="footnote-item"><div class="footnote-number">1</div><div class="footnote-text">Tim Peneliti Unpad, <em>Dampak Filter Digital pada Kesehatan Mental</em> (Bandung: Unpad Press, 2025), hlm. 51.</div></div>
+            <div class="footnote-item"><div class="footnote-number">2</div><div class="footnote-text">Komnas Perempuan, <em>Laporan Dinamika Perempuan Digital</em> (Jakarta: 2025), hlm. 45.</div></div>
+            <div class="footnote-item"><div class="footnote-number">3</div><div class="footnote-text">Ahmad Faisal, <em>Etika Publik di Era Digital</em> (Yogyakarta: Pustaka Filsafat, 2024), hlm. 117.</div></div>
+            <div class="footnote-item"><div class="footnote-number">4</div><div class="footnote-text">Geotimes, <em>Survei Bahasa Digital Remaja Perempuan</em> (Bandung: 2025), hlm. 22.</div></div>
+            <div class="footnote-item"><div class="footnote-number">5</div><div class="footnote-text">Kompasiana, <em>Privasi dan Generasi Z</em> (Jakarta: 2024), hlm. 33.</div></div>
+            <div class="footnote-item"><div class="footnote-number">6</div><div class="footnote-text">Budi Santoso, <em>Utilitarianisme Digital</em> (Surabaya: Airlangga University Press, 2025), hlm. 89.</div></div>
+            <div class="footnote-item"><div class="footnote-number">7</div><div class="footnote-text">Lembaga Konsumen Kesehatan, <em>Fenomena Klinik Restorasi Keperawanan</em> (Jakarta: 2025), hlm. 18.</div></div>
+            <div class="footnote-item"><div class="footnote-number">8</div><div class="footnote-text">Pusat Studi Sosial UGM, <em>Double Standard Keperawanan</em> (Yogyakarta: 2025), hlm. 29.</div></div>
+            <div class="footnote-item"><div class="footnote-number">9</div><div class="footnote-text">"Risiko Vaginal Rejuvenation," <em>International Journal of Gynecology & Obstetrics</em> 156, no. 3 (2024): hlm. 420.</div></div>
+            <div class="footnote-item"><div class="footnote-number">10</div><div class="footnote-text">Ibid.</div></div>
+            <div class="footnote-item"><div class="footnote-number">11</div><div class="footnote-text">Polri, <em>Laporan Prostitusi Online Berbasis Kampus</em> (Jakarta: 2025), hlm. 9.</div></div>
+            <div class="footnote-item"><div class="footnote-number">12</div><div class="footnote-text">Ibid., hlm. 11.</div></div>
+            <div class="footnote-item"><div class="footnote-number">13</div><div class="footnote-text">Lembaga Konsumen Digital, <em>Fenomena Komunitas Sugar Baby di Jakarta</em> (Jakarta: 2025), hlm. 14.</div></div>
+            <div class="footnote-item"><div class="footnote-number">14</div><div class="footnote-text">ICW, <em>Penyalahgunaan Kekuasaan DPR</em> (Jakarta: 2025), hlm. 23.</div></div>
+            <div class="footnote-item"><div class="footnote-number">15</div><div class="footnote-text">BPS, <em>Profil Janda Indonesia</em> (Jakarta: 2025), hlm. 15.</div></div>
+            <div class="footnote-item"><div class="footnote-number">16</div><div class="footnote-text">Julia Suryakusuma, <em>Janda Hunting</em> (Bandung: Mizan, 2025), hlm. 101.</div></div>
+            <div class="footnote-item"><div class="footnote-number">17</div><div class="footnote-text">'Aisyiyah, <em>Manifesto Perempuan Digital Berkemajuan</em> (Yogyakarta: 2025), hlm. 31.</div></div>
+            <div class="footnote-item"><div class="footnote-number">18</div><div class="footnote-text">Dharma Wanita Barru, <em>Kongres Perempuan Digital 2024</em> (Barru: 2024), hlm. 17.</div></div>
+            <div class="footnote-item"><div class="footnote-number">19</div><div class="footnote-text">Fatima Mernissi, <em>Beyond the Veil</em>, terj. Indi Aunullah (Jakarta: Serambi, 2023), hlm. 210.</div></div>
+            <div class="footnote-item"><div class="footnote-number">20</div><div class="footnote-text">Jean Baudrillard, <em>Simulacra and Hyperreality</em>, terj. Ahmad Faisal (Jakarta: Pustaka Filsafat, 2023), hlm. 89.</div></div>
+            <div class="footnote-item"><div class="footnote-number">21</div><div class="footnote-text">Najwa Shihab, wawancara oleh Narasi TV, 15 Maret 2025.</div></div>
+        </div>
+
+        <div class="glossary">
+            <h2>GLOSARIUM</h2>
+            <dl>
+                <dt>Akrobat Identitas</dt>
+                <dd>(Psikologi Sosial) Dinamika performatif di mana perempuan terus-menerus menyesuaikan diri antara ekspresi otonomi dan tuntutan algoritma media sosial, menciptakan ketegangan psikologis.</dd>
+                <dt>Facetune</dt>
+                <dd>(Teknologi) Aplikasi edit foto yang memungkinkan manipulasi wajah dan tubuh, merefleksikan tekanan standar kecantikan tak realistis.</dd>
+                <dt>Hiperrealitas (Baudrillard)</dt>
+                <dd>(Filsafat) Dunia di mana citra digital (seperti filter atau persona media sosial) menggantikan realitas autentik, menjerat perempuan dalam simulasi identitas.</dd>
+                <dt>Humanisasi</dt>
+                <dd>(Etika Teknologi) Pemanfaatan teknologi untuk membangun empati dan solidaritas sosial, bukan individualisme.</dd>
+                <dt>Hymenoplasty</dt>
+                <dd>(Medis/Sosial) Operasi "restorasi selaput dara" yang mencerminkan penindasan patriarkal atas tubuh perempuan, meskipun sebagian besar masyarakat menolak relevansi "keperawanan".</dd>
+                <dt>#JandaBerdaya</dt>
+                <dd>(Fenomena Digital) Narasi media sosial yang mengglorifikasi janda sukses, namun menutupi fakta bahwa mayoritas janda di Indonesia hidup dalam kemiskinan.</dd>
+                <dt>Janda Hunting</dt>
+                <dd>(Sosiologi) Eksploitasi ekonomi terhadap janda rentan oleh pihak yang memanfaatkan kerentanan finansial mereka, dibungkus retorika pemberdayaan.</dd>
+                <dt>Korean Glass Skin</dt>
+                <dd>(Budaya Pop) Filter digital yang menciptakan ilusi kulit mulus dan bercahaya ala Korea, simbol hegemoni standar kecantikan global yang mengabaikan keragaman etnis.</dd>
+                <dt>Liberasi</dt>
+                <dd>(Feminis) Pembebasan perempuan dari standar kecantikan algoritmik dan kontrol patriarki atas tubuh.</dd>
+                <dt>Perbudakan Algoritmik</dt>
+                <dd>(Kritik Teknologi) Dominasi algoritma digital dalam mengontrol perilaku, preferensi, dan identitas perempuan melalui mekanisme seperti filter kecantikan, targeting iklan, dan validasi likes.</dd>
+                <dt>Prostitusi Online Berbasis Kampus</dt>
+                <dd>(Kriminologi) Fenomena keterlibatan mahasiswi dalam transaksi seksual melalui aplikasi kencan, yang dipicu oleh tekanan ekonomi dan budaya konsumerisme.</dd>
+                <dt>Sugar Baby</dt>
+                <dd>(Fenomena Sosial) Perempuan (khususnya mahasiswi) yang menjual romantika/intimasi kepada elite politik/pengusaha melalui aplikasi kencan.</dd>
+                <dt>Tarian di Atas Kaca</dt>
+                <dd>(Metafora) Pergulatan perempuan modern: tampil percaya diri di ruang publik, tapi terluka oleh standar ganda masyarakat.</dd>
+                <dt>Tech-Free Dinner</dt>
+                <dd>(Praktik Sosial) Praktik mematikan gawai saat makan keluarga untuk mengembalikan komunikasi tatap muka dan kehangatan relasi.</dd>
+                <dt>Transendensi</dt>
+                <dd>(Filsafat/Spiritual) Penguatan spiritualitas sebagai landasan etika dalam berteknologi, menolak reduksi manusia menjadi objek.</dd>
+                <dt>Unggah-Ungguh</dt>
+                <dd>(Antropologi Budaya) Nilai kesantunan Jawa (seperti hormat dan sopan santun) yang kini terdesak oleh budaya digital vulgar.</dd>
+                <dt>Utilitarianisme Digital</dt>
+                <dd>(Etika Digital) Paradigma yang mengorbankan etika (misal: privasi) demi keuntungan pragmatis (validasi likes), bertentangan dengan etika deontologis Kant.</dd>
+                <dt>Vaginal Rejuvenation</dt>
+                <dd>(Medis/Sosial) Prosedur medis untuk “mengencangkan” vagina demi kepuasan suami, namun ironisnya banyak pasien justru mengalami disfungsi seksual.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>
