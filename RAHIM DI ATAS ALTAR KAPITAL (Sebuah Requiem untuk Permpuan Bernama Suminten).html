@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAHIM DI ATAS ALTAR KAPITAL - SIGIT N. MASHARY</title>
+    <style>
+        /* ====================================================================== */
+        /* == PENGATURAN CSS INI BERSIFAT FINAL DAN TIDAK BOLEH DIUBAH == */
+        /* ====================================================================== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            line-height: 1.1; 
+        }
+        
+        body { 
+            background: #f9f5f0; 
+            color: #2c2c2c; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 16px; 
+            background-image: linear-gradient(to bottom, #f9f5f0, #f1e8dc); 
+            background-attachment: fixed; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.08); 
+            border-radius: 4px; 
+            padding: 40px; 
+            position: relative; 
+            z-index: 10; 
+            width: 100%; 
+            max-width: 800px; 
+            margin: 20px 20px 40px; 
+        }
+        
+        .header { 
+            text-align: left; 
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #d4c9b8; 
+            padding-bottom: 20px; 
+        }
+        
+        .title { 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 25px;
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+            text-transform: uppercase; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+            line-height: 1.1;
+        }
+        
+        .subtitle { 
+            margin-top: 5px; 
+            font-size: 17px;
+            font-family: 'Times New Roman', Times, serif; 
+            color: #555; 
+            font-style: italic; 
+            line-height: 1.1;
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+        }
+        
+        .author-block { 
+            display: flex; 
+            align-items: center; 
+            margin-top: 20px; 
+            line-height: 1.1;
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            padding: 15px;
+            border-radius: 4px;
+        }
+        
+        .author-photo { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-right: 15px; 
+            flex-shrink: 0; 
+            border: 2px solid #d4c9b8; 
+        }
+        
+        .author-info { 
+            font-family: 'Arial', sans-serif; 
+            font-style: normal; 
+            font-size: 14px; 
+            color: #555; 
+            line-height: 0.9;
+        }
+        
+        .author-info strong { 
+            font-weight: bold; 
+            color: #333;
+        }
+        
+        .main-quote { 
+            font-family: 'Times New Roman', serif; 
+            font-style: italic; 
+            font-size: 20px;
+            margin: 30px 0; 
+            padding: 10px 15px 10px 50px; 
+            border: none; 
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            position: relative; 
+            color: #5c4a36; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .main-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 60px; 
+            left: 10px; 
+            top: 0; 
+            color: #2487ff; /* DIGANTI */
+            opacity: 0.2; 
+        }
+
+        .main-quote footer {
+            display: block;
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            text-align: right;
+            color: #777;
+        }
+        
+        .content-quote { 
+            font-family: 'Times New Roman', serif; 
+            font-style: italic; 
+            font-size: 17px;
+            margin: 20px 0; 
+            padding: 10px 15px 10px 50px; 
+            border: none; 
+            background-color: rgba(36, 135, 255, 0.07); /* DIGANTI */
+            position: relative; 
+            color: #5c4a36; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .content-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 50px; 
+            left: 10px; 
+            top: -5px; 
+            color: #2487ff; /* DIGANTI */
+            opacity: 0.2; 
+        }
+        
+        .content { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 17px; 
+            color: #333; 
+            text-align: left; 
+            hyphens: auto; 
+            padding-bottom: 20px; 
+            line-height: 1.4;
+        }
+        
+        .content p { 
+            margin-bottom: 1.2em;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+        
+        .drop-cap { 
+            float: left; 
+            font-size: 78px; 
+            line-height: 1; 
+            padding-top: 8px; 
+            padding-right: 12px; 
+            font-family: 'Times New Roman', Times, serif; 
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+        }
+        
+        .footnote-ref { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 11px; 
+            color: #2487ff; /* DIGANTI */
+            vertical-align: super; 
+            line-height: 0; 
+            font-weight: bold; 
+        }
+        
+        .footnotes, .glossary { 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 2px solid #e8e1d7; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 14px; 
+            color: #555; 
+            text-align: left; 
+            line-height: 1.2;
+        }
+        
+        .footnotes h2, .glossary h2 { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 18px; 
+            font-weight: bold; 
+            color: #5c4a36; 
+            text-transform: uppercase; 
+            margin-top: 0; 
+            margin-bottom: 20px; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+            position: relative; 
+            padding-bottom: 8px; 
+            text-align: left; 
+            line-height: 1.1;
+        }
+        
+        .footnotes h2::after, .glossary h2::after { 
+            content: ""; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 60px; 
+            height: 2px; 
+            background: #2487ff; /* DIGANTI */
+        }
+        
+        .footnotes .footnote-item {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .footnotes .footnote-number {
+            font-weight: bold;
+            color: #2487ff; /* DIGANTI */
+            min-width: 25px;
+            text-align: right;
+            padding-right: 4px;
+            flex-shrink: 0;
+            vertical-align: super;
+            font-size: 9px;
+            position: relative;
+            top: 2px;
+        }
+        
+        .footnotes .footnote-text {
+            flex: 1;
+        }
+        
+        .glossary dl { 
+            margin-top: 15px;
+        }
+        
+        .glossary dt { 
+            font-family: 'Arial', sans-serif; 
+            font-weight: bold; 
+            color: #2487ff; /* DIGANTI */
+            font-size: 15px; 
+            margin-top: 15px; 
+            letter-spacing: -0.5px; /* DITAMBAHKAN */
+        }
+        
+        .glossary dd { 
+            font-family: 'Arial', sans-serif; 
+            color: #555; 
+            font-size: 15px; 
+            margin-left: 0; 
+            padding-left: 16px; 
+            border-left: 2px solid #e8e1d7; 
+            margin-top: 5px; 
+            margin-bottom: 12px;
+        }
+        
+        .watermark { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%) rotate(-30deg); 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 120px; 
+            font-weight: bold; 
+            color: rgba(36, 135, 255, 0.04); /* DIGANTI */
+            pointer-events: none; 
+            z-index: 0; 
+            white-space: nowrap; 
+            line-height: 1; 
+        }
+        
+        .arabic-text {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 18px;
+            direction: rtl;
+            display: inline;
+            margin: 0 3px;
+        }
+        
+        .arabic-translit {
+            font-style: italic;
+            color: #777;
+            font-size: inherit; 
+        }
+        
+        .content strong, .content b {
+            font-weight: bold;
+        }
+        .content strong {
+           color: #2487ff; /* DIGANTI */ 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="watermark">ESAI</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">RAHIM DI ATAS ALTAR KAPITAL</h1>
+            <h2 class="subtitle">(Sebuah Requiem untuk Permpuan Bernama Suminten)</h2>
+            
+            <div class="author-block">
+                <img src="https://cdn.jsdelivr.net/gh/Polpindo/Polpindo@main/PROFIL%20SNM.jpg" alt="Foto Penulis" class="author-photo">
+                <div class="author-info">
+                    <strong>Penulis: SIGIT N. MASHARY</strong><br>
+                    SENIN, 23 JUNI 2025 | 19:55:00 WIB
+                </div>
+            </div>
+        </div>
+
+        <blockquote class="main-quote">
+            Ini wujud sempurna dari <em>disonansi kognitif</em>—kemampuan membingkai eksploitasi sebagai sebuah amalan welas asih.
+            <footer>— Leon Festinger, Cognitive Dissonance (1957)</footer>
+        </blockquote>
+
+        <div class="content">
+            <p>
+                <span class="drop-cap">D</span>alam bisik batin semesta arkaik nenek moyang kita, rahim adalah sebuah <em>haramain</em>—ruang suci kembar bersama Ka’bah, tempat misteri ilahi bersemayam. Di sanalah <em>sirrullah</em>, rahasia agung penciptaan itu, dititipkan dengan penuh takzim.<sup class="footnote-ref">1</sup> Namun, di era ini, bagi Suminten, perempuan 28 tahun dari pesisir Bantul, rahimnya telah menjadi neraca kalkulasi. "<b>Empat ratus juta</b>," desisnya pada diri sendiri, seolah itu adalah mantra pembebasan. “Cukup untuk mendirikan sebuah rumah dari setetes benih orang Singapura." Di sebuah klinik di Jakarta, organ yang dahulu disanjung sebagai <em>mihrab</em>—kiblat kehidupan—telah bermetamorfosis menjadi <b>mesin cetak</b>, sebuah anomali paradoksal di jantung peradaban yang mengaku modern.<sup class="footnote-ref">2</sup>
+            </p>
+            
+            <p>
+                Dari kedalaman lorong waktu, gema nubuat Friedrich Nietzsche seakan menemukan wujudnya: <b>Tuhan telah mati</b>, dan kini, di ruang-ruang steril beraroma desinfektan, manusia menjahit ulang takdir biologisnya.<sup class="footnote-ref">3</sup> Tatapan Suminten, yang kosong namun sekaligus tajam, adalah cerminan sang <em>übermensch</em> yang memberontak melampaui moralitas usang. Di sini, rahim bukan lagi '<em>aurah mustahażana</em> (<span class="arabic-text">عَوْرَة مُسْتَحْصَنَة</span>)—aurat yang suci dan terjaga—melainkan telah terasing, menjadi <b><em>fetish komoditas</em></b> yang diulas Karl Marx: organ reproduksi yang dicerabut dari jiwa pemiliknya, <b>teralienasi</b>.<sup class="footnote-ref">4</sup> "Mbak, Ini namanya <em>reproductive autonomy</em>. Hak otonomi atas tubuh," begitu kata dokter saat Suminten menekan jarum hormon ke kulit perutnya untuk kesekian kali. Suminten hanya bisa bergumam getir, “Rasanya lebih seperti <b><em>ladang</em></b> yang dipupuk paksa untuk panen raya.” Psikologi kognitif memberi nama pada luka tak kasat mata ini: <em>self-dehumanisation</em>, sebuah mekanisme pertahanan jiwa saat tubuh direduksi menjadi sekadar objek produksi belaka.<sup class="footnote-ref">5</sup>
+            </p>
+
+            <p>
+                Klinik “Bunda Sejahtera” adalah <b>kuil</b> modern bagi zaman yang gamang. Aroma antiseptik yang tajam menggantikan wangi dupa dan kemenyan. Di meja ruang tunggunya, sebuah Al-Qur'an tergeletak, terbuka pada Surah Maryam—sebuah ironi pedih tentang kehamilan suci yang kini ditafsir ulang melalui cawan petri dan inkubator.<sup class="footnote-ref">6</sup> “Kami hanya memfasilitasi <em>rahmatan lil ‘alamin</em>," ujar sang direktur dengan senyum yang dipoles rapi, sebuah contoh sempurna dari <b><em>disonansi kognitif</em></b>—kemampuan membingkai eksploitasi sebagai sebuah amalan welas asih.<sup class="footnote-ref">7</sup> Di altar teknokrasi yang mereka sebut ruang operasi, sel telur Suminten dipanen laksana mutiara dari cangkang tiram. Di laboratorium sunyi di sebelahnya, sel-sel itu dipertemukan dengan benih sang klien dalam senyapnya cawan petri. Beberapa hari kemudian, embrio terpilih itu ditanamkan kembali ke dalam rahimnya—sebuah prosedur dingin dan mekanis yang terasa lebih seperti penanaman <b><em>bibit varietas</em></b> daripada awal mula sebuah kehidupan. Para teolog klasik mungkin akan mengernyit, bertanya dalam diam: di manakah letak <em>barakah</em> ketika pembuahan tak lagi lahir dari cinta atau <em>mawaddah</em>, melainkan dari presisi laboratorium?<sup class="footnote-ref">8</sup>
+            </p>
+            
+            <p>
+                Suatu malam, di tengah syahdunya pengajian rutin di kampung, ponsel Suminten bergetar pelan. Sebuah pesan dari agen: “<b>Ada klien dari Kuwait. Mencari donor dengan garis darah Jawa dan kulit sawo matang. Bonus Rp 75 juta.</b>” Inilah wajah telanjang <em>biocapitalism</em>: genetika diperdagangkan layaknya komoditas di pasar gelap.<sup class="footnote-ref">9</sup> Teori <em>stratified reproduction</em> dari Faye Ginsburg membingkai kekejian ini dengan presisi akademis: rahim-rahim perempuan dari belahan bumi Selatan telah menjadi pabrik biologis bagi para majikan dari Utara.<sup class="footnote-ref">10</sup>
+            </p>
+
+            <blockquote class="content-quote">
+                Di balik mukenanya yang putih bersih, Suminten menyembunyikan lipatan <b>kontrak surogasi</b>—sebuah manuskrip hukum yang menyimbolkan pertarungan abadi antara <b>takwa</b> dan <b>laba</b>.
+            </blockquote>
+            
+            <p>
+                Dalam psikoanalisis Lacanian, inilah potret <em>split subject</em>—diri yang terbelah antara identitasnya sebagai hamba Tuhan dan perannya sebagai vendor biologis.<sup class="footnote-ref">11</sup>
+            </p>
+
+            <p>
+                Ketika hari persalinan mendekat, Suminten diwajibkan tinggal di asrama klinik. Dindingnya dihiasi slogan-slogan absurd, seperti "<b>Satu Embrio Sehat, Satu Harapan Dunia</b>”. Namun, di balik fasad humanis itu, tersembunyi hukum besi yang lebih kejam dari rimba. Asas <em>pacta sunt servanda</em> (perjanjian mengikat para pihak) diterapkan secara timpang. Kontraknya merinci denda puluhan juta untuk keguguran akibat “kelalaian”, larangan menemui anak kandungnya sendiri, dan kewajiban memotong rambut demi “efisiensi sanitasi”.<sup class="footnote-ref">12</sup> “<b>Mereka menjual narasi surga</b>," gerutu Suminten, "<b><em>tapi membangun neraka produksi di dalamnya.</em></b>” Di sinilah teori <em>bare life</em> Giorgio Agamben menemukan wujudnya yang paling nyata—tubuh perempuan direduksi menjadi mesin biologis murni, dilucuti dari hak-hak sipilnya, menjadi <b><em>homo sacer</em></b> modern.<sup class="footnote-ref">13</sup> Falsafah luhur Jawa, <em>sepi ing pamrih, rame ing gawe</em>, dibalik menjadi parodi tragis: <b><em>pamrih tanpa sepi</em></b>—transaksi tanpa hening spiritual.<sup class="footnote-ref">14</sup>
+            </p>
+            
+            <p>
+                Di alam ide, Descartes mungkin akan bergidik. Adagiumnya, <em>cogito ergo sum</em> (aku berpikir, maka aku ada), telah digantikan oleh kredo baru klinik ini: <b>produco ergo sum</b>—aku berproduksi, maka aku ada.<sup class="footnote-ref">15</sup> Setiap detak jantung janin dicatat dan dianalisis, layaknya <b>pergerakan saham di bursa efek</b>. Saat bayi itu lahir—sehat, sempurna, dan sesuai pesanan—Suminten bahkan tak diizinkan menyentuhnya. "<b>Bayinya langsung diurus untuk kargo Singapore Airlines</b>," ujar seorang perawat dengan nada datar. Psikologi perkembangan menamakan ini trauma pemisahan organik (<em>primal separation trauma</em>)—sebuah luka yang jauh lebih dalam dan tak terlihat dibanding bekas luka caesar di perutnya.<sup class="footnote-ref">16</sup> Dalam terminologi tasawuf, Suminten telah menjadi <em>khadim</em> (<span class="arabic-text">خَادِم</span>)—pelayan—bagi kehidupan yang ia lahirkan namun takkan pernah ia miliki.<sup class="footnote-ref">17</sup> Konsep <em>fana'</em> (<span class="arabic-text">فَنَاء</span>), peleburan diri dalam sufisme, menjelma menjadi parodi kelam, bukan lebur menyatu dengan Tuhan, melainkan <b>lenyap ditelan rantai pasok global</b>.<sup class="footnote-ref">18</sup>
+            </p>
+
+            <p>
+                Dengan empat ratus juta rupiah di rekeningnya, Suminten kembali ke <b>Garongan</b>—desa tempat tinggal leluhurnya, yang letaknya berimpit dengan bibir pantai Parangtritis Bantul. Rahimnya terasa seperti ruang kosong, sebuah rumah yang disewa paksa, lalu pemilik aslinya diusir pergi—deskripsi puitis untuk <em>alienasi</em> yang dibicarakan Marx.<sup class="footnote-ref">19</sup> Uang itu ia gunakan untuk membangun sepetak warung kecil. Namun, setiap kali ia melihat bayi tetangganya, tangisnya pecah tanpa bisa dikendalikan. “Aku ini bukan ibu. Aku juga bukan pekerja. <b>Terus aku ki menungso opo?</b>" Pertanyaan itu menggema dalam jiwanya, sebuah manifestasi dari <em>anomie</em> dan <em>ontological insecurity</em>—guncangan pada fondasi eksistensi saat tubuh dan esensi diri dikomersialkan.<sup class="footnote-ref">20</sup>
+            </p>
+            
+            <p>
+                Di pengajian, sang kyai masih berkhotbah tentang kemuliaan rahim. Suminten tertawa dalam hati, tawa getir yang hanya ia sendiri yang mengerti.
+            </p>
+
+            <blockquote class="content-quote">
+                <b>Mereka menjual langit di mimbar-mimbar, tapi aku baru saja menjual satu-satunya bumi yang kumiliki di dalam tubuhku.</b>
+            </blockquote>
+
+            <p>
+                <b>Revolusi uterus</b> barangkali adalah ilusi terbesar abad ke-21. Ia menjanjikan pembebasan dari penjara biologis melalui peluang ekonomi, hanya untuk kemudian menjebak perempuan dalam penjara baru yang lebih canggih. <b>Agama</b> mengutuknya; <b>kapitalisme</b> justru memujanya sebagai inovasi. Bagi Suminten, rahimnya kini adalah ruang hampa yang dihantui gema dua suara: antara <em>ayat-ayat suci</em> dan <em>dering mesin kasir</em>. Seperti yang diramalkan filsuf Donna Haraway, “Kita semua kini adalah <em>cyborg</em>—hibrida antara daging dan mekanisme pasar.”<sup class="footnote-ref">21</sup> Dalam pandangan sufistik, inilah mungkin puncak <em>ghaflah</em> (<span class="arabic-text">غفلة</span>): kelalaian spiritual tertinggi, ketika manusia mulai menyembah <b>Pasar</b> yang merupakan ciptaannya sendiri.<sup class="footnote-ref">22</sup>
+            </p>
+
+            <p>
+                Di satu sisi, mereka bersujud pada <b>Tuhan</b> di masjid. Di sisi lain, mereka menyembah <b>Pasar</b> di laboratorium. Aku, kata Suminten pada angin malam di pantai <em>Parangtritis</em>, terjepit di antara dua altar itu: yang satu menjanjikan <b>keniscayaan surga-Nya</b>, <b><em>yang lainnya telah membeli rahimku dengan harga dunia</em></b>.
+            </p>
+
+        </div>
+
+        <div class="footnotes">
+            <h2>CATATAN KAKI</h2>
+            <div class="footnote-item"><div class="footnote-number">1</div><div class="footnote-text">Abu Hamid Al-Ghazali, <em>Ihya Ulum al-Din</em>, Jilid 2 (Beirut: Dar al-Kutub al-Ilmiyah, 2001).</div></div>
+            <div class="footnote-item"><div class="footnote-number">2</div><div class="footnote-text">Melinda Cooper dan Catherine Waldby, <em>Clinical Labor: Tissue Donors and Research Subjects in the Global Bioeconomy</em> (Durham: Duke University Press, 2014).</div></div>
+            <div class="footnote-item"><div class="footnote-number">3</div><div class="footnote-text">Friedrich Nietzsche, <em>Thus Spoke Zarathustra</em>, terj. Walter Kaufmann (New York: Penguin, 1978).</div></div>
+            <div class="footnote-item"><div class="footnote-number">4</div><div class="footnote-text">Karl Marx, <em>Capital: Volume 1</em>, terj. Ben Fowkes (London: Penguin, 1992). Lihat juga diskusi tentang alienasi dalam <em>Economic and Philosophic Manuscripts of 1844</em>.</div></div>
+            <div class="footnote-item"><div class="footnote-number">5</div><div class="footnote-text">Philip Zimbardo, <em>The Lucifer Effect: Understanding How Good People Turn Evil</em> (New York: Random House, 2007).</div></div>
+            <div class="footnote-item"><div class="footnote-number">6</div><div class="footnote-text">Al-Qur'an, Surah Maryam 19:16–22.</div></div>
+            <div class="footnote-item"><div class="footnote-number">7</div><div class="footnote-text">Leon Festinger, <em>A Theory of Cognitive Dissonance</em> (Stanford: Stanford University Press, 1957).</div></div>
+            <div class="footnote-item"><div class="footnote-number">8</div><div class="footnote-text">Ibn Qayyim al-Jawziyya, <em>Tuhfat al-Mawdud bi Ahkam al-Mawlud</em> (Kairo: Dar al-Hadith, 2003).</div></div>
+            <div class="footnote-item"><div class="footnote-number">9</div><div class="footnote-text">Catherine Waldby dan Robert Mitchell, <em>Tissue Economies: Blood, Organs, and Cell Lines in Late Capitalism</em> (Durham: Duke University Press, 2006).</div></div>
+            <div class="footnote-item"><div class="footnote-number">10</div><div class="footnote-text">Faye D. Ginsburg dan Rayna Rapp, ed., <em>Conceiving the New World Order: The Global Politics of Reproduction</em> (Berkeley: University of California Press, 1995).</div></div>
+            <div class="footnote-item"><div class="footnote-number">11</div><div class="footnote-text">Jacques Lacan, <em>Écrits: The First Complete Edition in English</em>, terj. Bruce Fink (New York: W.W. Norton, 2006).</div></div>
+            <div class="footnote-item"><div class="footnote-number">12</div><div class="footnote-text">Amrita Pande, "Commercial Surrogacy in India: Manufacturing a Perfect Mother-Worker," <em>Signs: Journal of Women in Culture and Society</em> 35, no. 4 (Summer 2010): 969–93.</div></div>
+            <div class="footnote-item"><div class="footnote-number">13</div><div class="footnote-text">Giorgio Agamben, <em>Homo Sacer: Sovereign Power and Bare Life</em>, terj. Daniel Heller-Roazen (Stanford: Stanford University Press, 1998).</div></div>
+            <div class="footnote-item"><div class="footnote-number">14</div><div class="footnote-text">Franz Magnis-Suseno, <em>Etika Jawa: Sebuah Analisa Falsafi tentang Kebijaksanaan Hidup Jawa</em> (Jakarta: Gramedia Pustaka Utama, 2003).</div></div>
+            <div class="footnote-item"><div class="footnote-number">15</div><div class="footnote-text">René Descartes, <em>Discourse on Method and Meditations on First Philosophy</em>, terj. Donald A. Cress (Indianapolis: Hackett Publishing, 1998).</div></div>
+            <div class="footnote-item"><div class="footnote-number">16</div><div class="footnote-text">D. W. Winnicott, <em>The Child, the Family, and the Outside World</em> (London: Penguin Books, 1964).</div></div>
+            <div class="footnote-item"><div class="footnote-number">17</div><div class="footnote-text">Ibn 'Arabi, <em>Fusus al-Hikam (The Bezels of Wisdom)</em>, terj. R.W.J. Austin (New York: Paulist Press, 1980).</div></div>
+            <div class="footnote-item"><div class="footnote-number">18</div><div class="footnote-text">Annemarie Schimmel, <em>Mystical Dimensions of Islam</em> (Chapel Hill: University of North Carolina Press, 1975).</div></div>
+            <div class="footnote-item"><div class="footnote-number">19</div><div class="footnote-text">Karl Marx, <em>Economic and Philosophic Manuscripts of 1844</em>, terj. Martin Milligan (New York: Dover Publications, 2007).</div></div>
+            <div class="footnote-item"><div class="footnote-number">20</div><div class="footnote-text">R. D. Laing, <em>The Divided Self: An Existential Study in Sanity and Madness</em> (London: Penguin Books, 1960).</div></div>
+            <div class="footnote-item"><div class="footnote-number">21</div><div class="footnote-text">Donna Haraway, "A Cyborg Manifesto: Science, Technology, and Socialist-Feminism in the Late Twentieth Century," dalam <em>Simians, Cyborgs and Women: The Reinvention of Nature</em> (New York: Routledge, 1991).</div></div>
+            <div class="footnote-item"><div class="footnote-number">22</div><div class="footnote-text">Abu Hamid Al-Ghazali, <em>Mizan al-Amal</em> (Kairo: Dar al-Ma'arif, 1964).</div></div>
+        </div>
+
+        <div class="glossary">
+            <h2>GLOSARIUM</h2>
+            <dl>
+                <dt>Alienasi</dt><dd>(Filsafat/Sosiologi) Istilah Marxis yang merujuk pada kondisi keterasingan individu dari pekerjaannya, hasil kerjanya, dirinya sendiri, dan masyarakat sebagai akibat dari sistem produksi kapitalis.</dd>
+                <dt>Anomie</dt><dd>(Sosiologi) Kondisi di mana norma-norma sosial melemah atau hilang, menyebabkan individu merasa kehilangan arah, tujuan, dan ikatan dengan masyarakat.</dd>
+                <dt>'Aurah Mustahażana (<span class="arabic-text">عَوْرَة مُسْتَحْصَنَةٌ</span>)</dt><dd>(Keagamaan/Tasawuf) Istilah Arab yang berarti aurat (bagian tubuh yang harus ditutupi) yang suci, dijaga, dan dimuliakan.</dd>
+                <dt>Barakah (<span class="arabic-text">بَرَكَة</span>)</dt><dd>(Keagamaan) Berkah atau kebaikan ilahi yang diyakini membawa pertumbuhan, kemanfaatan, dan kebahagiaan.</dd>
+                <dt>Bare Life (Vita Nuda)</dt><dd>(Filsafat Politik) Konsep Giorgio Agamben yang merujuk pada kehidupan manusia yang direduksi menjadi eksistensi biologis semata, dilucuti dari semua hak politik dan sipil.</dd>
+                <dt>Biocapitalism</dt><dd>(Sosiologi/Ekonomi) Bentuk kapitalisme lanjut di mana kehidupan biologis itu sendiri—seperti gen, sel, dan organ—menjadi komoditas yang dieksploitasi untuk keuntungan ekonomi.</dd>
+                <dt>Cogito Ergo Sum</dt><dd>(Filsafat) "Aku berpikir, maka aku ada." Proposisi fundamental dari René Descartes yang menjadi dasar bagi pemikiran rasionalisme Barat.</dd>
+                <dt>Cyborg</dt><dd>(Filsafat/Teknologi) Konsep dari Donna Haraway yang menggambarkan entitas hibrida, gabungan antara organisme biologis dan mesin (atau dalam konteks ini, mekanisme pasar).</dd>
+                <dt>Disonansi Kognitif</dt><dd>(Psikologi) Ketidaknyamanan mental yang dialami seseorang ketika memiliki dua keyakinan, ide, atau nilai yang saling bertentangan secara bersamaan.</dd>
+                <dt>Fana' (<span class="arabic-text">فَنَاء</span>)</dt><dd>(Tasawuf) Konsep dalam sufisme yang berarti "peleburan" atau "lenyapnya" kesadaran diri individu untuk menyatu dengan kesadaran Tuhan.</dd>
+                <dt>Fetish Komoditas</dt><dd>(Filsafat/Sosiologi) Konsep Marxis di mana komoditas (barang/jasa) dalam sistem kapitalis dianggap memiliki kekuatan mistis atau nilai intrinsik, yang mengaburkan fakta bahwa nilai tersebut sebenarnya berasal dari tenaga kerja manusia.</dd>
+                <dt>Ghaflah (<span class="arabic-text">غلة</span>)</dt><dd>(Tasawuf) Kelalaian atau kelupaan spiritual terhadap Tuhan dan hakikat keberadaan, sering kali karena terbuai oleh urusan duniawi.</dd>
+                <dt>Haramain (<span class="arabic-text">حَرَمِين</span>)</dt><dd>(Keagamaan) Secara harfiah berarti "dua tanah suci," merujuk pada Mekkah dan Madinah. Dalam esai, digunakan secara metaforis untuk menggambarkan kesucian rahim.</dd>
+                <dt>Homo Sacer</dt><dd>(Filsafat Politik/Hukum Romawi) Sosok dalam hukum Romawi kuno yang dapat dibunuh oleh siapa saja tanpa dianggap sebagai pembunuhan, namun tidak boleh dikorbankan dalam ritual keagamaan. Agamben menggunakannya untuk menggambarkan individu yang berada di luar hukum.</dd>
+                <dt>Khadim (<span class="arabic-text">خادِم</span>)</dt><dd>(Keagamaan/Sosial) Istilah Arab yang berarti "pelayan" atau "abdi".</dd>
+                <dt>Kontrak Surogasi</dt><dd>(Hukum/Etika) Perjanjian hukum antara seorang perempuan (ibu pengganti atau surogat) yang setuju untuk mengandung dan melahirkan anak untuk pihak lain (calon orang tua). Kontrak ini mengatur secara rinci berbagai aspek, termasuk kompensasi finansial, prosedur medis yang harus dijalani, batasan perilaku selama kehamilan, dan yang terpenting, pelepasan hak asuh ibu surogat atas anak yang dilahirkannya.</dd>
+                <dt>Mawaddah (<span class="arabic-text">مَوَدَّة</span>)</dt><dd>(Keagamaan) Cinta, kasih sayang, dan kelembutan yang tulus, khususnya dalam konteks hubungan pernikahan yang Islami.</dd>
+                <dt>Mihrab (<span class="arabic-text">مِحْرَاب</span>)</dt><dd>(Keagamaan) Ceruk di dinding masjid yang menunjukkan arah kiblat (Ka'bah) untuk shalat. Digunakan sebagai metafora untuk sesuatu yang menjadi pusat orientasi spiritual.</dd>
+                <dt>Ontological Insecurity</dt><dd>(Psikologi/Filsafat) Perasaan cemas atau guncangan yang mendalam mengenai hakikat keberadaan, realitas, dan identitas diri sendiri.</dd>
+                <dt>Pacta Sunt Servanda</dt><dd>(Hukum) Asas hukum fundamental yang menyatakan bahwa perjanjian atau kontrak bersifat mengikat dan harus dipatuhi oleh para pihak yang membuatnya.</dd>
+                <dt>Produco Ergo Sum</dt><dd>(Neologisme/Filsafat) "Aku berproduksi, maka aku ada." Parodi dari adagium Descartes untuk mengkritik masyarakat modern yang mengukur eksistensi seseorang dari produktivitas ekonominya.</dd>
+                <dt>Rahmatan lil 'Alamin (<span class="arabic-text">رَحْمَةُ لِلْعَالَمِينِ</span>)</dt><dd>(Keagamaan) Frasa Al-Qur'an yang berarti "(diutus sebagai) rahmat bagi seluruh alam."</dd>
+                <dt>Reproductive Autonomy</dt><dd>(Hukum/Etika) Hak individu untuk membuat keputusan sendiri mengenai reproduksi, termasuk hak untuk hamil, tidak hamil, atau mengakhiri kehamilan.</dd>
+                <dt>Requiem</dt><dd>(Musik/Sastra) Secara harfiah, sebuah Misa Requiem adalah misa dalam tradisi Katolik yang dipersembahkan untuk arwah orang yang telah meninggal. Dalam konteks sastra dan seni, istilah ini merujuk pada sebuah karya (seperti musik atau tulisan) yang berfungsi sebagai elegi atau ratapan khusyuk untuk sesuatu yang telah hilang atau seseorang yang telah tiada. Dalam esai ini, "requiem" digunakan secara metaforis untuk menandai ratapan atas "kematian" spiritual dan sakralitas kemanusiaan Suminten di bawah tekanan kapitalisme.</dd>
+                <dt>Self-Dehumanisation</dt><dd>(Psikologi) Proses di mana individu mulai memandang dirinya sendiri sebagai objek atau kurang manusiawi, sering kali sebagai respons terhadap perlakuan yang merendahkan atau situasi yang eksploitatif.</dd>
+                <dt>Sepi Ing Pamrih, Rame Ing Gawe</dt><dd>(Falsafah Jawa) Prinsip hidup Jawa yang berarti "bekerja giat tanpa mengharapkan pamrih (imbalan pribadi)".</dd>
+                <dt>Sirrullah</dt><dd>(Tasawuf) "Rahasia Allah." Konsep mistik yang merujuk pada pengetahuan atau misteri ilahi yang tersembunyi.</dd>
+                <dt>Split Subject</dt><dd>(Psikoanalisis) Konsep Lacanian yang menyatakan bahwa "subjek" atau "diri" tidak pernah utuh, melainkan selalu terbelah antara kesadaran dan ketidaksadaran.</dd>
+                <dt>Stratified Reproduction</dt><dd>(Antropologi/Sosiologi) Teori yang menjelaskan bagaimana kekuasaan (sosial, ekonomi, rasial) membentuk proses reproduksi secara tidak setara, di mana sebagian kelompok diberdayakan untuk bereproduksi sementara yang lain direndahkan atau dieksploitasi.</dd>
+                <dt>Takwa (<span class="arabic-text">تَقْوى</span>)</dt><dd>(Keagamaan) Ketaatan dan kesadaran mendalam akan kehadiran Tuhan, yang mendorong seseorang untuk menjalankan perintah-Nya dan menjauhi larangan-Nya.</dd>
+                <dt>Übermensch</dt><dd>(Filsafat) "Manusia Unggul" atau "Manusia Super." Konsep Friedrich Nietzsche tentang individu yang mampu mengatasi moralitas tradisional untuk menciptakan nilai-nilainya sendiri.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>
