@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARTOR RESARTUS SUBTILIS METASOMA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            line-height: 1.3; 
+        }
+        
+        body { 
+            background: #f9f0f0; 
+            color: #2c1c1c; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 12.8px; /* 20% lebih kecil */
+            background-image: linear-gradient(to bottom, #f9f0f0, #f1dcdc); 
+            background-attachment: fixed; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0; /* Tanpa padding horizontal */
+            width: 100%;
+        }
+
+        .container { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 0 30px rgba(224, 0, 0, 0.1); 
+            border-radius: 4px; 
+            padding: 32px; 
+            position: relative; 
+            z-index: 10; 
+            width: 100%; 
+            max-width: none; /* Lebar penuh */
+            margin: 20px 0 32px; 
+        }
+        
+        .header { 
+            text-align: left; 
+            margin-bottom: 24px; 
+            border-bottom: 1px solid #d4b8b8; 
+            padding-bottom: 16px; 
+        }
+        
+        .title { 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 20px; /* 20% lebih kecil */
+            font-weight: bold; 
+            color: #e00010; /* Warna merah */
+            letter-spacing: -0.4px; 
+            line-height: 1.0;
+        }
+        
+        .subtitle { 
+            margin-top: 4px; 
+            font-size: 13.6px; /* 20% lebih kecil */
+            font-family: 'Crimson Text', serif;
+            color: #653333; 
+            font-style: italic; 
+            font-weight: bold;
+            line-height: 1.0;
+            letter-spacing: -0.4px; 
+        }
+        
+        .author-block { 
+            display: flex; 
+            align-items: center; 
+            margin-top: 16px; 
+            line-height: 0.9;
+            background-color: rgba(224, 0, 16, 0.07); /* Warna merah transparan */
+            padding: 12px;
+            border-radius: 4px;
+        }
+        
+        .author-photo { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-right: 12px; 
+            flex-shrink: 0; 
+            border: 2px solid #d4b8b8; 
+        }
+        
+        .author-info { 
+            font-family: 'Arial', sans-serif; 
+            font-style: normal; 
+            font-size: 11.2px; /* 20% lebih kecil */
+            color: #653333; 
+            line-height: 0.9;
+        }
+        
+        .author-info strong { 
+            font-weight: bold; 
+            color: #442020;
+            display: block;
+        }
+        
+        .main-quote { 
+            font-family: 'Crimson Text', serif; 
+            font-style: italic; 
+            font-size: 16px; /* 20% lebih kecil */
+            margin: 24px 0; 
+            padding: 8px 12px 8px 40px; 
+            border: none; 
+            background-color: rgba(224, 0, 16, 0.07); /* Warna merah transparan */
+            position: relative; 
+            color: #5c3336; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .main-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 48px; 
+            left: 8px; 
+            top: 0; 
+            color: #e00010; /* Warna merah */
+            opacity: 0.2; 
+        }
+
+        .main-quote footer {
+            display: block;
+            margin-top: 8px;
+            font-family: 'Arial', sans-serif;
+            font-size: 11.2px; /* 20% lebih kecil */
+            font-style: normal;
+            text-align: right;
+            color: #994444;
+        }
+        
+        .content-quote { 
+            font-family: 'Times New Roman', serif; 
+            font-style: italic; 
+            font-size: 13.6px; /* 20% lebih kecil */
+            margin: 16px 0; 
+            padding: 8px 12px 8px 40px; 
+            border: none; 
+            background-color: rgba(224, 0, 16, 0.07); /* Warna merah transparan */
+            position: relative; 
+            color: #5c3336; 
+            border-radius: 4px; 
+            line-height: 1.1;
+            text-align: left;
+        }
+        
+        .content-quote::before { 
+            content: "“"; 
+            font-family: 'Times New Roman', serif; 
+            position: absolute; 
+            font-size: 40px; 
+            left: 8px; 
+            top: -4px; 
+            color: #e00010; /* Warna merah */
+            opacity: 0.2; 
+        }
+        
+        .content { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 13.6px; /* 20% lebih kecil */
+            color: #442020; 
+            text-align: left; 
+            hyphens: auto; 
+            padding-bottom: 16px; 
+            line-height: 1.4;
+        }
+        
+        .content p { 
+            margin-bottom: 1.2em;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+        
+        .drop-cap { 
+            float: left; 
+            font-size: 62.4px; /* 20% lebih kecil */
+            line-height: 1; 
+            padding-top: 6px; 
+            padding-right: 10px; 
+            font-family: 'Times New Roman', Times, serif; 
+            font-weight: bold; 
+            color: #e00010; /* Warna merah */
+        }
+        
+        .footnote-ref { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 8.8px; /* 20% lebih kecil */
+            color: rgba(68, 32, 32, 0.5); /* Warna abu-abu transparan */
+            vertical-align: super; 
+            line-height: 0; 
+            font-weight: bold; 
+        }
+        
+        .footnotes, .glossary { 
+            margin-top: 32px; 
+            padding-top: 16px; 
+            border-top: 2px solid #e8d7d7; 
+            font-family: 'Arial', sans-serif; 
+            font-size: 11.2px; /* 20% lebih kecil */
+            color: #653333; 
+            text-align: left; 
+            line-height: 1.2;
+        }
+        
+        .footnotes h2, .glossary h2 { 
+            font-family: 'Arial', sans-serif; 
+            font-size: 14.4px; /* 20% lebih kecil */
+            font-weight: bold; 
+            color: #5c3336; 
+            text-transform: uppercase; 
+            margin-top: 0; 
+            margin-bottom: 16px; 
+            letter-spacing: -0.4px; 
+            position: relative; 
+            padding-bottom: 6px; 
+            text-align: left; 
+            line-height: 1.1;
+        }
+        
+        .footnotes h2::after, .glossary h2::after { 
+            content: ""; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 48px; 
+            height: 2px; 
+            background: #e00010; /* Warna merah */
+        }
+        
+        .footnotes .footnote-item {
+            display: flex;
+            margin-bottom: 9.6px;
+            align-items: flex-start;
+        }
+        
+        .footnotes .footnote-number {
+            font-weight: bold;
+            color: #653333; /* Warna abu-abu gelap, tidak lagi merah */
+            min-width: 20px;
+            text-align: right;
+            padding-right: 3px;
+            flex-shrink: 0;
+            vertical-align: super;
+            font-size: 7.2px;
+            position: relative;
+            top: 1.6px;
+        }
+        
+        .footnotes .footnote-text {
+            flex: 1;
+        }
+        
+        .glossary dl { 
+            margin-top: 12px;
+        }
+        
+        .glossary dt { 
+            font-family: 'Arial', sans-serif; 
+            font-weight: bold; 
+            color: #e00010; /* Warna merah */
+            font-size: 12px; /* 20% lebih kecil */
+            margin-top: 12px; 
+            letter-spacing: -0.4px; 
+        }
+        
+        .glossary dd { 
+            font-family: 'Arial', sans-serif; 
+            color: #653333; 
+            font-size: 12px; /* 20% lebih kecil */
+            margin-left: 0; 
+            padding-left: 13px; 
+            border-left: 2px solid #e8d7d7; 
+            margin-top: 4px; 
+            margin-bottom: 9.6px;
+        }
+        
+        .watermark { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%) rotate(-30deg); 
+            font-family: 'Times New Roman', Times, serif; 
+            font-size: 96px; /* 20% lebih kecil */
+            font-weight: bold; 
+            color: rgba(224, 0, 16, 0.05); /* Warna merah transparan */
+            pointer-events: none; 
+            z-index: 0; 
+            white-space: nowrap; 
+            line-height: 1; 
+        }
+        
+        .arabic-text {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 14.4px; /* 20% lebih kecil */
+            direction: rtl;
+            display: inline;
+            margin: 0 2.4px;
+        }
+        
+        .arabic-translit {
+            font-style: italic;
+            color: #994444;
+            font-size: inherit; 
+        }
+        
+        .content strong {
+            color: #e00010; /* Warna merah */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark">BORGES</div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">SARTOR RESARTUS SUBTILIS METASOMA: The CDs—Hidden Weaves and Self‑Esteem in the Digital Age<sup class="footnote-ref">1</sup></h1>
+            <h2 class="subtitle">Sebuah Investigasi atas Hakikat Celana Dalam sebagai Ruang Liminal antara Daging dan Denim, Tatapan dan Tekstil</h2>
+            
+            <div class="author-block">
+                <img src="https://cdn.jsdelivr.net/gh/Polpindo/Polpindo@main/PROFIL%20SNM.jpg" alt="Foto Penulis" class="author-photo">
+                <div class="author-info">
+                    <strong>DR. HINGS RIDER CROCODILE, GT Man</strong>
+                    <strong>Assoc. Prof. of Wacoal Lingerie at Sorex, Sorella City</strong>—Peritus scopophilus, neque visus, de forma pulchra sub linea bracarum occultata
+                </div>
+            </div>
+        </div>
+
+        <blockquote class="main-quote">
+            Kelezatan kalpanā (fantasi) yang sesungguhnya bukanlah tubuh telanjang, melainkan secarik kain yang bersikeras untuk menyembunyikannya. Celana dalam adalah gejala peradaban; sebuah gestur panik yang berteriak, ‘Tidak ada apa-apa di sini!’ justru untuk menarik tatapan kita pada kekosongan yang ditutupinya.
+            <footer>— Diatribusikan pada 'Mazhab Psikoanalisis Ljubljana', tentang konsep 'Gejala Vestimenter'</footer>
+        </blockquote>
+
+        <div class="content">
+            <p>
+                <span class="drop-cap">Y</span>oo, bro sis<sup class="footnote-ref">2</sup> Gen Z semuanya! Sini ngumpul, kita deep talk. Lu pernah nggak sih, di tengah scroll-scroll FYP atau pas lagi bengong nungguin ojol, tiba-tiba kepikiran hal yang random banget tapi fundamental: kenapa sih kita mesti pake celana dalam? Emang segitu pentingnya, atau cuma formalitas<sup class="footnote-ref">3</sup> doang biar nggak keliatan "polos"<sup class="footnote-ref">4</sup>? Pertanyaan ini kedengerannya sepele, tapi kalo digali, jawabannya bisa lebih dalem dari palung mariana, guys. Nah, di tulisan ini gue mau ngebongkar habis-habisan tentang <strong>hakikat celana dalam</strong>—bukan cuma dari sisi fungsi yang udah jelas, tapi juga dari <em>vibe</em><sup class="footnote-ref">5</sup>, <em>culture</em>, <em>self-expression</em>, sampe ke perang batin yang terjadi di dalemnya.
+            </p>
+            
+            <h3>1. Fungsi Dasar yang Nggak Bisa Disepelein: The Unsung Hero</h3>
+            <p>
+                Oke, mari kita real dulu ya, no cap. Sebelum kita ngomongin filosofi dan gaya, kita harus respect dulu sama tugas utamanya. Celana dalam tuh bukan sembarang fashion item, bro. Dia tuh <strong>first line of defense</strong><sup class="footnote-ref">6</sup>, satpam 24/7 buat area paling private kita. Dia adalah barrier suci antara kulit lo yang berharga sama bahan jeans yang kasar, jahitan celana kargo yang aneh, atau—jujur aja—jogging pants yang udah lo pake seminggu mulu buat WFH dan mabar. Bayangin aja kalo lo nekat commando, langsung gesekan brutal, cuy! Selain itu, CD juga ngebantu banget buat jaga kebersihan dan higienitas di area sensi<sup class="footnote-ref">7</sup>, nyerap keringet biar nggak jadi lembab, dan ngurangin risiko iritasi atau lecet<sup class="footnote-ref">8</sup>. Dia itu kayak 'bodyguard' pribadi yang kerjanya senyap tapi krusial. Dia adalah pahlawan tanpa tanda jasa yang bikin lo bisa duduk, lari, dan loncat-loncat dengan nyaman tanpa perlu khawatir ada 'drama' di bawah sana.
+            </p>
+
+            <h3>2. Dari Kain Biasa Jadi Statement Fashion: The Lowkey Flex</h3>
+            <p>
+                Zaman udah berubah, sob. Ngomongin CD tuh sekarang udah kayak ngomongin sneakers atau jam tangan. Ada kasta, ada gaya, ada <em>pride</em>. Lu liat aja brand-brand celana dalam kekinian—Calvin Klein<sup class="footnote-ref">9</sup> yang legendaris, Uniqlo dengan AIRism-nya yang kayak nggak pake apa-apa, bahkan brand lokal udah mulai gila-gilaan keluarin model kece dengan bahan premium. Celana dalam sekarang nggak lagi disimpen rapat-rapat di balik baju doang, tapi kadang sengaja dipake ngintip dikit buat <strong>flex lowkey</strong><sup class="footnote-ref">10</sup>. Triknya? Pake celana jeans atau jogger agak turun biar waistband-nya yang ada logonya itu nongol dikit. Gaya anak skena<sup class="footnote-ref">11</sup> banget, kan? Ini adalah evolusi dari gaya saggy pants hip-hop 90-an, tapi dengan versi yang lebih 'sopan' dan 'terkurasi'. Ini nunjukkin kalo lo peduli sama detail, bahkan detail yang paling intim sekalipun.
+            </p>
+            
+            <h3>3. Self-expression dari Balik Lapis Kedua: Your Secret Identity</h3>
+            <p>
+                Jangan pernah salah, pilihan celana dalam tuh bisa ngegambarin kepribadian atau mood lo hari itu. Ini kayak milih playlist Spotify buat jiwa lo. Lo yang pake boxer mungkin lebih <em>chill</em>, laid-back, dan butuh ruang gerak. Sementara yang pake <em>brief</em> atau <em>trunks</em> bisa jadi tipikal orang yang praktis, <em>to the point</em>, dan suka kejelasan<sup class="footnote-ref">12</sup>. Trus ada juga yang spektrumnya lebih luas: mereka yang doyan motif lucu-lucu kayak superhero Marvel<sup class="footnote-ref">13</sup>, karakter kartun, atau bahkan motif makanan. <em>That’s cute af</em> dan 100% valid banget. Itu nunjukkin sisi playful lo. CD tuh bisa banget dijadiin medium ekspresi diri, semacam identitas rahasia atau <em>easter egg</em> tentang diri lo... meski seringkali cuma lo doang yang liat dan tau<sup class="footnote-ref">14</sup>. It's your personal secret, your private joke.
+            </p>
+            
+            <blockquote class="content-quote">
+                Dalam teater kesadaran, properti panggung yang paling tak terlihat seringkali adalah yang paling menentukan bagaimana sang aktor memerankan dirinya. Apa yang menopang dari balik tirai, itulah yang memberi keyakinan pada setiap dialog yang diucapkan.
+            </blockquote>
+
+            <h3>4. CD Versi Perempuan: Membongkar Keindahan dalam Siluet Bayangan</h3>
+            <p>
+                Nah, kalo kita ngomongin CD cewek, ceritanya jadi lebih kompleks dan berlapis, guys. Ini bukan cuma soal boxer vs brief. Ini soal sejarah panjang, soal tatapan<sup class="footnote-ref">15</sup>, dan soal merebut kembali narasi. Dari yang dulunya dibelenggu korset penyiksa, cewek sekarang punya kebebasan milih. Tapi di situlah perangnya dimulai: antara kenyamanan dan 'keindahan', antara milih buat diri sendiri atau buat 'orang lain'. Ada <em>lace</em> atau renda<sup class="footnote-ref">16</sup> yang cantik tapi kadang gatel, yang memunculkan pertanyaan abadi: ini seksi buat gue, atau seksi buat dia? Terus ada revolusi <em>seamless panty</em><sup class="footnote-ref">17</sup>, sebuah mahakarya teknologi tekstil yang diciptakan untuk satu tujuan mulia: biar nggak nyeplak alias VPL (Visible Panty Line). Ini adalah bentuk 'keindahan' yang didefinisikan oleh ketiadaan, oleh ilusi kesempurnaan siluet. Lalu ada thong dan g-string<sup class="footnote-ref">18</sup>, si paling kontroversial. Dipakai demi estetika celana ketat, tapi seringkali mengorbankan kenyamanan. Namun, bagi sebagian, memakainya adalah sebuah <em>power move</em>, sebuah deklarasi kepercayaan diri yang radikal. Dan yang paling gokil sekarang adalah munculnya <em>period panties</em><sup class="footnote-ref">19</sup>—sebuah terobosan yang nggak cuma fungsional, tapi juga politis. Ia mendobrak tabu menstruasi, lebih ramah lingkungan, dan membebaskan cewek dari ketergantungan pada pembalut sekali pakai. Ini adalah bukti bahwa celana dalam bisa jadi arena inovasi, pemberdayaan, dan bahkan aktivisme.
+            </p>
+
+            <h3>5. Simbol Kepercayaan Diri dan Self-care: The Psychological Armor</h3>
+            <p>
+                Ini poin paling penting, jadi simak baik-baik bro sis: pake celana dalam yang nyaman, bersih, dan lo suka, itu bisa secara signifikan <strong>nambah pede</strong><sup class="footnote-ref">20</sup>. Beneran, ini bukan sugesti abal-abal, ini ada ilmunya. Nggak percaya? Coba aja pake CD terbaik lo pas mau presentasi penting, ngedate, atau bahkan cuma pas lagi ngerasa down. Rasanya beda, men. Ada semacam 'baju zirah psikologis' yang lo pake. Ada aura "I’m ready for whatever" yang muncul dari dalem. Ini karena otak kita nge-hack dirinya sendiri. Ketika lo ngerasa bagus dari lapisan paling dalem, alam bawah sadar lo ngirim sinyal positif ke seluruh sistem. Makanya ada konsep 'lucky underwear', kan? Lagian, <em>self-care</em><sup class="footnote-ref">21</sup> itu holistik. Gak cuma soal skincare mahal atau nge-gym. Memilih untuk memakai sesuatu yang baik untuk bagian paling intim dari tubuhmu adalah bentuk <em>self-respect</em> yang paling mendasar. Dari daleman juga bisa dimulai. <em>Literally</em><sup class="footnote-ref">22</sup>.
+            </p>
+
+            <h3>6. CD dan Budaya Pop: The Undercover Icon</h3>
+            <p>
+                Kalo lo jeli, celana dalam tuh sering banget jadi bintang tamu atau bahkan pemeran utama di pop culture. Dari SpongeBob<sup class="footnote-ref">23</sup> yang CD-nya selalu nongol pas dia lagi panik, sampai Superman<sup class="footnote-ref">24</sup> yang dengan pedenya malah pake CD di luar (sebuah fashion statement paling berani sepanjang masa, iyain aja, gaya dia beda). Di serial <em>Fleabag</em>, jumpsuit hitam ikoniknya menjadi begitu kuat justru karena ada momen di mana bra-nya yang berbahan lace terlihat, menandakan kerapuhan di balik fasadnya yang tangguh. Di <em>Euphoria</em>, lingerie bukan lagi cuma pakaian dalam, tapi kostum, perisai, dan ekspresi dari pergolakan batin setiap karakter. Itu nunjukkin kalo CD udah jadi bagian dari DNA karakter, sebuah alat naratif yang kuat untuk menunjukkan apa yang tersembunyi. Dalam dunia nyata, celana dalam kadang jadi simbol perlawanan—ingat gerakan membakar bra<sup class="footnote-ref">25</sup> oleh kaum feminis? Atau jadi bentuk kebebasan berekspresi yang paling personal.
+            </p>
+
+            <h3>Penutup: Jadi, Apa Hakikat Celana Dalam Sebenarnya?</h3>
+            <p>
+                Well, setelah kita ngobrak-abrik semuanya dari A sampe Z, mungkin lo udah bisa nangkep kalau celana dalam tuh bukan cuma potongan kain kecil yang lo pake dan cuci tiap hari. Dia adalah artefak budaya yang kompleks. Dia adalah titik temu antara yang privat dan yang publik, antara fungsi dan fashion, antara kenyamanan dan hasrat. Dia adalah <strong>bentuk perawatan diri, pelindung utama, media ekspresi, baju zirah psikologis, penanda status, dan bahkan arena pertempuran ideologi.</strong> Jadi besok-besok, pas lo lagi milih mau pake CD yang mana, coba deh jeda sebentar. Jangan anggap remeh si CD. Hargai ceritanya, rawat bahannya, pilih yang pas sama vibe lo hari itu, dan pakai dengan bangga. Karena jadi keren, jadi pede, jadi diri sendiri itu <strong>dimulai dari dalam</strong><sup class="footnote-ref">26</sup>—secara harfiah dan metaforis.
+            </p>
+            <p>
+                Peace out<sup class="footnote-ref">27</sup>,<br>
+                ~anak CD enthusiast 😎✌️
+            </p>
+        </div>
+
+        <div class="footnotes">
+            <h2>CATATAN KAKI</h2>
+            <div class="footnote-item"><div class="footnote-number">1</div><div class="footnote-text">Judul ini adalah sebuah penghormatan dan inversi yang disengaja terhadap karya filosofis Thomas Carlyle, <em>Sartor Resartus</em> (1836), yang secara harfiah berarti "Sang Penjahit yang Dijahit Ulang." Karya Carlyle menggunakan "Filsafat Pakaian" sebagai metafora untuk menyelidiki bagaimana manusia menggunakan simbol-simbol eksternal (pakaian) untuk memahami realitas spiritual dan sosial. Esai ini melakukan "penjahitan ulang yang subtil" (<em>subtilis</em>) dengan memfokuskan lensa bukan pada pakaian luar, melainkan pada lapisan paling intim yang menutupi <em>metasoma</em>. <strong>Subtilis</strong> (Latin) bermakna ganda: secara harfiah, ia merujuk pada "tenunan yang halus" atau "benang yang tipis" dari kain pakaian dalam itu sendiri; secara metaforis, ia menunjukkan sifat "analisis yang halus dan mendalam." <strong>Metasoma</strong> (dari Yunani Kuno: <em>meta-</em> "setelah" + <em>sōma</em> "tubuh") adalah istilah yang dipinjam dari zoologi untuk merujuk pada bagian posterior tubuh artropoda (misalnya, perut atau ekor kalajengking). Penggunaannya di sini adalah sebuah manuver defamiliarisasi yang disengaja, mengangkat area tubuh yang sering dianggap banal atau vulgar ke tingkat analisis yang klinis dan quasi-ilmiah, sehingga memaksa pembaca untuk melihatnya dengan tatapan baru yang teralienasi dan analitis.</div></div>
+            <div class="footnote-item"><div class="footnote-number">2</div><div class="footnote-text"><em>Bro sis</em>. Sebuah kompositum vokatif hibrida yang menandai upaya sadar untuk mencapai inklusivitas gender dalam sapaan informal. Ia melampaui "Bro" yang secara historis maskulin dan "Sis" yang feminin, menciptakan sebuah ruang linguistik ketiga yang non-biner secara implisit. Ini adalah manifestasi mikro dari etos Generasi Z yang secara aktif menegosiasikan ulang norma-norma linguistik warisan untuk mencerminkan realitas sosial yang lebih cair dan beragam. Fenomena ini dapat dianalisis melalui lensa teori performativitas Judith Butler, di mana penggunaan bahasa tidak hanya mendeskripsikan realitas sosial tetapi juga secara aktif mengonstruksikannya. Dengan memilih "bro sis," penutur melakukan "tindakan sitasional" (citational act) yang menantang dan mengganggu binerisme gender yang terpatri dalam bahasa sehari-hari. Ia adalah sebuah aktivisme linguistik skala kecil, sebuah upaya untuk menciptakan utopia inklusif dalam batas-batas sapaan.</div></div>
+            <div class="footnote-item"><div class="footnote-number">3</div><div class="footnote-text"><em>Formalitas</em>. Berasal dari Latin <em>forma</em> ("bentuk"). Dalam konteks ini, "formalitas" diposisikan sebagai antonim dari "substansi" atau "esensi". Pertanyaan ini secara tak sadar menggemakan perdebatan filosofis kuno antara esensialisme dan eksistensialisme. Apakah celana dalam memiliki "esensi" (hakikat) inheren, ataukah maknanya hanya dibentuk oleh "eksistensi"-nya sebagai praktik sosial (sebuah formalitas)? Teks ini, dalam kenaifannya, tersandung ke dalam problem metafisika. Jean-Paul Sartre, dalam <em>Being and Nothingness</em> (1943), mungkin akan berargumen bahwa celana dalam adalah contoh sempurna dari 'ada-untuk-dirinya sendiri' (pour-soi) yang diproyeksikan ke 'ada-pada-dirinya sendiri' (en-soi). Ia tidak memiliki makna inheren; kitalah, melalui pilihan sadar kita setiap pagi, yang memberinya makna—baik sebagai penanda kebersihan, kesopanan, atau hasrat. Ia adalah kanvas kosong untuk proyek eksistensial kita.</div></div>
+            <div class="footnote-item"><div class="footnote-number">4</div><div class="footnote-text"><em>Polos</em>. Sebuah kata yang sarat dengan ambiguitas semiotik. Secara denotatif, ia berarti "tanpa motif" atau "telanjang". Secara konotatif, ia menyiratkan kenaifan, kepolosan, atau bahkan ketiadaan (kekosongan). Pertanyaan "biar nggak keliatan polos" mengisyaratkan sebuah <em>horror vacui</em>—ketakutan akan kekosongan—yang bersifat vestimenter. Manusia modern, menurut Adolf Loos dalam "Ornament and Crime" (1908), seharusnya menolak ornamen. Namun, di sini, kekosongan itu sendiri (ketelanjangan di balik pakaian luar) dianggap sebagai sesuatu yang harus ditutupi. Celana dalam, dengan demikian, berfungsi sebagai ornamen minimal yang menyelamatkan kita dari "kejahatan" ketelanjangan absolut, sebuah penanda peradaban yang paling tipis. Ia adalah garis batas antara alam (daging) dan budaya (pakaian). Dalam psikoanalisis Lacanian, ini bisa dilihat sebagai upaya untuk menutupi 'Real'—kekosongan traumatis di inti keberadaan—dengan lapisan Simbolik (norma kesopanan) dan Imajiner (citra diri yang 'lengkap' dan 'berpakaian').</div></div>
+            <div class="footnote-item"><div class="footnote-number">5</div><div class="footnote-text"><em>Vibe</em>. Kontraksi dari "vibration," sebuah istilah yang dipopulerkan oleh budaya tandingan (counter-culture) tahun 1960-an, berakar pada teori teosofis dan spiritualisme yang memandang segala sesuatu memancarkan frekuensi energi. Adopsinya ke dalam leksikon Gen Z melalui mediasi budaya internet adalah contoh sempurna dari <em>semantic bleaching</em> di mana konsep metafisik yang kompleks direduksi menjadi deskriptor atmosfer atau suasana hati yang sekilas. Namun, penggunaannya di sini secara ironis mengembalikan makna aslinya. Dari perspektif fenomenologi Maurice Merleau-Ponty, tubuh bukanlah objek di dunia, melainkan cara kita 'berada-di-dunia'. Pakaian dalam, sebagai lapisan yang paling intim, menyatu dengan 'skema tubuh' (body schema) kita. 'Vibe' yang dirasakan bukanlah properti objek, melainkan perubahan dalam pengalaman intensionalitas tubuh kita sendiri. Celana dalam yang nyaman memperluas potensi gerak tubuh kita, sementara yang tidak nyaman menyusutkannya.</div></div>
+            <div class="footnote-item"><div class="footnote-number">6</div><div class="footnote-text"><em>First line of defense</em>. Metafora militeristik ini, seperti yang dianalisis oleh Lakoff dan Johnson dalam "Metaphors We Live By" (1980), menstrukturkan pemahaman kita tentang argumen, penyakit, dan kini, kebersihan pribadi. Celana dalam diposisikan sebagai garda terdepan, sebuah benteng tekstil yang memisahkan "diri" (kulit yang suci) dari "yang lain" (dunia luar yang berpotensi mengancam dan kotor, disimbolkan oleh jeans). Ini adalah dramatisasi tubuh sebagai sebuah teritori yang harus dipertahankan, sebuah negara-bangsa berskala mikro. Teori Mary Douglas dalam <em>Purity and Danger</em> (1966) relevan di sini: celana dalam berfungsi sebagai penjaga 'batas tubuh' (bodily margins). Semua yang melintasi batas ini (kotoran, cairan) dianggap sebagai polusi dan ancaman terhadap tatanan simbolik. Menjaga kebersihan pakaian dalam adalah ritual untuk menegakkan integritas batas-batas tersebut.</div></div>
+            <div class="footnote-item"><div class="footnote-number">7</div><div class="footnote-text"><em>Area sensi</em>. Eufemisme ini adalah contoh klasik dari apa yang oleh Foucault dalam "The History of Sexuality" disebut sebagai "mekanisme penindasan" yang justru menghasilkan wacana (the repressive hypothesis). Dengan menghindari penyebutan langsung organ genital, istilah "area sensi" (sensitif) justru memberinya aura misteri dan signifikansi yang lebih besar. Ia mengubah anatomi menjadi geografi emosional, sebuah zona yang tidak hanya didefinisikan secara fisik tetapi juga oleh potensinya untuk menghasilkan sensasi, baik fisik (gesekan) maupun psikologis (rasa malu, gairah). Istilah ini menciptakan 'ruang diskursif' yang aman di mana subjek yang tabu dapat dibicarakan tanpa melanggar norma kesopanan secara eksplisit.</div></div>
+            <div class="footnote-item"><div class="footnote-number">8</div><div class="footnote-text"><em>Lecet</em>. Dari perspektif psikosomatis, "lecet" atau iritasi fisik dapat dilihat sebagai manifestasi dari iritasi psikis. Ketidaknyamanan yang disebabkan oleh gesekan antara tubuh dan pakaian merefleksikan gesekan yang lebih besar antara "diri" dan "dunia sosial". Celana dalam yang baik, dalam logika ini, bukan hanya mencegah lecet fisik, tetapi juga berfungsi sebagai penyangga psikologis, sebuah lapisan penyerap yang mengurangi "friksi eksistensial" dari kehidupan sehari-hari. Ia adalah balsam tekstil. Sigmund Freud, dalam "Civilization and Its Discontents" (1930), berpendapat bahwa peradaban menuntut pengekangan naluri, yang menciptakan ketidaknyamanan permanen. Celana dalam bisa dilihat sebagai metafora mini dari peradaban itu sendiri: lapisan pengekang yang kita kenakan untuk menengahi antara naluri (tubuh telanjang) dan tuntutan dunia luar (pakaian sosial).</div></div>
+            <div class="footnote-item"><div class="footnote-number">9</div><div class="footnote-text"><em>Calvin Klein</em>. Tidak ada merek lain yang begitu sinonim dengan revolusi semiotik celana dalam. Kampanye ikonik tahun 1992 yang menampilkan Mark Wahlberg dan Kate Moss, difoto oleh Herb Ritts, adalah titik nol (ground zero). Ia melakukan tiga hal secara simultan: (1) Mengubah celana dalam dari komoditas fungsional menjadi objek hasrat (desire); (2) Memperkenalkan <em>logomania</em> pada waistband, mengubahnya menjadi papan reklame personal; (3) Mengaburkan batas antara citra heteroseksual dan homoerotis, menciptakan sebuah ikonografi yang dapat dibaca secara berbeda oleh audiens yang berbeda. Celana dalam Calvin Klein bukanlah sekadar pakaian; ia adalah sebuah <em>simulakrum</em>, dalam istilah Baudrillard. Ia adalah salinan tanpa asli, sebuah tanda yang merujuk bukan pada fungsi, melainkan pada dunia citra (seksualitas, kemudaan, kebugaran) yang diciptakan oleh iklan itu sendiri. Memakainya adalah upaya untuk berpartisipasi dalam hiperrealitas tersebut.</div></div>
+            <div class="footnote-item"><div class="footnote-number">10</div><div class="footnote-text"><em>Flex lowkey</em>. Sebuah oksimoron yang menangkap etos kontradiktif dari penandaan status di era digital. "Flex" (pamer) adalah tindakan demonstratif, sementara "lowkey" (tidak mencolok) menyiratkan subtilitas. Praktik memperlihatkan sedikit waistband adalah sintesis sempurna dari dialektika ini. Ia adalah sebuah "pameran yang diperhitungkan untuk tampak tidak disengaja." Dalam terminologi sosiolog Erving Goffman ("The Presentation of Self in Everyday Life," 1956), ini adalah bentuk "manajemen impresi" yang canggih. Individu adalah aktor di panggung sosial, dan waistband yang terlihat adalah bagian dari "setting" atau "front" yang dikelola dengan hati-hati untuk mengkomunikasikan citra diri yang diinginkan (yaitu, sadar merek, kasual namun kaya).</div></div>
+            <div class="footnote-item"><div class="footnote-number">11</div><div class="footnote-text"><em>Anak skena</em>. Dari Bahasa Inggris "scene," merujuk pada subkultur atau lingkungan sosial tertentu. Penggunaannya di sini menandakan bahwa pilihan vestimenter, bahkan yang paling tersembunyi, diatur oleh kode-kode kolektif sebuah subkultur. Menjadi "anak skena" berarti menguasai "gramatika gaya" dari kelompok tersebut, di mana memperlihatkan waistband merek tertentu berfungsi sebagai tanda keanggotaan dan keaslian (authenticity), betapapun diproduksi secara massal tanda tersebut. Ini mengilustrasikan konsep 'subcultural capital' dari Sarah Thornton, di mana pengetahuan dan penguasaan kode-kode spesifik ('hipness') menjadi bentuk modal yang dapat ditukar dengan status di dalam kelompok.</div></div>
+            <div class="footnote-item"><div class="footnote-number">12</div><div class="footnote-text">Oposisi biner antara <em>boxer</em> (santai, longgar) dan <em>brief</em> (praktis, ketat) adalah sebuah perangkap kategorisasi yang menggoda. Ia menggemakan dualisme klasik dalam pemikiran Barat (Apollonian vs. Dionysian, Struktural vs. Bebas). Namun, ini adalah sebuah astrologi vestimenter; sebuah sistem interpretasi yang memberikan ilusi wawasan psikologis dari pilihan konsumen yang arbitrer. Realitasnya, seperti yang diungkapkan oleh Slavoj Žižek, adalah bahwa ideologi beroperasi paling efektif ketika kita merasa membuat pilihan personal yang bebas, padahal pilihan-pilihan itu sendiri telah dibentuk dan ditawarkan oleh sistem pasar. Kita tidak memilih kepribadian kita melalui celana dalam; kita memilih celana dalam yang sesuai dengan citra kepribadian yang ingin kita proyeksikan. Kebebasan memilih di sini adalah kebebasan untuk memilih identitas yang telah dikemas sebelumnya.</div></div>
+            <div class="footnote-item"><div class="footnote-number">13</div><div class="footnote-text">Celana dalam bermotif pahlawan super adalah fenomena yang kaya secara psikoanalitis. Ini adalah bentuk regresi yang dilegitimasi, sebuah cara bagi orang dewasa untuk terhubung kembali dengan fantasi kekuasaan masa kanak-kanak dalam ruang yang aman dan privat. Mengenakan logo Superman atau perisai Captain America di area genital adalah sebuah tindakan totemik: sebuah upaya untuk menyerap kekuatan (mana) dari simbol tersebut melalui kontak fisik. Menurut Carl Jung, pahlawan super adalah manifestasi modern dari arketipe 'Pahlawan'. Mengenakan simbol mereka adalah cara ego individu untuk meminjam kekuatan dari arketipe ini yang tersimpan dalam ketidaksadaran kolektif, memberinya kekuatan untuk menghadapi 'naga' kehidupan sehari-hari (misalnya, bos yang menyebalkan atau tumpukan tugas).</div></div>
+            <div class="footnote-item"><div class="footnote-number">14</div><div class="footnote-text">Frasa "...meski cuma lo doang yang liat" adalah kunci untuk memahami seluruh fenomena ini. Ia mengintroduksi konsep "penonton internal" (internalized audience) atau, dalam terminologi Foucault, sebuah <em>Panopticon</em> personal. Kita berdandan dan memilih bahkan untuk bagian tubuh yang tidak terlihat seolah-olah ada pengamat omnipresent yang menilai. Pengamat ini adalah introjeksi dari 'tatapan sosial' (social gaze). Dengan demikian, tindakan paling privat sekalipun tidak pernah benar-benar privat; ia selalu merupakan sebuah pertunjukan yang ditujukan pada diri sendiri sebagai penonton, sebuah dialog tanpa akhir antara ego dan super-ego. Lacan akan menyebut pengamat internal ini sebagai 'the big Other', instansi simbolik dari hukum dan norma sosial yang telah kita internalisasi.</div></div>
+            <div class="footnote-item"><div class="footnote-number">15</div><div class="footnote-text"><em>Tatapan</em> (The Gaze). Di sini, kita memasuki teritori teori film feminis, khususnya karya Laura Mulvey "Visual Pleasure and Narrative Cinema" (1975). Mulvey berargumen bahwa dalam sinema Hollywood klasik, "tatapan" (the gaze) secara inheren bersifat maskulin, mengobjektifikasi perempuan sebagai tontonan pasif. Konsep ini dapat diekstrapolasi ke desain lingerie. Secara historis, lingerie dirancang untuk 'dilihat' oleh tatapan maskulin. Pertanyaan "seksi buat gue, atau seksi buat dia?" adalah verbalisasi dari perjuangan untuk merebut kembali 'the gaze'. Memilih lingerie untuk kesenangan sendiri (misalnya, merasakan tekstur sutra di kulit) adalah upaya untuk mengubah diri dari objek tatapan menjadi subjek pengalaman sensorik, sebuah tindakan perlawanan terhadap <em>scopophilia</em> (kenikmatan dalam melihat) yang dipaksakan.</div></div>
+            <div class="footnote-item"><div class="footnote-number">16</div><div class="footnote-text"><em>Lace</em> (Renda). Sejarah renda adalah sejarah kelas, tenaga kerja, dan erotisme. Awalnya merupakan barang mewah yang luar biasa mahal, dibuat dengan tangan selama berjam-jam oleh para pekerja (seringkali perempuan), renda adalah penanda status aristokratik. Revolusi Industri mendemokratisasikannya. Dalam konteks lingerie, renda bermain dengan dualitas: ia menutupi sekaligus memperlihatkan. Transparansinya menciptakan permainan 'ada dan tiada', memancing imajinasi. Menurut Georges Bataille dalam "Erotism: Death and Sensuality" (1957), erotisme terletak pada pelanggaran batas, pada pengakuan atas kontinuitas kita (melalui seks dan kematian) yang bertentangan dengan diskontinuitas kita sebagai individu. Renda, dengan pola berlubangnya, secara visual men enactment kan pelanggaran batas antara yang tertutup dan yang terbuka ini.</div></div>
+            <div class="footnote-item"><div class="footnote-number">17</div><div class="footnote-text"><em>Seamless panty</em>. Sebuah artefak dari modernisme akhir. Tujuannya adalah untuk menciptakan ilusi ketidakberadaan, untuk mendukung siluet pakaian luar yang bersih tanpa gangguan "garis". Ini adalah manifestasi dari estetika minimalis, sebuah 'less is more' yang diaplikasikan pada tubuh. Dari perspektif filsafat teknologi, ini adalah contoh dari apa yang disebut Don Ihde sebagai 'hubungan latar belakang' (background-relation) dengan teknologi. Teknologi ini paling berhasil ketika ia menghilang, ketika kita tidak menyadarinya. Namun, ketiadaan yang diperhitungkan ini adalah sebuah kerja keras. Ia adalah 'seni yang menyembunyikan seni', sebuah upaya untuk mencapai 'kealamian' yang justru sangat artifisial.</div></div>
+            <div class="footnote-item"><div class="footnote-number">18</div><div class="footnote-text">Thong dan G-string. Objek-objek ini membawa semiotika pakaian dalam ke titik ekstremnya. Mereka secara radikal mengurangi fungsi protektif dan higienis demi fungsi estetis-simbolis yang maksimal. Mereka adalah dekonstruksi dari celana dalam itu sendiri, mereduksinya menjadi garis-garis esensial. Mengenakannya adalah sebuah tindakan performatif yang kuat. Ia bisa menjadi: (1) Pernyataan tentang penguasaan atas tubuh sendiri dan seksualitasnya. (2) Kepatuhan pada tuntutan estetika tertentu (misalnya, menghindari VPL). (3) Bentuk 'edgework'—istilah sosiolog Stephen Lyng untuk aktivitas yang mengeksplorasi batas-batas (dalam hal ini, batas kesopanan dan kenyamanan). Thong berada di ruang liminal, secara bersamaan merupakan pakaian dalam dan hampir bukan pakaian dalam sama sekali.</div></div>
+            <div class="footnote-item"><div class="footnote-number">19</div><div class="footnote-text"><em>Period panties</em>. Ini lebih dari sekadar inovasi produk; ini adalah intervensi budaya. (1) Ia menantang tabu menstruasi dengan mengintegrasikan manajemennya ke dalam item pakaian sehari-hari, menormalkannya. (2) Ia mengganggu pasar produk sanitasi sekali pakai yang masif, mengangkat isu keberlanjutan dan limbah. (3) Ia mengembalikan agensi kepada tubuh yang menstruasi, menawarkan kebebasan dari ketidaknyamanan dan kecemasan 'bocor'. Dari perspektif Donna Haraway ("A Cyborg Manifesto," 1985), period panty adalah bentuk teknologi cyborgian yang sederhana: ia adalah hibrida dari organisme (tubuh) dan mesin (tekstil berteknologi tinggi), yang mengaburkan batas antara keduanya untuk menciptakan kapabilitas baru dan menantang dualisme alam/budaya.</div></div>
+            <div class="footnote-item"><div class="footnote-number">20</div><div class="footnote-text"><em>Pede</em> (Percaya Diri). Fenomena ini dijelaskan secara empiris oleh teori <em>enclothed cognition</em>. Adam dan Galinsky (2012) menunjukkan bahwa pakaian memengaruhi proses psikologis pemakainya melalui dua faktor: makna simbolik pakaian dan pengalaman fisik mengenakannya. Mengenakan celana dalam yang "baik" (bersih, baru, mahal, seksi) mengaktifkan makna simbolik yang terkait (kesuksesan, daya tarik, kebersihan). Pengalaman fisik mengenakannya membuat makna ini menjadi bagian dari realitas subjektif pemakainya, yang secara nyata meningkatkan kepercayaan diri dan bahkan performa kognitif. Ini adalah umpan balik psiko-fisik yang kuat, sebuah sirkuit di mana materi (kain) dan pikiran (kepercayaan) saling membentuk dalam loop yang berkelanjutan.</div></div>
+            <div class="footnote-item"><div class="footnote-number">21</div><div class="footnote-text"><em>Self-care</em>. Sebuah konsep dengan genealogi yang kompleks. Ia berakar pada aktivisme radikal, terutama oleh Audre Lorde yang menyatakan, "Merawat diri sendiri bukanlah pemanjaan diri, itu adalah tindakan pertahanan diri, dan itu adalah tindakan peperangan politik." Namun, dalam kapitalisme neoliberal, konsep ini telah mengalami <em>détournement</em>: ia dibajak, didomestikasi, dan dikomodifikasi. "Peperangan politik" direduksi menjadi pembelian produk. Sosiolog Eva Illouz, dalam karyanya tentang 'kapitalisme emosional', akan berpendapat bahwa 'self-care' modern adalah strategi di mana subjek didorong untuk 'mengelola' emosi dan tubuhnya seolah-olah itu adalah sebuah perusahaan yang harus dioptimalkan untuk performa maksimal di pasar. Membeli celana dalam yang 'benar' menjadi bagian dari 'manajemen diri' ini.</div></div>
+            <div class="footnote-item"><div class="footnote-number">22</div><div class="footnote-text"><em>Literally</em>. Penggunaan kata ini telah menjadi subjek perdebatan linguistik yang sengit. Secara preskriptif, ia berarti "sesuai dengan makna harfiah." Namun, secara deskriptif, ia kini sering digunakan sebagai penegas (intensifier). Penggunaannya di sini jenius secara tidak sengaja. "Dimulai dari daleman... Literally" bermain di kedua makna: (1) sebagai penegas ("benar-benar dimulai dari dalam"), dan (2) secara harfiah ("secara fisik dimulai dari pakaian dalam"). Ia adalah titik di mana metafora ("keren dari dalam") dan realitas fisik bertemu dan menjadi satu, sebuah 'chiasm' atau persilangan, dalam istilah Merleau-Ponty, di mana yang abstrak dan yang konkret tidak dapat lagi dipisahkan.</div></div>
+            <div class="footnote-item"><div class="footnote-number">23</div><div class="footnote-text">SpongeBob SquarePants. Kemunculan celana dalamnya yang berulang kali (tighty-whities putih klasik) berfungsi sebagai penanda kepanikan dan hilangnya kontrol. Dalam teori komedi Henri Bergson ("Laughter," 1900), tawa muncul ketika "sesuatu yang mekanis ditumpangkan pada yang hidup." Ketika SpongeBob panik, tubuhnya yang elastis menjadi kaku karena ketakutan, dan mekanisme sosial (pakaian) terlepas, memperlihatkan lapisan paling dasar dan paling "tidak bermartabat". Ini adalah komedi regresi, kembalinya sang karakter ke kondisi kekanak-kanakan yang esensial, sebuah momen di mana Id mengalahkan Superego.</div></div>
+            <div class="footnote-item"><div class="footnote-number">24</div><div class="footnote-text">Superman. Celana dalam merah di luar kostum biru adalah salah satu ikonografi paling aneh dan paling tahan lama dalam budaya pop. Asal-usulnya bersifat praktis: terinspirasi oleh kostum pegulat sirkus tahun 1930-an. Namun, secara semiotik, ia telah melampaui asal-usulnya. Umberto Eco, dalam esainya "The Myth of Superman," mungkin akan melihatnya sebagai tanda yang 'aberrant' (menyimpang) yang justru memperkuat status mitis karakter tersebut. Ia adalah sebuah inversi total dari norma vestimenter (privat menjadi publik), sebuah penanda visual dari status "alien" atau "yang lain" dari Superman. Ini adalah tanda dari kekuatannya yang begitu besar sehingga ia tidak terikat oleh hukum fisika maupun hukum fashion manusia.</div></div>
+            <div class="footnote-item"><div class="footnote-number">25</div><div class="footnote-text">Gerakan membakar bra (bra-burning). Sebuah mitos populer yang kuat, meskipun sebagian besar tidak akurat secara historis. Protes yang paling terkenal terjadi pada demonstrasi Miss America tahun 1968, di mana para feminis membuang item-item yang dianggap sebagai 'instrumen penyiksaan perempuan' (termasuk bra, sepatu hak tinggi, majalah Playboy) ke dalam 'Freedom Trash Can'. Mereka tidak benar-benar membakarnya karena peraturan lokasi. Namun, citra 'bra-burning' yang menyebar di media menjadi simbol yang kuat dari penolakan terhadap objektivikasi perempuan dan standar kecantikan yang restriktif. Bra, dalam konteks ini, menjadi metonimia untuk penindasan patriarkal itu sendiri.</div></div>
+            <div class="footnote-item"><div class="footnote-number">26</div><div class="footnote-text"><em>Dimulai dari dalam</em>. Kalimat ini adalah puncak dari seluruh argumen, sebuah sintesis dari yang harfiah dan metaforis. Ia menggemakan ajaran spiritual dan filosofis dari berbagai tradisi, dari "Kenalilah dirimu" di Kuil Apollo di Delphi hingga konsep pencerahan batin dalam Buddhisme. Namun, di sini, "dalam" secara simultan merujuk pada jiwa/karakter dan pakaian dalam. Ini adalah sakralisasi yang profan, atau profanisasi yang sakral. Esai ini, pada akhirnya, adalah sebuah koan Zen yang dibungkus dalam slang internet: Apakah jalan menuju transendensi dilapisi dengan katun, sutra, atau poliester? Ia adalah sebuah aporia, sebuah pertanyaan tanpa jawaban definitif, yang justru di situlah letak kekuatan provokatifnya.</div></div>
+            <div class="footnote-item"><div class="footnote-number">27</div><div class="footnote-text"><em>Peace out</em>. Sebuah valediksi (ucapan perpisahan) yang berasal dari budaya hip-hop. Penggunaannya di akhir sebuah esai yang begitu sarat dengan analisis akademis yang tersembunyi menciptakan sebuah disonansi kognitif akhir yang disengaja. Ia secara tiba-tiba meruntuhkan fasad intelektual (yang dibangun di catatan kaki) dan mengembalikan pembaca ke permukaan teks yang kasual. Ini adalah manuver penutup yang menegaskan kembali sifat hibrida dan ironis dari keseluruhan proyek: sebuah dialog antara jalanan dan menara gading, yang keduanya bertemu di tempat yang paling tidak terduga—laci pakaian dalam. Ia adalah pengingat akhir bahwa pengetahuan, pada akhirnya, harus kembali ke dunia nyata, atau 'turun ke jalan'.</div></div>
+        </div>
+
+        <div class="glossary">
+            <h2>GLOSARIUM</h2>
+            <dl>
+                <dt>Aporia</dt>
+                <dd>(Kategori: Filsafat & Retorika) Sebuah kebuntuan, keraguan, atau kontradiksi yang tidak dapat dipecahkan dalam sebuah argumen atau teks. Dalam dekonstruksi Derridean, menemukan aporia dalam teks adalah kunci untuk membongkar hierarki yang mendasarinya.</dd>
+                <dt>Habitus</dt>
+                <dd>(Kategori: Sosiologi) Konsep Pierre Bourdieu yang merujuk pada sistem disposisi yang terinternalisasi, tahan lama, dan dapat ditransfer, yang berfungsi sebagai prinsip penghasil dan pengatur praktik serta representasi. Pilihan celana dalam adalah manifestasi dari habitus.</dd>
+                <dt>Jouissance</dt>
+                <dd>(Kategori: Psikoanalisis Lacanian) Sebuah istilah Prancis yang sulit diterjemahkan, merujuk pada kenikmatan yang berlebihan, kenikmatan di luar prinsip kesenangan (pleasure principle), seringkali menyakitkan atau transgresif. Memakai lingerie yang tidak nyaman namun 'seksi' dapat dianalisis sebagai pencarian jouissance.</dd>
+                <dt>Kalpanā</dt>
+                <dd>(Kategori: Filsafat India) Istilah Sansekerta yang berarti imajinasi, fantasi, atau penciptaan mental. Dalam konteks kutipan, ini merujuk pada bagaimana fantasi dan proyeksi mental lebih kuat dalam membangkitkan hasrat daripada realitas fisik itu sendiri.</dd>
+                <dt>Performativitas</dt>
+                <dd>(Kategori: Filsafat Bahasa & Teori Gender) Konsep (dipopulerkan oleh J.L. Austin dan dikembangkan oleh Judith Butler) bahwa bahasa atau tindakan tertentu tidak hanya mendeskripsikan realitas tetapi secara aktif menciptakannya. Memilih dan mengenakan celana dalam adalah tindakan performatif yang mengkonstruksi identitas.</dd>
+                <dt>Scopophilia</dt>
+                <dd>(Kategori: Psikoanalisis & Teori Film) Kenikmatan (seringkali erotis) yang berasal dari melihat orang lain sebagai objek. Konsep ini sentral dalam teori tatapan (the gaze) untuk menganalisis dinamika kuasa dalam representasi visual.</dd>
+                <dt>Simulacrum</dt>
+                <dd>(Kategori: Filsafat Pascamodern) Konsep Jean Baudrillard yang merujuk pada salinan tanpa asli. Dalam konteks esai, citra iklan celana dalam menjadi lebih nyata dan lebih diinginkan daripada fungsi atau realitas objek itu sendiri.</dd>
+                <dt>The Real (Lacan)</dt>
+                <dd>(Kategori: Psikoanalisis Lacanian) Salah satu dari tiga tatanan (bersama Simbolik dan Imajiner). The Real adalah dimensi keberadaan yang tidak dapat disimbolkan, traumatis, dan tidak dapat direpresentasikan. Tubuh dalam keadaan mentahnya (sebelum ditutupi pakaian/bahasa) berbatasan dengan The Real.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>
