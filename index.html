@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title changed as requested -->
     <title>SNM-IMPERIAL® Group</title>
     <style>
         * {
@@ -30,6 +29,7 @@
             align-items: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 10;
+            position: relative;
         }
         
         .logo {
@@ -58,15 +58,16 @@
             font-size: 22px;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #e74c3c; /* Warna merah */
+            color: #e74c3c;
         }
         
         .nav-links {
             display: flex;
             gap: 25px;
+            align-items: center;
         }
         
-        .nav-links a {
+        .nav-links a, .dropdown .dropbtn {
             color: #ecf0f1;
             text-decoration: none;
             font-weight: 500;
@@ -77,7 +78,7 @@
             cursor: pointer;
         }
         
-        .nav-links a:hover {
+        .nav-links a:hover, .dropdown:hover .dropbtn {
             color: #3498db;
         }
         
@@ -94,6 +95,55 @@
         
         .nav-links a:hover::after {
             width: 100%;
+        }
+        
+        .dropdown {
+            position: static;
+        }
+
+        .dropdown .dropbtn {
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: auto;
+            background-color: #2c3e50;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 4px 4px;
+            padding: 10px 0;
+        }
+        
+        .about-us-dropdown .dropdown-content {
+            min-width: 230px; 
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            line-height: 1.1;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #34495e;
+            color: #3498db;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
         
         .image-container {
@@ -117,6 +167,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #000;
         }
         
         .fullscreen-image {
@@ -125,7 +176,7 @@
             object-fit: contain;
             display: block;
         }
-        
+
         .image-info {
             position: absolute;
             bottom: 0;
@@ -135,11 +186,13 @@
             color: white;
             padding: 15px 20px;
             font-size: 14px;
+            z-index: 5;
         }
         
         .controls {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 20px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.8);
@@ -157,13 +210,29 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
             font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
         }
-        
+
+        .service-preview {
+            width: 100%;
+            height: 100%;
+            display: none; /* Disembunyikan, karena tombolnya sudah pindah */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
@@ -193,39 +262,37 @@
             box-shadow: 0 5px 25px rgba(0,0,0,0.4);
             position: relative;
             text-align: left;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #888;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .modal-close:hover {
-            color: #333;
+            min-width: 300px;
         }
         
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
-            }
-            
-            .nav-links {
-                justify-content: center;
-                width: 100%;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
+        #contact-popup .modal-content {
+            padding-top: 55px;
+        }
 
-            .btn {
-                width: 80%;
-                padding: 12px 20px;
-            }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #3498db;
+            background-color: rgba(52, 152, 219, 0.15);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .modal-close:hover {
+            background-color: rgba(52, 152, 219, 0.3);
+        }
+        
+        #contact-popup .modal-close { font-size: 16px; }
+        #portfolio-popup .modal-close { font-size: 14px; }
+        #password-popup .modal-close { font-size: 14px; }
+        
+        @media (max-width: 768px) {
+            .header { flex-direction: column; gap: 15px; padding: 15px; }
+            .nav-links { justify-content: center; width: 100%; flex-wrap: wrap; gap: 15px; }
+            .btn { width: 80%; padding: 12px 20px; }
         }
     </style>
 </head>
@@ -239,25 +306,38 @@
             </a>
         </div>
         <div class="nav-links">
-            <a href="https://www.bloomberg.com/profile/company/7605235Z:US" target="_blank" rel="noopener noreferrer">Beranda</a>
-            <a href="https://polpindo.github.io/Polpindo/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%202025.pdf" target="_blank" rel="noopener noreferrer">Tentang Kami</a>
+            <a href="#" id="homeBtn">Beranda</a>
+            <div class="dropdown about-us-dropdown">
+                <button class="dropbtn">Tentang Kami</button>
+                <div class="dropdown-content">
+                    <a href="https://polpindo.github.io/Polpindo/RESUME%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI.pdf" target="_blank" rel="noopener noreferrer">1. STATUS PERUSAHAAN</a>
+                    <a href="#" id="corporateLegalityBtn">2. CORPORATE LEGALITY</a>
+                </div>
+            </div>
             <a id="portfolioBtn">Portfolio</a>
-            <a href="https://youtube.com/@constructionworldmagazine" target="_blank" rel="noopener noreferrer">Layanan</a>
+            <div class="dropdown" id="services-dropdown">
+                <button class="dropbtn">Layanan</button>
+                <div class="dropdown-content">
+                    <a href="#" class="service-link" data-url="https://aistudio.google.com/prompts/new_chat" data-preview-image="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" data-name="AI STUDIO">1. AI STUDIO</a>
+                    <a href="#" class="service-link" data-url="https://console.cloud.google.com/vertex-ai/studio/multimodal?hl=id" data-preview-image="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" data-name="AI VERTEX">2. AI VERTEX</a>
+                    <a href="#" class="service-link" data-url="https://studio.nebius.com/playground?models=deepseek-ai/DeepSeek-R1-0528" data-preview-image="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" data-name="AI NEBIUS">3. AI NEBIUS</a>
+                </div>
+            </div>
             <a id="kontakBtn">Kontak</a>
         </div>
     </div>
     
-    <!-- Image Display -->
+    <!-- Image and Content Display -->
     <div class="image-container">
         <div class="image-wrapper">
-            <img 
-                src="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" 
-                alt="PT IMPERIAL TATA KONSTRUKSI" 
-                class="fullscreen-image" 
-                id="mainImage"
-            >
-            <div class="image-info">
-                PT IMPERIAL TATA KONSTRUKSI — All rights reserved © 2025
+            <div id="mainDisplay" style="width:100%; height:100%; display: flex; align-items: center; justify-content: center;">
+                <img src="https://polpindo.github.io/Polpindo/SIGIT_N_MASHARY.jpg" alt="PT IMPERIAL TATA KONSTRUKSI" class="fullscreen-image" id="mainImage">
+                <div class="image-info" id="imageInfo">
+                    PT IMPERIAL TATA KONSTRUKSI — All rights reserved © 2025
+                </div>
+            </div>
+            <div class="service-preview" id="servicePreview">
+                <img id="previewImage" src="" alt="Pratinjau Layanan" class="service-preview-image">
             </div>
         </div>
     </div>
@@ -265,6 +345,9 @@
     <!-- Controls -->
     <div class="controls">
         <button class="btn" id="downloadBtn">DOWNLOAD</button>
+        <a id="openServiceBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn" style="display: none;">
+            Buka Layanan
+        </a>
     </div>
     
     <!-- Footer -->
@@ -274,85 +357,159 @@
         <a href="#" style="color: #3498db; text-decoration: none;">Syarat Penggunaan</a>
     </div>
 
-    <!-- Contact Pop-up Modal -->
+    <!-- Modals -->
     <div id="contact-popup" class="modal-overlay">
         <div class="modal-content">
-            <span class="modal-close" id="closeContactBtn">×</span>
+            <span class="modal-close" id="closeContactBtn">Close</span>
             <p style="font-size: 18px; margin-bottom: 8px;"><strong>Email:</strong> itk.ykoffice@gmail.com</p>
             <p style="font-size: 18px;"><strong>Phone:</strong> 0812-1782-6755 (hunting)</p>
         </div>
     </div>
 
-    <!-- Portfolio Pop-up Modal -->
     <div id="portfolio-popup" class="modal-overlay">
         <div class="modal-content">
-            <span class="modal-close" id="closePortfolioBtn">×</span>
+            <span class="modal-close" id="closePortfolioBtn">Close</span>
             <p style="font-size: 18px; margin-bottom: 12px;"><strong>ACCOUNTS:</strong></p>
             <p style="font-size: 16px; margin-bottom: 8px;">1. BANK BRI No. Rek. 023601001084565</p>
             <p style="font-size: 16px;">2. BANK MAYBANK No. Rek. 2726000197</p>
         </div>
     </div>
+    
+    <div id="password-popup" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" id="closePasswordBtn">Close</span>
+            <h3 style="margin-bottom: 15px; font-weight: 500;">Masukkan Password</h3>
+            <input type="password" id="passwordInput" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+            <button id="submitPasswordBtn" class="btn" style="width: 100%; text-align: center;">SUBMIT</button>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const image = document.getElementById('mainImage');
+            // Elements
+            const mainDisplay = document.getElementById('mainDisplay');
+            const mainImage = document.getElementById('mainImage');
+            const homeBtn = document.getElementById('homeBtn');
+            const servicePreview = document.getElementById('servicePreview');
+            const previewImage = document.getElementById('previewImage');
+            const serviceLinks = document.querySelectorAll('.service-link');
+
+            // Control Buttons
             const downloadBtn = document.getElementById('downloadBtn');
+            const openServiceBtn = document.getElementById('openServiceBtn');
             
-            // Download Gambar
-            downloadBtn.addEventListener('click', function() {
-                const imageUrl = image.src;
-                const fileName = 'PT_IMPERIAL_TATA_KONSTRUKSI.jpg';
-                
-                fetch(imageUrl)
-                    .then(response => response.blob())
-                    .then(blob => {
-                        const url = window.URL.createObjectURL(blob);
-                        const a = document.createElement('a');
-                        a.style.display = 'none';
-                        a.href = url;
-                        a.download = fileName;
-                        document.body.appendChild(a);
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                    })
-                    .catch(() => alert('Gagal mendownload gambar'));
-            });
-
-            // --- Modal Logic ---
-
-            // Contact Pop-up
+            // Modal Elements
             const kontakBtn = document.getElementById('kontakBtn');
             const contactPopup = document.getElementById('contact-popup');
             const closeContactBtn = document.getElementById('closeContactBtn');
-
-            kontakBtn.addEventListener('click', () => {
-                contactPopup.style.display = 'flex';
-            });
-
-            closeContactBtn.addEventListener('click', () => {
-                contactPopup.style.display = 'none';
-            });
-
-            // Portfolio Pop-up Logic
             const portfolioBtn = document.getElementById('portfolioBtn');
             const portfolioPopup = document.getElementById('portfolio-popup');
             const closePortfolioBtn = document.getElementById('closePortfolioBtn');
+            const corporateLegalityBtn = document.getElementById('corporateLegalityBtn');
+            const passwordPopup = document.getElementById('password-popup');
+            const closePasswordBtn = document.getElementById('closePasswordBtn');
+            const passwordInput = document.getElementById('passwordInput');
+            const submitPasswordBtn = document.getElementById('submitPasswordBtn');
 
-            portfolioBtn.addEventListener('click', () => {
-                portfolioPopup.style.display = 'flex';
-            });
+            // Set dynamic position for dropdowns that are not centered
+            const servicesDropdown = document.getElementById('services-dropdown');
+            const servicesDropdownContent = servicesDropdown.querySelector('.dropdown-content');
+            const dropdownRect = servicesDropdown.getBoundingClientRect();
+            servicesDropdownContent.style.left = `${dropdownRect.left}px`;
 
-            closePortfolioBtn.addEventListener('click', () => {
-                portfolioPopup.style.display = 'none';
-            });
+            // Functions
+            function showMainDisplay() {
+                // Hide service view
+                servicePreview.style.display = 'none';
+                mainDisplay.style.display = 'flex';
+                
+                // Toggle control buttons
+                openServiceBtn.style.display = 'none';
+                downloadBtn.style.display = 'inline-block';
+            }
 
-            // Close modal if clicked outside of content
-            window.addEventListener('click', (event) => {
-                if (event.target == contactPopup) {
-                    contactPopup.style.display = 'none';
+            function showServicePreview(event) {
+                event.preventDefault();
+                const link = event.currentTarget;
+                const serviceUrl = link.getAttribute('data-url');
+                const previewImageUrl = link.getAttribute('data-preview-image');
+                const serviceName = link.getAttribute('data-name');
+                
+                // Show service view
+                mainDisplay.style.display = 'none';
+                previewImage.src = previewImageUrl;
+                previewImage.alt = `Pratinjau ${serviceName}`;
+                servicePreview.style.display = 'flex';
+
+                // Configure and toggle control buttons
+                openServiceBtn.href = serviceUrl;
+                openServiceBtn.textContent = `Buka ${serviceName}`;
+                downloadBtn.style.display = 'none';
+                openServiceBtn.style.display = 'inline-block';
+            }
+            
+            function checkPassword() {
+                const correctPassword = 'itk_imperial';
+                if (passwordInput.value === correctPassword) {
+                    window.open('https://polpindo.github.io/Polpindo/COMPRO%20PT.%20IMPERIAL%20TATA%20KONSTRUKSI%202025.pdf', '_blank');
+                    passwordPopup.style.display = 'none';
+                } else {
+                    alert('Password salah!');
+                    passwordPopup.style.display = 'none';
                 }
-                if (event.target == portfolioPopup) {
-                    portfolioPopup.style.display = 'none';
+                passwordInput.value = '';
+            }
+
+            // Event Listeners
+            homeBtn.addEventListener('click', (e) => { e.preventDefault(); showMainDisplay(); });
+            serviceLinks.forEach(link => { link.addEventListener('click', showServicePreview); });
+            
+            downloadBtn.addEventListener('click', function() {
+                if (mainDisplay.style.display !== 'none') {
+                    fetch(mainImage.src)
+                        .then(response => response.blob())
+                        .then(blob => {
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.style.display = 'none';
+                            a.href = url;
+                            a.download = 'PT_IMPERIAL_TATA_KONSTRUKSI.jpg';
+                            document.body.appendChild(a);
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                        })
+                        .catch(() => alert('Gagal mendownload gambar'));
+                }
+            });
+
+            kontakBtn.addEventListener('click', () => { contactPopup.style.display = 'flex'; });
+            closeContactBtn.addEventListener('click', () => { contactPopup.style.display = 'none'; });
+            portfolioBtn.addEventListener('click', () => { portfolioPopup.style.display = 'flex'; });
+            closePortfolioBtn.addEventListener('click', () => { portfolioPopup.style.display = 'none'; });
+
+            corporateLegalityBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                passwordPopup.style.display = 'flex';
+                passwordInput.focus();
+            });
+            closePasswordBtn.addEventListener('click', () => { 
+                passwordPopup.style.display = 'none';
+                passwordInput.value = '';
+            });
+            submitPasswordBtn.addEventListener('click', checkPassword);
+            passwordInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    checkPassword();
+                }
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == contactPopup) contactPopup.style.display = 'none';
+                if (event.target == portfolioPopup) portfolioPopup.style.display = 'none';
+                if (event.target == passwordPopup) {
+                     passwordPopup.style.display = 'none';
+                     passwordInput.value = '';
                 }
             });
         });
