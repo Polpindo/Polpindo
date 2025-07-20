@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template Baku Esai Profesional</title>
+<style>
+/* ====================================================================== */
+/* == PENGATURAN CSS INI BERSIFAT FINAL DAN TIDAK BOLEH DIUBAH == */
+/* ====================================================================== */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+line-height: 1.1;
+}
+
+body {
+        background: #f9f5f0;
+        color: #2c2c2c;
+        font-family: 'Arial', sans-serif;
+        font-size: 13.5px; /* DIKECILKAN */
+        background-image: linear-gradient(to bottom, #f9f5f0, #f1e8dc);
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+        padding: 40px;
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 800px;
+        margin: 20px 20px 40px;
+    }
+
+    .header {
+        text-align: left;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #d4c9b8;
+        padding-bottom: 20px;
+    }
+
+    .title {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 21px; /* DIKECILKAN */
+        font-weight: bold;
+        color: #2487ff;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+    }
+
+    .subtitle {
+        margin-top: 5px;
+        font-size: 14.5px; /* DIKECILKAN */
+        font-family: 'Times New Roman', Times, serif;
+        color: #555;
+        font-style: italic;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+    }
+
+    .author-block {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        line-height: 1.1;
+        background-color: rgba(36, 135, 255, 0.07);
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .author-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        flex-shrink: 0;
+        border: 2px solid #d4c9b8;
+    }
+
+    .author-info {
+        font-family: 'Arial', sans-serif;
+        font-style: normal;
+        font-size: 12px; /* DIKECILKAN */
+        color: #555;
+        line-height: 0.9;
+    }
+
+    .author-info strong {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .main-quote {
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 17px; /* DIKECILKAN */
+        margin: 30px 0;
+        padding: 10px 15px 10px 50px;
+        border: none;
+        background-color: rgba(36, 135, 255, 0.07);
+        position: relative;
+        color: #5c4a36;
+        border-radius: 4px;
+        line-height: 1.1;
+        text-align: left;
+    }
+
+    .main-quote::before {
+        content: "“";
+        font-family: 'Times New Roman', serif;
+        position: absolute;
+        font-size: 51px; /* DIKECILKAN */
+        left: 10px;
+        top: 0;
+        color: #2487ff;
+        opacity: 0.2;
+    }
+
+    .main-quote footer {
+        display: block;
+        margin-top: 10px;
+        font-family: 'Arial', sans-serif;
+        font-size: 12px; /* DIKECILKAN */
+        font-style: normal;
+        text-align: right;
+        color: #777;
+    }
+
+    .content-quote {
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 14.5px; /* DIKECILKAN */
+        margin: 20px 0;
+        padding: 10px 15px 10px 50px;
+        border: none;
+        background-color: rgba(36, 135, 255, 0.07);
+        position: relative;
+        color: #5c4a36;
+        border-radius: 4px;
+        line-height: 1.1;
+        text-align: left;
+    }
+
+    .content-quote::before {
+        content: "“";
+        font-family: 'Times New Roman', serif;
+        position: absolute;
+        font-size: 42px; /* DIKECILKAN */
+        left: 10px;
+        top: -5px;
+        color: #2487ff;
+        opacity: 0.2;
+    }
+
+    .content {
+        font-family: 'Arial', sans-serif;
+        font-size: 14.5px; /* DIKECILKAN */
+        color: #333;
+        text-align: left;
+        hyphens: auto;
+        padding-bottom: 20px;
+        line-height: 1.1;
+    }
+
+    .content p {
+        margin-bottom: 1.2em;
+    }
+
+    .content em {
+        font-style: italic;
+    }
+
+    .drop-cap {
+        float: left;
+        font-size: 66px; /* DIKECILKAN */
+        line-height: 1;
+        padding-top: 8px;
+        padding-right: 12px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        color: #2487ff;
+    }
+
+    .footnote-ref {
+        font-family: 'Arial', sans-serif;
+        font-size: 9.5px; /* DIKECILKAN */
+        color: #2487ff;
+        vertical-align: super;
+        line-height: 0;
+        font-weight: bold;
+    }
+
+    .glossary {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #e8e1d7;
+        font-family: 'Arial', sans-serif;
+        font-size: 12px; /* DIKECILKAN */
+        color: #555;
+        text-align: left;
+        line-height: 1.0;
+    }
+
+    .glossary h2 {
+        font-family: 'Arial', sans-serif;
+        font-size: 15px; /* DIKECILKAN */
+        font-weight: bold;
+        color: #5c4a36;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom: 20px;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 8px;
+        text-align: left;
+        line-height: 1.1;
+    }
+
+    .glossary h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: #2487ff;
+    }
+
+    .glossary dl {
+        margin-top: 15px;
+    }
+
+    .glossary dt {
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        color: #2487ff;
+        font-size: 13px; /* DIKECILKAN */
+        margin-top: 15px;
+        letter-spacing: -0.5px;
+    }
+
+    .glossary dd {
+        font-family: 'Arial', sans-serif;
+        color: #555;
+        font-size: 13px; /* DIKECILKAN */
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 2px solid #e8e1d7;
+        margin-top: 5px;
+        margin-bottom: 12px;
+    }
+
+    .watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-30deg);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 102px; /* DIKECILKAN */
+        font-weight: bold;
+        color: rgba(36, 135, 255, 0.04);
+        pointer-events: none;
+        z-index: 0;
+        white-space: nowrap;
+        line-height: 1;
+    }
+
+    .arabic-text {
+        font-family: 'Traditional Arabic', 'Arial', sans-serif;
+        font-size: 15px; /* DIKECILKAN */
+        direction: rtl;
+        display: inline;
+        margin: 0 3px;
+    }
+
+    .arabic-translit {
+        font-style: italic;
+        color: #777;
+        font-size: inherit;
+    }
+
+    .content strong {
+        color: #2487ff;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="watermark">ESAI</div>
+
+<div class="container">
+    <div class="header">
+        <h1 class="title">Gilgamesh: Fragmen Epos Tertua yang Bertahan Sejak 4500 Tahun Lalu (Seri Arkeologi Kuno)</h1>
+        <h2 class="subtitle">Bahkan Sebelum Tuhan Menguji Ibrahim—Naskah ini Sudah Ada—Jejak Para Leluhur</h2>
+        
+        <div class="author-block">
+            <!-- FOTO PENULIS TIDAK BOLEH DIGANTI -->
+            <img src="https://cdn.jsdelivr.net/gh/Polpindo/Polpindo@main/PROFIL%20SNM.jpg" alt="Foto Penulis" class="author-photo">
+            <div class="author-info">
+                <strong>KI SABDO CARANGAN (Editor)</strong><br>
+                20 Juli 2025
+            </div>
+        </div>
+    </div>
+
+    <blockquote class="main-quote">
+        Dengarkan gemeresik debu waktu. Di bawah terik mentari Mesopotamia yang tak kenal ampun, jari-jari seorang juru tulis yang kasar menyusuri permukaan lempung basah. Aksara paku – <em>cuneiform</em> – terukir dengan tekun, baris demi baris, membangun tembok kata yang jauh lebih abadi daripada bata lumpur Uruk. Inilah mahakarya yang terlahir dari getar jiwa peradaban pertama: <em>Sha naqba imuru...</em> "Dia yang telah melihat Segalanya..."
+        <footer>—Andrew R. George dalam The Epic of Gilgamesh (2003)</footer>
+    </blockquote>
+
+    <div class="content">
+        <p><span class="drop-cap">B</span>ayangkan Uruk di puncak kejayaannya, sekitar 2700 tahun sebelum Kristus. Kota yang megah, "yang temboknya seperti tembaga, yang bentengnya tiada bandingnya," demikian pujiannya dalam epos. Tapi di balik kemilau tembok yang menjulang itu, bergolak ketakutan dan kemarahan. Gilgamesh, sang <em>lugal</em> (raja), dua-pertiga dewa, satu-pertiga manusia, adalah penguasa yang perkasa sekaligus lalim. Dia adalah penjelmaan ambisi Mesopotamia: pembangun kota, penakluk alam liar, kekuatan tak terbendung. Namun, kekuatan itu berubah menjadi momok. Hak <em>ius primae noctis</em> (hak penguasa atas pengantin baru) dilakukannya tanpa ampun. Anak laki-laki dipekerjakan hingga tulang remuk membangun tembok-tembok megahnya. Rakyat menjerit, jeritan yang memecah langit biru pucat, sampai-sampai terdengar di telinga para dewa di langit tinggi.</p>
+        <p><strong>Prolog: Tembok, Tirani, dan Gema Kegelisahan</strong></p>
+        <p>Keluhan itu sampai ke Anu, ayah para dewa. "Buatlah penyeimbang baginya!" perintahnya. Maka Aruru, dewi pencipta, mengambil tanah liat, sama seperti bahan dasar tablet kisah ini, dan membentuk di padang gurun seorang manusia purba: Enkidu. Rambutnya lebat seperti Dewi Gandum, tubuhnya berbulu lebat, dia hidup sepenakuan dengan gazelle (kijang), minum dari kolam bersama binatang buas. Enkidu adalah alam yang belum terjamah, kekacauan yang liar sebelum tatanan peradaban. Kehadirannya adalah kritik halus: apakah "peradaban" Uruk yang dibangun Gilgamesh dengan darah dan keringat itu benar-benar lebih unggul dari kesederhanaan alam?</p>
+        <p><strong>Persinggungan: Pelacur Kuil dan Persahabatan yang Mengubah Takdir</strong></p>
+        <p>Berita tentang "Manusia Liar" yang menghalangi perangkap pemburu sampai ke telinga Gilgamesh. Dengan licik, raja itu menyuruh seorang <em>harimtu</em>, pelacur kuil suci Dewi Cinta, Ishtar, untuk "menjinakkan" Enkidu. Sang wanita, Shamhat, turun ke padang gurun. Bukan dengan kekerasan, tapi dengan kelembutan tubuh dan kebijaksanaan kata. Selama tujuh hari tujuh malam, Enkidu mengenal Shamhat. Itu adalah ritual peralihan yang dahsyat. Ketika dia bangkit, gazelle-gazelle yang dulu sahabatnya lari ketakutan. Dia telah "dikenali," dimasuki pengetahuan. Shamhat memberinya pakaian, mengajarinya makan roti dan minum bir – simbol puncak budaya agraris Mesopotamia. Enkidu pun berubah; dari makhluk padang gurun menjadi warga potensial kota. Tapi hatinya penasaran: siapa Gilgamesh yang perkasa itu?</p>
+        <p>Di Uruk, Gilgamesh terus diganggu mimpi aneh. Ibunya, Ninsun, sang dewi bijak, menafsirkan: "Itu adalah sahabatmu yang akan datang, yang kuat dan setia." Firasat itu terbukti saat Enkidu tiba di Uruk. Pertarungan titan pun terjadi di jalanan Uruk. Mereka berkelahi bagai banteng jantan, tetapi dalam keganasan itu, rasa hormat tumbuh. Gilgamesh, sang setengah dewa, menemukan tandingannya. Enkidu, sang manusia alam, menemukan tujuannya. Mereka berpelukan, bukan sebagai musuh, tapi sebagai saudara.</p>
+        <p><strong>Petualangan: Melawan Penjaga Hutan dan Amarah Dewi</strong></p>
+        <p>Persahabatan itu mengisi kekosongan dalam jiwa Gilgamesh. Tapi kekosongan lain muncul: kehausan akan keabadian nama. "Aku ingin melakukan perbuatan yang akan dikenang selamanya!" serunya. Peluang itu datang. Jauh di utara, berdiri Hutan Aras yang legendaris, dijaga oleh Humbaba si Naga Buruk. Membunuh Humbaba akan menjadi prestasi abadi. Dengan senjata tempaan dewa dan restu Dewa Matahari Shamash, duo pahlawan itu berangkat. Pertempuran dahsyat berkecamuk. Dengan bantuan Shamash yang mengirimkan angin kencang, Humbaba pun tumbang. Kemenangan gemilang! Namun Enkidu gelisah, ia mendapat mimpi buruk bahwa para dewa marah atas pembunuhan Humbaba.</p>
+        <blockquote class="content-quote">
+            Gilgamesh, ke mana engkau berlari? Hidup yang kau cari tidak akan kau temukan! Ketika para dewa menciptakan manusia, mereka menetapkan kematian bagi manusia, menahan kehidupan di tangan mereka sendiri. Engkau, Gilgamesh, penuhilah perutmu! Bergembiralah siang dan malam! ... Perhatikanlah anak kecil yang menggenggam tanganmu! Dan biarkan isterimu bersukacita dalam pangkuanmu! Inilah tugas manusia!
+        </blockquote>
+        <p><strong>Dosa Kesombongan: Tantangan untuk Ishtar dan Banteng Surgawi</strong></p>
+        <p>Kembali ke Uruk, Gilgamesh yang perkasa memikat Ishtar, Dewi Cinta dan Perang. "Jadilah suamiku, Gilgamesh!" rayunya. Namun Gilgamesh, mengetahui reputasi kejam Ishtar terhadap para kekasihnya, menolak dengan penghinaan. Penghinaan itu membakar Ishtar. Dia merengek pada ayahnya, Anu, meminta Banteng Surgawi untuk menghancurkan Uruk. Banteng Surgawi pun turun, menyebabkan bencana. Gilgamesh dan Enkidu kembali maju dan berhasil membunuh banteng itu. Kemenangan kedua! Tapi euforia mereka pendek. Enkidu, dalam amarahnya, melemparkan paha banteng ke wajah Ishtar. Itu adalah penghinaan terakhir, titik di mana murka para dewa tak lagi terbendung.</p>
+        <p><strong>Bayang-Bayang Hitam: Kematian Enkidu dan Kegelapan Jiwa</strong></p>
+        <p>Para dewa memutuskan: Enkidu harus mati sebagai hukuman. Enkidu jatuh sakit dan setelah dua belas hari menderita, ia meninggal. Gilgamesh menjerit, "Sahabatku yang kucintai telah menjadi tanah! Tidakkah aku akan berbaring seperti dia, dan tidak bangun lagi selama-lamanya?" Kesedihan yang mendalam berubah menjadi teror eksistensial. Jika Enkidu bisa mati, maka Gilgamesh pun pasti akan mati. Ketakutan akan kefanaan total menyergapnya. Ambisinya untuk keabadian nama berubah menjadi obsesi untuk keabadian jasmani.</p>
+        <p><strong>Pencarian Sia-Sia: Melintasi Kegelapan dan Lautan Kematian</strong></p>
+        <p>Gilgamesh mengembara ke padang gurun. Tujuannya: Utnapishtim, "Yang Melihat Kehidupan," satu-satunya manusia yang selamat dari Air Bah dan dianugerahi keabadian. Setelah perjalanan yang mengerikan, ia bertemu Siduri, pemilik kedai anggur surgawi, yang menasihatinya untuk menikmati hidup dan menerima kefanaan. Tapi hati Gilgamesh keras. Akhirnya, ia menyeberangi Lautan Kematian dan berdiri di hadapan Utnapishtim.</p>
+        <p><strong>Pertemuan dengan Sang Abadi dan Pelajaran yang Pahit</strong></p>
+        <p>Utnapishtim menceritakan kisah Air Bah versi Babilonia: bagaimana dewa Ea memperingatkannya untuk membangun bahtera besar untuk menyelamatkan semua makhluk hidup dari banjir yang dikirim para dewa. Sebagai hadiah karena selamat, para dewa memberinya keabadian. "Tapi," kata Utnapishtim, "siapa yang akan mengumpulkan para dewa untukmu?" Sebagai ujian, Gilgamesh diminta untuk tidak tidur selama enam hari tujuh malam, namun ia gagal total. Sebelum pergi, Utnapishtim memberitahu rahasia tentang tanaman di dasar laut yang bisa membuat awet muda. Gilgamesh berhasil mendapatkannya, dengan harapan membawanya kembali ke Uruk.</p>
+        <p><strong>Kehilangan Terakhir dan Penerimaan: Kembali ke Tembok Uruk</strong></p>
+        <p>Dalam perjalanan pulang, saat Gilgamesh mandi, seekor ular mencuri dan memakan tanaman ajaib itu, lalu merontokkan kulitnya dan menjadi muda kembali. Gilgamesh duduk dan menangis. Semua usahanya sia-sia. Dalam kepahitan itu, ia kembali ke Uruk. Saat mendekati kota, Gilgamesh menunjuk pada tembok megah yang dibangunnya. "Urshanabi, naiklah ke atas tembok Uruk dan berjalanlah mengelilinginya! Perhatikan fondasinya yang kokoh... Bukankah fondasinya diletakkan oleh Tujuh Orang Bijak?"</p>
+        <p><strong>Epilog: Gemersik Lempung yang Abadi</strong></p>
+        <p>Kata-kata ini adalah penegasan sekaligus penerimaan. Gilgamesh akhirnya mengerti. Keabadian jasmani adalah ilusi. Tapi ada keabadian lain: <strong>karya dan peradaban yang dibangun manusia</strong>. Namanya akan dikenang bukan karena dia hidup selamanya, tetapi karena dia membangun, bersahabat, berduka, dan akhirnya, menerima takdirnya sebagai manusia. Dia pulang bukan sebagai pemenang, tapi sebagai manusia yang lebih bijak, yang memahami bahwa makna hidup terletak pada apa yang kita tinggalkan. Kisah Gilgamesh sendiri telah mencapai keabadian, terus bertanya kepada kita bagaimana menemukan makna di hadapan bayang-bayang kematian. <em>Sha naqba imuru...</em> Dia yang telah melihat Segalanya, kini menjadi segalanya yang telah kita lihat tentang diri kita sendiri.</p>
+    </div>
+
+    <!-- Glosarium -->
+    <div class="glossary">
+        <h2>GLOSARIUM</h2>
+        <dl>
+            <dt>Cuneiform</dt>
+            <dd>([Kategori: Sejarah/Linguistik]) Aksara paku, salah satu bentuk tulisan paling awal yang digunakan oleh peradaban Mesopotamia kuno.</dd>
+            
+            <dt>Lugal</dt>
+            <dd>([Kategori: Sejarah/Politik]) Sebutan dalam bahasa Sumeria untuk "raja" atau "penguasa" sebuah negara-kota.</dd>
+            
+            <dt>Harimtu</dt>
+            <dd>([Kategori: Sejarah/Sosial]) Seorang pelacur kuil suci di Mesopotamia kuno, seringkali diasosiasikan dengan dewi cinta dan perang, Ishtar.</dd>
+
+            <dt>Melammu</dt>
+            <dd>([Kategori: Mitologi]) Sebuah konsep dalam mitologi Mesopotamia yang merujuk pada aura, pancaran, atau kemegahan ilahi yang menakutkan yang dimiliki oleh dewa dan pahlawan.</dd>
+
+            <dt>Utnapishtim</dt>
+            <dd>([Kategori: Mitologi]) Dalam Epos Gilgamesh, ia adalah satu-satunya manusia yang selamat dari Air Bah besar dan dianugerahi keabadian oleh para dewa.</dd>
+        </dl>
+    </div>
+</div>
+</body>
+</html>
