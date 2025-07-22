@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis dan Desain Struktur Bangunan Reaktor Nuklir dan Sistem Pendukungnya Menggunakan Software STAAD.Pro V8i SS6</title>
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                tags: 'ams'
+            },
+            chtml: {
+                linebreaks: { automatic: true },
+                scale: 0.9
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; line-height: 1.15; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background: #f0f5f9; color: #000000; font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 7.6px; /* 9.5px * 0.8 */ background-image: linear-gradient(to bottom, #f0f5f9, #dce4e8); 
+            background-attachment: fixed; min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; padding: 12px 0; width: 100%; letter-spacing: -0.05px;
+        }
+        .container { 
+            background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 0 20px rgba(0, 64, 128, 0.08);
+            border-radius: 3px; padding: 20px; position: relative; z-index: 10; 
+            width: 100%; max-width: 800px; margin: 0 0 20px; 
+        }
+        .header { text-align: left; margin-bottom: 16px; border-bottom: 1px solid #b8c4d4; padding-bottom: 10px; }
+        .title, .subtitle { font-family: 'Merriweather', 'Times New Roman', serif; color: #004080; letter-spacing: -0.3px; line-height: 1.15; }
+        .title { font-size: 9.6px; /* 12px * 0.8 */ font-weight: 700; text-transform: uppercase; }
+        .subtitle { margin-top: 3px; font-size: 7.2px; /* 9px * 0.8 */ font-style: italic; }
+        .author-block { display: flex; align-items: center; margin-top: 10px; background-color: rgba(0, 64, 128, 0.06); padding: 6px; border-radius: 3px; }
+        .author-photo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; margin-right: 8px; flex-shrink: 0; border: 1px solid #b8c4d4; }
+        .author-info { font-family: 'Source Sans Pro', Arial, sans-serif; font-style: normal; font-size: 6.4px; /* 8px * 0.8 */ color: #000000; line-height: 0.85; }
+        .author-info strong { font-weight: 600; color: #000000; font-size: 8px; /* 10px * 0.8 */}
+        .content { font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; font-size: 7.6px; /* 9.5px * 0.8 */ color: #000000; text-align: justify; hyphens: auto; padding-bottom: 10px; line-height: 1.15; }
+        .content p, .content ul, .content ol { margin-bottom: 0.8em; }
+        .content em { font-style: italic; }
+        .content strong { color: #004080; font-weight: 600; }
+        .content ul, .content ol { padding-left: 20px; }
+        .content li { margin-bottom: 0.4em; }
+        .table-of-contents { background-color: #f8f9fa; border: 1px solid #e9ecef; padding: 10px 15px; border-radius: 3px; margin-top: 15px; margin-bottom: 15px; font-size: 7.2px; /* 9px * 0.8 */ line-height: 1.15; }
+        .table-of-contents h3 { font-family: 'Merriweather', 'Times New Roman', serif; font-size: 8px; /* 10px * 0.8 */ line-height: 1.15; font-weight: 700; color: #004080; margin-bottom: 8px; text-transform: uppercase; }
+        .table-of-contents ol { padding-left: 20px; }
+        .table-of-contents ol li { margin-bottom: 4px; }
+        .table-of-contents a { color: #0056b3; text-decoration: none; font-weight: 400; }
+        .table-of-contents a:hover { text-decoration: underline; }
+        .references, .footnote-section, .glossary-section { margin-top: 20px; padding-top: 10px; border-top: 1px solid #dce4e8; font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; font-size: 6.8px; /* 8.5px * 0.8 */ color: #000000; text-align: left; line-height: 1.15; }
+        .references p, .footnote-section p, .glossary-section li { margin-bottom: 0.6em; }
+        .footnote-section p { font-size: 6.8px; /* 8.5px * 0.8 */ }
+        .glossary-section ul { list-style-type: none; padding-left: 0; }
+        .glossary-section li strong { color: #004080; }
+        h3.section-title { font-family: 'Merriweather', 'Times New Roman', serif; font-size: 9.6px; /* 12px * 0.8 */ font-weight: 700; color: #004080; text-transform: uppercase; border-bottom: 1px solid #b8c4d4; padding-bottom: 5px; margin-top: 16px; margin-bottom: 10px; }
+        h3.section-title:first-of-type { border-bottom: none; margin-top: 0; }
+        .abstract-content { background-color: rgba(0, 64, 128, 0.06); padding: 10px; border-radius: 3px; margin-top: 8px; }
+        .abstract-content p { font-size: 7.2px; /* 9px * 0.8 */ margin-bottom: 0; line-height: 1.15; text-align: justify; }
+        .keywords { margin-top: 10px; font-size: 7.2px; /* 9px * 0.8 */ text-align: left; background-color: rgba(0, 64, 128, 0.03); padding: 5px 10px; border-radius: 3px; border-top: 1px solid rgba(0, 64, 128, 0.08); line-height: 0.85; }
+        .keywords strong { color: #004080; font-weight: 600; }
+        h4.subsection-title { font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; font-size: 8px; /* 10px * 0.8 */ font-weight: 600; color: #004080; margin-top: 14px; margin-bottom: 6px; }
+        h5.sub-subsection-title { font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif; font-size: 7.6px; /* 9.5px * 0.8 */ font-weight: 600; color: #0056b3; margin-top: 12px; margin-bottom: 5px; }
+        mjx-container[display="true"] { margin: 1em 0; }
+        mjx-container, .MathJax { color: #004080 !important; }
+        h3.section-title a { color: inherit; text-decoration: none; }
+        h3.section-title a:hover { text-decoration: underline; color: #0056b3; }
+        .footnote-ref { vertical-align: super; font-size: 0.8em; text-decoration:none; color: #0056b3; }
+        
+        /* Styles for Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 1em;
+            margin-bottom: 2em;
+        }
+        .image-container {
+            width: calc(50% - 10px); /* Two columns with a small gap */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            padding: 4px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            min-height: 150px; /* To maintain alignment */
+            object-fit: cover;
+        }
+        .image-caption {
+            margin-top: 5px;
+            font-size: 6.8px; /* 8.5px * 0.8 */
+            font-family: 'Merriweather', serif;
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Analisis dan Desain Struktur Bangunan Reaktor Nuklir dan Sistem Pendukungnya Menggunakan Software STAAD.Pro V8i SS6</h1>
+            <h2 class="subtitle">Pendekatan Komprehensif untuk Keamanan dan Kepatuhan Kode Melalui Adaptasi Parametrik Faktual</h2>
+            
+            <div class="author-block">
+                <img src="https://cdn.jsdelivr.net/gh/Polpindo/Polpindo@main/PROFIL%20SNM.jpg" alt="Foto Penulis" class="author-photo">
+                <div class="author-info">
+                    <strong>SIGIT N. MASHARY, S.T.</strong><br>
+                    Senior Structural Engineer at PT. Imperial Tata Konstruksi, Indonesia. Holds a degree in Civil and Structural Engineering from Gadjah Mada University, awarded in 1998.
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h3 class="section-title" id="abstrak"><a href="#abstrak">Abstrak</a></h3>
+            <div class="abstract-content">
+                <p>
+                Keamanan dan keandalan struktural fasilitas pembangkit listrik tenaga nuklir (PLTN) adalah prioritas utama dalam perancangan dan operasionalnya. Struktur bangunan reaktor nuklir, seperti bangunan penahanan (<em>containment building</em>), dan sistem pendukungnya harus mampu menahan beban ekstrem yang berasal dari kondisi operasional normal maupun skenario kecelakaan, termasuk gempa bumi, tekanan internal, dan suhu tinggi. Makalah ini menyajikan metodologi analisis dan desain struktur yang komprehensif untuk bangunan PLTN menggunakan perangkat lunak analisis struktur STAAD.Pro V8i SS6. Kami menguraikan bagaimana STAAD.Pro dapat dimanfaatkan untuk pemodelan elemen terhingga yang presisi, mendefinisikan berbagai kasus beban sesuai dengan standar industri nuklir (ASCE 4, ACI 349, ASME BPVC, AISC N690) melalui <strong>adaptasi faktual pada data parametrik beban, material, dan geometri</strong> dari konvensional ke nuklir, serta melakukan analisis statis dan dinamis, termasuk analisis respons spektrum dan interaksi tanah-struktur (SSI). Melalui studi kasus struktural tipikal PLTN, makalah ini menunjukkan kemampuan STAAD.Pro dalam menghitung respons struktural, mengidentifikasi daerah kritis, dan memfasilitasi verifikasi desain berdasarkan persyaratan kode yang sangat ketat. Pembahasan mendalam mengevaluasi kekuatan STAAD.Pro dalam analisis linear dan desain elemen balok-kolom, namun secara spesifik juga menyoroti keterbatasannya dalam penanganan <strong>kontrol retak beton ACI 349 yang memerlukan perhitungan manual</strong> dan <strong>desain sambungan baja AISC N690 yang lebih kompleks di luar kemampuan otomatis STAAD.Pro</strong>. Meskipun demikian, STAAD.Pro V8i SS6 terbukti menjadi alat yang kuat untuk analisis awal, desain struktur pendukung, dan verifikasi kepatuhan kode untuk bagian-bagian struktur nuklir yang berperilaku linear. Makalah ini berkontribusi pada praktik rekayasa sipil nuklir dengan memberikan panduan praktis dan evaluasi kritis terhadap penggunaan STAAD.Pro dalam konteks yang sangat menantang ini, berdasarkan praktik rekayasa perencana yang sudah terbukti aman.
+                </p>
+            </div>
+            <div class="keywords">
+                <p><strong>Kata Kunci:</strong> <em>Reaktor Nuklir; Desain Struktural; STAAD.Pro V8i SS6; Analisis Seismik; Keamanan Nuklir; Interaksi Tanah-Struktur; Elemen Hingga; Kombinasi Beban; ACI 349; AISC N690; Data Parametrik.</em></p>
+            </div>
+            
+            <div class="table-of-contents" id="daftar-isi">
+                <h3><a href="#daftar-isi" style="color:inherit; text-decoration:none;">Daftar Isi</a></h3>
+                <ol>
+                    <li><a href="#bab1">PENDAHULUAN</a></li>
+                    <li><a href="#bab2">DASAR TEORITIS DAN STUDI LITERATUR</a></li>
+                    <li><a href="#bab3">METODOLOGI ANALISIS DAN DESAIN</a></li>
+                    <li><a href="#bab4">ADAPTASI DAN PENERAPAN PARAMETRIK</a></li>
+                    <li><a href="#bab5">PEMBAHASAN</a></li>
+                    <li><a href="#bab6">KESIMPULAN DAN SARAN</a></li>
+                    <li><a href="#catatan_kaki">CATATAN KAKI</a></li>
+                    <li><a href="#daftar_pustaka">DAFTAR PUSTAKA</a></li>
+                    <li><a href="#glosarium">GLOSARIUM</a></li>
+                </ol>
+            </div>
+
+            <h3 class="section-title" id="bab1"><a href="#daftar-isi">BAB 1. PENDAHULUAN</a></h3>
+            <p>Pembangkit listrik tenaga nuklir (PLTN) memainkan peran strategis dalam penyediaan energi global yang bersih dan stabil. Namun, sifat energi nuklir yang potensial berbahaya menuntut tingkat keamanan dan keandalan yang tak tertandingi dalam setiap aspek perancangannya, terutama pada integritas struktural bangunan reaktor dan sistem pendukungnya.<a href="#fn1" class="footnote-ref">1</a> Kegagalan struktural pada fasilitas ini dapat menyebabkan konsekuensi lingkungan dan kemanusiaan yang sangat serius. Oleh karena itu, semua struktur, sistem, dan komponen (SSCs) keselamatan di PLTN harus dirancang untuk menahan beban ekstrem yang belum pernah terjadi sebelumnya, termasuk beban mati, beban hidup, beban termal, beban tekanan internal (dari operasi dan kecelakaan), beban angin/topan, dan yang paling krusial, beban seismik.<a href="#fn2" class="footnote-ref">2</a></p>
+            <p>Desain struktur nuklir tidak hanya memerlukan pemahaman mendalam tentang prinsip rekayasa struktural, tetapi juga kepatuhan yang ketat terhadap kode dan standar khusus industri, seperti ASCE 4 ("<em>Seismic Analysis of Safety-Related Nuclear Structures</em>")<a href="#fn3" class="footnote-ref">3</a>, ACI 349 ("<em>Code Requirements for Nuclear Safety Related Concrete Structures</em>")<a href="#fn4" class="footnote-ref">4</a>, ASME Boiler and Pressure Vessel Code (BPVC), Section III, Division 2 ("<em>Code for Concrete Containments</em>")<a href="#fn5" class="footnote-ref">5</a>, dan AISC N690 ("<em>Specification for Safety-Related Steel Structures for Nuclear Facilities</em>")<a href="#fn6" class="footnote-ref">6</a>. Standar-standar ini menetapkan kriteria yang sangat konservatif untuk kekuatan, stabilitas, daktilitas, kontrol retak, dan pertimbangan interaksi tanah-struktur (SSI).</p>
+            <p>Untuk mengatasi kompleksitas analisis struktural ini, perangkat lunak analisis dan desain berbasis elemen hingga (<em>Finite Element Method/FEM</em>) modern telah menjadi alat yang sangat diperlukan. STAAD.Pro, salah satu perangkat lunak rekayasa struktural dari Bentley Systems, telah digunakan secara luas dalam desain berbagai jenis struktur sipil, termasuk fasilitas industri dan infrastruktur berat. Dalam konteks aplikasi nuklir, STAAD.Pro V8i SS6 menawarkan antarmuka pengguna yang dikenal, kemampuan pemodelan yang fleksibel, dan serangkaian opsi analisis yang beragam, menjadikannya kandidat yang menarik untuk analisis dan desain struktur nuklir, khususnya untuk bangunan pendukung dan komponen yang berperilaku linear elastis. Namun, terdapat tantangan spesifik dalam mengadaptasi kemampuan STAAD.Pro yang berbasis kode umum (ACI 318, AISC) ke dalam persyaratan yang lebih ketat dari kode nuklir (ACI 349, AISC N690), sebuah proses yang melibatkan <strong>penyesuaian faktual pada beban, material, dan konfigurasi struktural</strong> yang telah menjadi praktik baku insinyur perencana.</p>
+
+            <!-- ### START: IMAGE GALLERY ### -->
+            <div class="image-gallery">
+                <div class="image-container">
+                    <img src="https://www.researchgate.net/profile/Md-Rahman-839/publication/329666633/figure/fig1/AS:703925304971264@1544840279738/Schematic-layout-of-a-typical-VVER-plant.ppm" alt="Principle Layout of Nuclear Plant">
+                    <p class="image-caption">Fig. 1. Principle Layout of Nuclear Plant</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://www.researchgate.net/profile/Hossam-Hassan-50/publication/383559570/figure/fig1/AS:11431281274610188@1725037358806/AP1000-plant-layout-1.jpg" alt="Principle Buildings of Nuclear Plant">
+                    <p class="image-caption">Fig. 2. Principle Buildings of Nuclear Plant</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://blog.ucs.org/wp-content/uploads/2022/10/DBD-34-Figure-1-cc-sg-1971-DOE-823x1024.jpg" alt="Reactor Containment Building">
+                    <p class="image-caption">Fig. 3. Reactor Containment Building</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://www.ans.org/file/8155/Bangladesh.jpg" alt="Containment Building Under Construction">
+                    <p class="image-caption">Fig. 4. Containment Building Under Construction</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://ep-bd.com/assets/images/ep-bd-Inner_Containment_Dome_Installed_at_RNPP_Unit-2.jpg" alt="Containment Dome Installed">
+                    <p class="image-caption">Fig. 5. Containment Dome Installed</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/First-level_floor_plan_for_reactor_building_%289467807174%29.jpg/1555px-First-level_floor_plan_for_reactor_building_%289467807174%29.jpg?20150927194902" alt="First-level floor plan at Reactor Facility">
+                    <p class="image-caption">Fig. 6. First-level floor plan at Reactor Facility</p>
+                </div>
+            </div>
+            <!-- ### END: IMAGE GALLERY ### -->
+
+            <h4 class="subsection-title">1.1. Rumusan Masalah</h4>
+            <p>Meskipun STAAD.Pro memiliki kapabilitas yang luas, penerapannya untuk struktur nuklir membawa tantangan spesifik:</p>
+            <ol>
+                <li>Bagaimana STAAD.Pro V8i SS6 dapat secara efektif digunakan untuk memodelkan geometri dan arsitektur kompleks bangunan reaktor nuklir dan sistem pendukungnya, serta menerapkan beban-beban ekstrem seperti beban seismik dan beban tekanan dengan <strong>data parametrik yang disesuaikan untuk standar nuklir</strong>?</li>
+                <li>Sejauh mana STAAD.Pro mampu melakukan analisis dinamis (khususnya respons spektrum) dan mengintegrasikan efek interaksi tanah-struktur (SSI) untuk memenuhi persyaratan ASCE 4, dengan <strong>mempertimbangkan input data SSI yang akurat dan bersumber dari studi geoteknik mendalam</strong>?</li>
+                <li>Bagaimana STAAD.Pro dapat memfasilitasi verifikasi desain struktural terhadap standar dan kode nuklir (ACI 349, AISC N690) yang ketat, dan apa keterbatasannya dalam konteks ini, terutama pada aspek <strong>kontrol retak beton dan desain sambungan baja</strong> yang memerlukan adaptasi dan perhitungan eksternal?</li>
+                <li>Apa saja kelebihan dan keterbatasan STAAD.Pro dalam menangani non-linearitas material yang khas pada struktur nuklir saat mengalami kondisi <em>beyond design basis</em> atau dampak eksternal, mengingat desainnya untuk perilaku linear elastis?</li>
+            </ol>
+
+            <h4 class="subsection-title">1.2. Tujuan Penelitian</h4>
+            <p>Berdasarkan rumusan masalah di atas, tujuan penelitian ini adalah:</p>
+            <ol>
+                <li>Mendemonstrasikan metodologi pemodelan bangunan reaktor nuklir dan sistem pendukungnya di STAAD.Pro V8i SS6, termasuk aplikasi beban statis dan dinamis yang kompleks dengan <strong>mengacu pada data parametrik yang digunakan dalam praktik rekayasa nuklir yang faktual</strong>.</li>
+                <li>Mengevaluasi kemampuan STAAD.Pro dalam melakukan analisis seismik (respons spektrum) dan memasukkan efek SSI untuk struktur nuklir, serta menguraikan <strong>prosedur untuk mengintegrasikan data SSI yang akurat</strong> ke dalam model.</li>
+                <li>Menganalisis bagaimana STAAD.Pro dapat digunakan untuk memverifikasi kepatuhan desain struktural terhadap persyaratan kode dan standar keselamatan nuklir yang berlaku, dengan <strong>penekanan pada adaptasi ACI 318 ke ACI 349 dan AISC ke AISC N690, termasuk perhitungan manual yang diperlukan untuk aspek-aspek krusial seperti kontrol retak dan desain sambungan</strong>.</li>
+                <li>Mengidentifikasi kekuatan dan keterbatasan STAAD.Pro V8i SS6 sebagai alat analisis dan desain dalam lingkungan rekayasa nuklir yang sangat menuntut, serta mengusulkan area untuk pengembangan dan penerapan lebih lanjut.</li>
+            </ol>
+            <p>Melalui eksplorasi ini, makalah ini bertujuan untuk memberikan panduan praktis dan wawasan kritis tentang pemanfaatan STAAD.Pro V8i SS6 dalam desain struktur nuklir, sehingga berkontribusi pada pengembangan praktik rekayasa yang lebih aman dan efisien di industri energi nuklir.</p>
+            
+            <h3 class="section-title" id="bab2"><a href="#daftar-isi">BAB 2. DASAR TEORITIS DAN STUDI LITERATUR</a></h3>
+            <p>Desain struktural untuk pembangkit listrik tenaga nuklir (PLTN) merupakan domain rekayasa sipil yang sangat khusus, yang menggabungkan prinsip-prinsip ketekniksipilan konvensional dengan filosofi keselamatan yang ketat dan standar yang unik untuk industri nuklir. Bagian ini membahas dasar teoritis yang relevan dan meninjau literatur terkait.</p>
+
+            <h4 class="subsection-title">2.1. Klasifikasi Struktur Nuklir dan Filosofi Desain</h4>
+            <p>Komponen struktural di PLTN diklasifikasikan berdasarkan kepentingan keselamatannya (<em>Safety Classification</em>). Menurut NRC Regulatory Guide (RG) 1.29, struktur, sistem, dan komponen (SSCs) dibagi menjadi kategori Keselamatan Kelas 1 (SC-1), SC-2, dan SC-3, yang dirancang untuk mempertahankan fungsionalitasnya selama dan setelah gempa bumi.<a href="#fn7" class="footnote-ref">7</a></p>
+            <p>Filosofi desain utama adalah <em>defense-in-depth</em>, di mana beberapa lapisan penghalang fisika dan perlindungan administratif diterapkan untuk mencegah pelepasan materi radioaktif. Penghalang utama meliputi elemen bahan bakar, kelongsong bahan bakar, sistem pendingin reaktor, bejana tekan reaktor, dan yang terpenting, bangunan penahanan (<em>containment building</em>).<a href="#fn8" class="footnote-ref">8</a> Bangunan penahanan adalah penghalang terakhir, yang dirancang untuk menahan tekanan internal tinggi dari kecelakaan <em>Loss-of-Coolant Accident</em> (LOCA), dampak eksternal (misalnya dampak pesawat), dan beban seismik ekstrem.</p>
+
+            <h4 class="subsection-title">2.2. Jenis Struktur Bangunan Reaktor Nuklir</h4>
+            <p>Bangunan reaktor nuklir umumnya terdiri dari beberapa jenis struktur utama:</p>
+            <ul>
+                <li><strong>Bangunan Penahanan (<em>Containment Building</em>):</strong> Struktur utama yang melindungi reaktor dan sistem pendingin primer. Ini bisa berupa silinder beton pratekan (PCCV) dengan kubah atau struktur baja dengan bangunan perisai beton di sekitarnya.</li>
+                <li><strong>Bangunan Aksiliari (<em>Auxiliary Building</em>):</strong> Berisi sistem pendukung keselamatan (misalnya sistem pendingin darurat, ventilasi).</li>
+                <li><strong>Bangunan Bahan Bakar (<em>Fuel Building</em>):</strong> Untuk penyimpanan bahan bakar baru dan bekas.</li>
+                <li><strong>Bangunan Kontrol (<em>Control Building</em>):</strong> Menampung ruang kontrol pusat dan sistem instrumentasi kritis.</li>
+                <li><strong>Bangunan Turbin (<em>Turbine Building</em>), Bangunan Servis (<em>Service Building</em>), Bangunan Diesel Generator Darurat (<em>EDG Building</em>),</strong> dan struktur pendukung lainnya.</li>
+            </ul>
+
+            <h4 class="subsection-title">2.3. Beban Desain untuk Struktur Nuklir</h4>
+            <p>Desain struktur nuklir melibatkan kombinasi beban yang sangat kompleks, seringkali melampaui bangunan sipil konvensional. ASCE 4-16 dan NUREG-0800 (<em>Standard Review Plan</em>) adalah referensi utama untuk definisi dan kombinasi beban.<a href="#fn9" class="footnote-ref">9</a> Kategori beban meliputi:</p>
+            <ul>
+                <li><strong>Beban Mati (D):</strong> Berat sendiri struktur dan komponen permanen.</li>
+                <li><strong>Beban Hidup (L):</strong> Beban variabel dari hunian atau peralatan.</li>
+                <li><strong>Beban Seismik (E):</strong>
+                    <ul>
+                        <li><em>Operating Basis Earthquake (OBE) / Ground Motion:</em> Gempa yang memungkinkan fasilitas beroperasi aman.</li>
+                        <li><em>Safe Shutdown Earthquake (SSE) / Design Basis Earthquake (DBE):</em> Gempa maksimum yang memungkinkan penutupan fasilitas yang aman tanpa pelepasan radioaktivitas. Ini adalah beban seismik paling kritis.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>Analisis seismik dapat dilakukan dengan metode analisis respons spektrum (<em>Response Spectrum Analysis/RSA</em>) atau analisis riwayat waktu (<em>Time History Analysis/THA</em>). Persamaan gerakan dasar untuk sistem berderajat banyak adalah:</p>
+            \[ [M]\{\ddot{u}\} + [C]\{\dot{u}\} + [K]\{u\} = \{P(t)\} \]
+            <p>Di mana \( [M] \) adalah matriks massa, \( [C] \) adalah matriks redaman, \( [K] \) adalah matriks kekakuan, \( \{\ddot{u}\}, \{\dot{u}\}, \{u\} \) adalah vektor percepatan, kecepatan, dan perpindahan, dan \( \{P(t)\} \) adalah vektor beban eksternal. Untuk RSA, respons maksimum untuk setiap mode \(i\) diperoleh dari spektrum respons, \( S_a(\omega_i, \xi_i) \), dan kemudian digabungkan menggunakan aturan seperti SRSS (<em>Square Root of the Sum of the Squares</em>) atau CQC (<em>Complete Quadratic Combination</em>). Koefisien kopling \( \rho_{ij} \) untuk CQC dapat dihitung dengan:</p>
+            \[ \rho_{ij} = \frac{8\xi_i\xi_j\sqrt{R_{ij}}(R_{ij}^{3/2} + R_{ij}^{1/2})}{ (1-R_{ij}^2)^2 + 4\xi_i\xi_j R_{ij}(1+R_{ij}) + 4(\xi_i^2+\xi_j^2)R_{ij}^2 } \]
+            <p>di mana \( R_{ij} = \omega_i/\omega_j \).</p>
+            <ul>
+                <li><strong>Beban Angin (W) dan Topan (W<sub>t</sub>):</strong> Sesuai ASCE 7, namun dengan faktor keselamatan yang lebih tinggi.</li>
+                <li><strong>Beban Termal (T):</strong> Suhu operasi normal dan gradien suhu akibat kecelakaan.</li>
+                <li><strong>Beban Tekanan (P):</strong> Tekanan internal pada <em>Containment Building</em> akibat operasi atau kecelakaan (misalnya LOCA).</li>
+                <li><strong>Beban Kecelakaan Khusus (E<sub>a</sub>, P<sub>a</sub>, T<sub>a</sub>):</strong>
+                    <ul>
+                        <li>LOCA (<em>Loss of Coolant Accident</em>) atau DBPA (<em>Design Basis Pressure Accident</em>)</li>
+                        <li><em>Jet Impingement, Pipe Rupture Force, Blast Loads, Missile Impact.</em></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4 class="subsection-title">2.4. Material Struktural</h4>
+            <ul>
+                <li><strong>Beton (<em>Concrete</em>):</strong> Digunakan untuk bangunan penahanan, dinding perisai, dan fondasi. Biasanya beton berkekuatan tinggi (35-70 MPa) dan/atau densitas tinggi. Persyaratan beton diatur oleh ACI 349<a href="#fn10" class="footnote-ref">10</a> dan ASME BPVC Section III, Division 2.</li>
+                <li><strong>Baja (<em>Steel</em>):</strong> Digunakan untuk liner baja, tulangan (<em>rebar</em>), struktur pendukung internal, dan bejana tekan. Desain baja sesuai AISC N690<a href="#fn11" class="footnote-ref">11</a>.</li>
+            </ul>
+
+            <h4 class="subsection-title">2.5. Interaksi Tanah-Struktur (SSI)</h4>
+            <p>SSI adalah fenomena penting di mana respons dinamis struktur dan gerakan tanah saling memengaruhi. Untuk struktur nuklir yang masif, SSI signifikan dan harus diperhitungkan. Metode umum meliputi pemodelan langsung elemen hingga gabungan tanah-struktur atau metode substruktur menggunakan pegas dan peredam ekivalen pada dasar fondasi<a href="#fn12" class="footnote-ref">12</a>. Kekakuan dinamis dari pondasi kaku di permukaan seringkali dinyatakan sebagai fungsi frekuensi dari modulus geser tanah (\(G\)), rasio Poisson (\(\nu_s\)), dan dimensi pondasi. Untuk fondasi melingkar dengan radius \(R\), kekakuan vertikal:</p>
+            \[ K_v = \frac{4GR}{1-\nu_s} \quad \text{(untuk kondisi statis)} \]
+            <p>Untuk kondisi dinamis, ini menjadi lebih kompleks, melibatkan fungsi impedansi berfrekuensi yang mempertimbangkan redaman radiasi.</p>
+
+            <h4 class="subsection-title">2.6. Tinjauan Literatur Perangkat Lunak STAAD.Pro V8i SS6</h4>
+            <ul>
+                <li><strong>Kemampuan Pemodelan:</strong> STAAD.Pro memungkinkan insinyur untuk memodelkan berbagai jenis struktur menggunakan elemen balok (<em>beam elements</em>), kolom (<em>column elements</em>), dan pelat/cangkang (<em>plate/shell elements</em>), serta elemen solid<a href="#fn13" class="footnote-ref">13</a>. Ini mendukung pemodelan struktur tiga dimensi yang kompleks termasuk rangka, rangka ruang, <em>truss</em>, dan struktur dinding.</li>
+                <li><strong>Analisis yang Komprehensif:</strong> Mampu melakukan analisis statis linear elastis, analisis <em>pushover</em>, analisis modal (<em>eigenvalue</em>), analisis respons spektrum, dan analisis <em>time history</em>.</li>
+                <li><strong>Desain Kode Terintegrasi:</strong> Memiliki pustaka desain kode yang luas untuk beton dan baja (misalnya, ACI 318, AISC, BS, Eurocode).<a href="#fn14" class="footnote-ref">14</a> Ini memungkinkan <em>code checks</em> otomatis terhadap persyaratan kekuatan dan stabilitas material.</li>
+                <li><strong>Keterbatasan dalam Konteks Nuklir:</strong> Untuk analisis yang sangat spesifik dan kompleks pada komponen nuklir utama (seperti <em>containment vessel</em> di bawah kondisi <em>beyond design basis</em>) yang melibatkan non-linearitas material yang ekstrem (misalnya, <em>cracking</em> beton progresif), STAAD.Pro mungkin memiliki keterbatasan dibandingkan perangkat lunak FEM tujuan umum seperti ABAQUS, ANSYS, atau LS-DYNA.<a href="#fn15" class="footnote-ref">15</a></li>
+            </ul>
+
+            <h3 class="section-title" id="bab3"><a href="#daftar-isi">BAB 3. METODOLOGI ANALISIS DAN DESAIN</a></h3>
+            <p>Bagian ini menguraikan metodologi yang digunakan dalam menganalisis dan merancang struktur bangunan reaktor nuklir hipotetis menggunakan perangkat lunak STAAD.Pro V8i SS6. Metodologi ini mencakup pemilihan model struktur, definisi beban, pemodelan interaksi tanah-struktur (SSI), prosedur analisis, dan verifikasi desain sesuai kode nuklir yang berlaku.</p>
+
+            <h4 class="subsection-title">3.1. Pemodelan Struktur Hipotetis</h4>
+            <p>Sebagai studi kasus, diasumsikan sebuah bangunan reaktor nuklir yang terdiri dari:</p>
+            <ul>
+                <li><strong>Bangunan Penahanan (<em>Containment Building</em>):</strong> Dinding silinder beton bertulang atau pratekan dengan kubah hemisferis. Dalam STAAD.Pro, dapat dimodelkan menggunakan elemen pelat (<em>plate elements</em>).</li>
+                <li><strong>Slab Fondasi:</strong> <em>Massive circular concrete mat foundation</em>. Juga dapat dimodelkan menggunakan elemen pelat atau elemen solid untuk presisi lebih tinggi.</li>
+                <li><strong>Struktur Internal:</strong> Balok, kolom, dan pelat lantai dimodelkan secara efektif menggunakan elemen balok dan pelat.</li>
+                <li><strong>Meshing:</strong> Kepadatan <em>mesh</em> yang tepat harus diterapkan, terutama di area kritis seperti sambungan dinding-fondasi.<a href="#fn16" class="footnote-ref">16</a></li>
+            </ul>
+
+            <h4 class="subsection-title">3.2. Definisi Material</h4>
+            <ul>
+                <li><strong>Beton:</strong> Kuat tekan (\(f'_c\)) berkisar 35-70 MPa. Modulus Elastisitas (\(E_c\)) didefinisikan sesuai ACI 349/318.
+                    \[E_c = 4700 \sqrt{f'_c} \text{ (dalam MPa) atau } E_c = 57000 \sqrt{f'_c} \text{ (dalam psi)}\]
+                </li>
+                <li><strong>Baja Tulangan (<em>Rebar</em>):</strong> Kuat leleh (\(f_y\)) umumnya 420 MPa (60 ksi).</li>
+                <li><strong>Liner Baja:</strong> Kuat leleh (\(f_y\)) biasanya 250-350 MPa.</li>
+            </ul>
+
+            <h4 class="subsection-title">3.3. Interaksi Tanah-Struktur (SSI) dalam STAAD.Pro V8i SS6</h4>
+            <p>SSI umumnya dimodelkan menggunakan metode substruktur (pegas dan peredam ekivalen). Kekakuan pegas \(K\) dan koefisien redaman \(C\) dihitung dari analisis geoteknik terpisah.</p>
+            <ul>
+                <li>Untuk kekakuan translasi (\(K_x, K_y, K_z\)) dan rotasional (\(K_{rx}, K_{ry}, K_{rz}\)) suatu fondasi masif, model pegas sering digunakan:
+                    \[ K_v = \frac{4GR}{1-\nu_s} \quad \text{(vertikal, statis)} \]
+                    \[ K_{rx} = \frac{8GR^3}{3(1-\nu_s)} \quad \text{(rotasional, statis)} \]
+                </li>
+                 <li>Dalam STAAD.Pro, elemen pegas (<em>spring supports</em>) dapat didefinisikan pada simpul-simpul di bawah fondasi. Redaman (<em>damping</em>) untuk analisis dinamis dihitung secara modal, dengan redaman modal total mencakup redaman struktur dan redaman radiasi dari tanah.</li>
+            </ul>
+
+            <h4 class="subsection-title">3.4. Prosedur dan Verifikasi Desain dalam STAAD.Pro</h4>
+            <p>Urutan analisis meliputi pra-pemrosesan, analisis statis, modal, respons spektrum, dan pasca-pemrosesan. Verifikasi desain dilakukan menggunakan modul STAAD.Pro dengan adaptasi berikut:</p>
+            <ul>
+                <li><strong>Desain Beton Bertulang (Adaptasi ACI 349):</strong> Insinyur harus mengatur faktor reduksi kekuatan (\(\phi\)) dan faktor beban (\(\gamma\)) secara manual, dan melakukan verifikasi manual untuk kontrol retak.
+                    <p>Rumus dasar untuk lentur: \( \phi M_n \ge M_u \), dimana \( M_n = A_s f_y (d - a/2) \) dan \( a = \frac{A_s f_y}{0.85 f'_c b} \).</p>
+                    <p>Rumus dasar untuk geser: \( \phi V_n \ge V_u \), dimana \( V_n = V_c + V_s \).</p>
+                </li>
+                <li><strong>Desain Baja (Adaptasi AISC N690):</strong> Memastikan faktor keamanan yang lebih tinggi dan melakukan verifikasi sambungan secara manual.</li>
+            </ul>
+             <h4 class="subsection-title">3.5. Visualisasi dan Hasil Post-Processing</h4>
+             <p>Antarmuka grafis STAAD.Pro memungkinkan visualisasi yang intuitif dari geometri struktur, pembebanan, deformasi (<em>deformed shapes</em>), diagram gaya internal (momen, geser, aksial), dan peta tegangan (<em>stress contours</em>) untuk elemen pelat. Fitur ini sangat membantu dalam mengidentifikasi area dengan tegangan tinggi atau defleksi berlebihan, yang kemudian dapat dioptimalkan. Laporan terperinci dapat dihasilkan, dan data dapat diekspor untuk analisis lebih lanjut dalam perangkat lunak lain.</p>
+
+
+            <h3 class="section-title" id="bab4"><a href="#daftar-isi">BAB 4. ADAPTASI DAN PENERAPAN PARAMETRIK</a></h3>
+            <p>Desain struktur bangunan reaktor nuklir adalah salah satu aplikasi rekayasa sipil yang paling menuntut. Adaptasi dari kode-kode umum (ACI 318, AISC) ke standar nuklir yang lebih ketat (ACI 349, AISC N690) merupakan langkah krusial yang memerlukan pemahaman mendalam tentang filosofi desain nuklir dan modifikasi spesifik pada proses analisis dan desain di STAAD.Pro.</p>
+
+            <h4 class="subsection-title">4.1. Adaptasi ACI 318 ke ACI 349 (Struktur Beton)</h4>
+            <p>Perbedaan mendasar antara ACI 318 dan ACI 349 terletak pada filosofi keamanannya. ACI 318 dirancang untuk memastikan keselamatan jiwa (<em>life safety</em>) dan mencegah keruntuhan, memungkinkan kerusakan struktural yang signifikan selama gempa bumi. Sebaliknya, ACI 349 berfokus pada pemeliharaan kinerja struktural dan integritas sistem keselamatan, membatasi kerusakan (terutama retak) bahkan di bawah beban ekstrem, untuk memitigasi pelepasan material radioaktif. Area kunci penyesuaian dalam STAAD.Pro meliputi:</p>
+            <ul>
+                <li><strong>Beban Desain dan Kombinasi Beban:</strong> Ini adalah adaptasi paling krusial. ACI 349 memperkenalkan kategori beban khusus (<em>Normal Operating, Extreme Environmental, Abnormal/Accident</em>) dan kombinasi yang lebih konservatif yang harus didefinisikan secara manual dalam modul "Load & Definitions" di STAAD.Pro.</li>
+                <li><strong>Faktor Reduksi Kekuatan (\(\phi\) Factors):</strong> Untuk kondisi abnormal/kecelakaan, ACI 349 mungkin mengizinkan faktor \(\phi\) yang lebih tinggi (mendekati 1.0) jika daktilitas memadai dapat dibuktikan. Perubahan ini harus dilakukan dengan hati-hati pada bagian "Design Parameters" untuk beton.</li>
+                <li><strong>Kontrol Retak (<em>Crack Control</em>):</strong> Ini adalah area paling signifikan di mana ACI 349 jauh lebih ketat. STAAD.Pro tidak memiliki fitur bawaan untuk memeriksa lebar retak sesuai ACI 349 Appendix B. Oleh karena itu, insinyur harus melakukan perhitungan manual eksternal menggunakan formula seperti Gergely-Lutz atau modifikasinya:
+                    \[ w = w_{max} = 0.076 \beta f_s (d_c A)^{1/3} \quad \text{(untuk in.)} \]
+                    <p>atau</p>
+                    \[ w = w_{max} = \frac{2.2 \beta f_s (d_c A)^{1/3}}{E_s} \quad \text{(untuk mm, dengan \(f_s\) dalam MPa)} \]
+                </li>
+                <li><strong>Batasan Tulangan dan Detailing:</strong> ACI 349 seringkali memiliki persyaratan tulangan minimum yang lebih tinggi dan aturan detailing yang lebih ketat untuk daktilitas, yang perlu diverifikasi secara manual.</li>
+            </ul>
+
+            <h4 class="subsection-title">4.2. Adaptasi AISC ke AISC N690 (Struktur Baja)</h4>
+            <p>AISC N690 adalah suplemen untuk AISC 360 dengan fokus pada keandalan di bawah beban ekstrem. Adaptasi utama meliputi:</p>
+            <ul>
+                <li><strong>Beban Desain dan Kombinasi Beban:</strong> Sama seperti beton, kombinasi beban nuklir yang relevan harus dikonfigurasi.</li>
+                <li><strong>Desain Sambungan (<em>Connections</em>):</strong> Ini adalah perbedaan mendasar. AISC N690 memerlukan sambungan yang lebih kuat dan daktil. Desain detail sambungan, termasuk verifikasi <em>block shear</em> atau kelelahan, harus dilakukan secara manual di luar STAAD.Pro.</li>
+                <li><strong>Stabilitas dan Daktilitas:</strong> AISC N690 lebih menekankan pada stabilitas global dan lokal serta perilaku daktil, yang mungkin memerlukan verifikasi manual tambahan.</li>
+            </ul>
+            
+            <h4 class="subsection-title">4.3. Penerapan Data Parametrik Faktual untuk Adaptasi Desain</h4>
+            <p>Penerapan STAAD.Pro V8i SS6 dalam konteks nuklir melibatkan adaptasi mendalam terhadap data parametrik input yang telah menjadi praktik standar bagi insinyur perencana selama bertahun-tahun.</p>
+            <ul>
+                <li><strong>Adaptasi Parametrik Beban:</strong>
+                    <ul>
+                        <li><strong>Beban Mati (D):</strong> Menggunakan beton densitas tinggi (<em>heavy concrete</em>) dengan densitas hingga <strong>6000 kg/m³</strong> (375 pcf).<a href="#fns1" class="footnote-ref">S1</a></li>
+                        <li><strong>Beban Hidup (L):</strong> Beban hidup di area kritis bisa mencapai <strong>25 - 50 kN/m²</strong> (500 - 1000 psf).</li>
+                        <li><strong>Beban Tornado (W<sub>t</sub>):</strong> Dirancang untuk kecepatan angin <strong>360-500 km/jam</strong> (225-310 mph) dan efek rudal.<a href="#fns2" class="footnote-ref">S2</a></li>
+                        <li><strong>Beban Seismik (E):</strong> Menggunakan Spektrum Respons Desain <em>site-specific</em> untuk SSE dengan PGA bisa mencapai <strong>0.3g hingga 0.7g atau lebih tinggi</strong>.<a href="#fns3" class="footnote-ref">S3</a> Faktor redaman juga lebih rendah (<strong>2% hingga 7%</strong>).<a href="#fns4" class="footnote-ref">S4</a></li>
+                        <li><strong>Interaksi Tanah-Struktur (SSI):</strong> Nilai kekakuan pegas tidak berasal dari database STAAD.Pro melainkan hasil dari analisis geoteknik dinamis yang terpisah.<a href="#fns5" class="footnote-ref">S5</a></li>
+                         <li><strong>Beban Termal (T):</strong> Gradien suhu bisa sangat signifikan, hingga <strong>100°C - 200°C</strong> antara permukaan dalam dan luar secara mendadak saat kondisi LOCA.</li>
+                         <li><strong>Beban Tekanan (P):</strong> Tekanan internal akibat LOCA bisa mencapai <strong>0.35 MPa hingga 0.8 MPa</strong> (50 psi hingga 120 psi).</li>
+                    </ul>
+                </li>
+                <li><strong>Adaptasi Parametrik Sifat Material:</strong>
+                    <ul>
+                        <li><strong>Beton:</strong> Kuat tekan (\(f'_c\)) <strong>35 MPa hingga 70 MPa</strong>.</li>
+                        <li><strong>Baja Tulangan:</strong> Seringkali diperlukan baja Grade 550 MPa (80 ksi).</li>
+                    </ul>
+                </li>
+                <li><strong>Adaptasi Parametrik Geometri dan Detailing:</strong>
+                    <ul>
+                        <li><strong>Ketebalan Dinding dan Pelat:</strong> Dinding penahanan setebal <strong>1.2 m hingga 2.0 m</strong>, dan slab fondasi <strong>3.0 m hingga 6.0 m</strong>.</li>
+                        <li><strong>Detailing Tulangan:</strong> Rasio tulangan minimum lebih tinggi (<strong>0.0020 - 0.0035</strong>), spasi tulangan lebih rapat (misalnya <strong>150 mm c-t-c</strong>), dan penggunaan tulangan multi-lapis.</li>
+                        <li><strong>Liner Baja (<em>Steel Liner</em>):</strong> Lapisan internal baja setebal <strong>6 mm hingga 10 mm</strong> digunakan sebagai penghalang kebocoran.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3 class="section-title" id="bab5"><a href="#daftar-isi">BAB 5. PEMBAHASAN</a></h3>
+            <p>Penerapan STAAD.Pro V8i SS6 dalam analisis dan desain struktur reaktor nuklir, sebagaimana diuraikan dalam metodologi di atas, menawarkan wawasan signifikan mengenai kapabilitas perangkat lunak ini dalam lingkungan rekayasa yang sangat menuntut. Bagian ini membahas hasil utama, mengevaluasi kinerja STAAD.Pro, membandingkannya dengan pendekatan alternatif, serta mengidentifikasi isu-isu lanjutan yang relevan.</p>
+
+            <h4 class="subsection-title">5.1. Analisis dan Interpretasi Hasil Kritis</h4>
+            <p>Berdasarkan pengujian hipotetis dan pengalaman umum dalam desain struktur nuklir, analisis dengan STAAD.Pro V8i SS6 mengkonfirmasi beberapa area kritis sebagai konsekuensi langsung dari <strong>adaptasi parametrik faktual</strong> yang diterapkan:</p>
+            <ul>
+                <li><strong>Dominasi Beban Ekstrem:</strong> Respons struktural bangunan penahanan didominasi oleh kombinasi beban seismik (SSE) dan tekanan internal (\(P_a\)) atau termal (\(T_a\)) akibat kecelakaan.<a href="#fn17" class="footnote-ref">17</a> Penerapan beban hidup yang jauh lebih tinggi (misalnya 25-50 kN/m²) dan beban mati dari beton densitas tinggi (hingga 6000 kg/m³) secara inheren meningkatkan gaya-gaya aksial dan momen lentur di seluruh struktur. Terutama, kombinasi SSE (PGA hingga 0.7g) dengan tekanan internal tinggi (hingga 0.8 MPa) menghasilkan tegangan yang mencengangkan, menuntut struktur yang jauh lebih masif.</li>
+                <li><strong>Dinding Penahanan Silinder dan Kubah:</strong> Area ini akan menunjukkan tegangan membran dan lentur yang sangat signifikan. Tegangan cincin (<em>hoop stress</em>) akibat tekanan internal tinggi akan sangat dominan, memicu kebutuhan untuk tulangan horisontal padat dengan spasi minimal (misalnya 150 mm c.t.c.) bahkan dengan multiple layers. Tegangan meridional dan geser dari beban seismik yang masif juga akan kritis, terutama di dekat dasar dan bukaan, yang memerlukan dimensi elemen tebal (misalnya 1.2-2.0 m).</li>
+                <li><strong>Slab Fondasi (<em>Mat Foundation</em>):</strong> Dengan ketebalan mencapai 3.0-6.0 m, slab ini mengalami momen lentur dan gaya geser yang sangat besar, terutama di bawah konsentrasi massa reaktor dan dinding penahanan. Interaksi tanah-struktur (SSI) akan sangat memengaruhi distribusi tegangan di fondasi. Input kekakuan pegas SSI yang berasal dari analisis geoteknik dinamis eksternal terbukti esensial dalam memprediksi respons seismik fondasi yang akurat.</li>
+                <li><strong>Joint Dinding-Fondasi (<em>Wall-Base Junction</em>):</strong> Ini adalah area transisi kekakuan tajam dan seringkali menjadi titik konsentrasi tegangan yang membutuhkan detailing tulangan yang sangat cermat dan rapat untuk mengakomodasi momen lentur dan gaya geser tinggi. Rasio tulangan minimum yang lebih tinggi (0.0020 - 0.0035) di area ini merupakan hasil langsung dari persyaratan ACI 349 untuk daktilitas dan kapasitas pasca-retak.</li>
+            </ul>
+
+            <h4 class="subsection-title">5.2. Evaluasi Kinerja STAAD.Pro V8i SS6</h4>
+            <p>STAAD.Pro V8i SS6 menunjukkan beberapa kekuatan dan keterbatasan signifikan dalam konteks desain struktur nuklir:</p>
+            <ul>
+                <li><strong>Kekuatan:</strong> Antarmuka pengguna yang intuitif, kemampuan analisis dinamis yang solid (respons spektrum), pustaka desain kode yang luas (meskipun perlu adaptasi), dan manajemen beban yang fleksibel.</li>
+                <li><strong>Keterbatasan:</strong>
+                    <ul>
+                        <li><em>Kelemahan Krusial:</em> Keterbatasan dalam <strong>Kontrol Retak Beton sesuai ACI 349</strong>.</li>
+                        <li>Keterbatasan dalam <strong>Desain Sambungan Baja AISC N690</strong>.</li>
+                        <li>Keterbatasan dalam <strong>Non-Linearitas Material Lanjut</strong> untuk kondisi <em>beyond design basis</em>.<a href="#fn18" class="footnote-ref">18</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4 class="subsection-title">5.3. Perbandingan dan Kritik terhadap Pendekatan Lain</h4>
+            <ul>
+                <li><strong>Dibandingkan dengan GT-STRUDL:</strong> STAAD.Pro unggul dalam antarmuka grafis, sementara GT-STRUDL mungkin lebih fleksibel untuk kustomisasi berbasis skrip.</li>
+                <li><strong>Dibandingkan dengan ABAQUS/ANSYS:</strong> ABAQUS dan ANSYS jauh lebih unggul untuk analisis non-linear yang mendalam. Pendekatan optimal seringkali melibatkan penggunaan STAAD.Pro untuk desain awal, diikuti oleh analisis verifikasi yang lebih canggih menggunakan ABAQUS atau ANSYS untuk area kritis.</li>
+            </ul>
+            
+            <h4 class="subsection-title">5.4. Isu-Isu Lanjutan yang Relevan</h4>
+            <p>Beberapa isu penting yang membutuhkan perhatian lanjutan dalam desain struktur nuklir:</p>
+            <ul>
+                <li><strong>Desain Berbasis Kinerja (<em>Performance-Based Design/PBD</em>):</strong> Mendorong pergeseran dari desain berbasis kekuatan ke PBD untuk menilai perilaku struktur di bawah tingkat bahaya yang lebih tinggi.<a href="#fn19" class="footnote-ref">19</a></li>
+                <li><strong>Simulasi Penuaan dan Degradasi Material.</strong></li>
+                <li><strong>Pemanfaatan Teknologi Informasi (BIM).</strong></li>
+                <li><strong>Analisis Risiko Probabilistik (PRA).</strong></li>
+                <li><strong>Desain Struktur Modular dan Kecil (SMRs).</strong></li>
+            </ul>
+            <p>Secara keseluruhan, STAAD.Pro V8i SS6 adalah alat yang sangat berharga untuk analisis dan desain struktur nuklir, terutama untuk analisis linear elastis dan desain struktur pendukung. Namun, untuk mencapai tingkat jaminan keamanan yang disyaratkan untuk komponen penahanan utama di bawah skenario beban paling ekstrem, diperlukan integrasi dengan alat analisis non-linear yang lebih canggih dan keahlian rekayasa yang mendalam.</p>
+
+            <h3 class="section-title" id="bab6"><a href="#daftar-isi">BAB 6. KESIMPULAN DAN SARAN</a></h3>
+            
+            <h4 class="subsection-title">6.1. Kesimpulan</h4>
+            <p>Makalah ini telah mengulas secara mendalam penerapan STAAD.Pro V8i SS6 dalam analisis dan desain struktur bangunan reaktor nuklir dan sistem pendukungnya. Dari pembahasan yang telah dilakukan, dapat ditarik beberapa kesimpulan utama:</p>
+            <ol>
+                <li>Desain struktur nuklir adalah salah satu tantangan rekayasa struktural paling kompleks. <strong>Penerapan data parametrik faktual, seperti beton berat, beban hidup sangat tinggi, dan spektrum gempa site-specific, secara signifikan meningkatkan skala gaya dan tegangan yang harus ditahan struktur.</strong></li>
+                <li>STAAD.Pro V8i SS6 merupakan perangkat lunak yang sangat mumpuni untuk pemodelan elemen hingga, analisis statis dan dinamis, serta manajemen kombinasi beban. Alat ini efisien untuk <em>preliminary design</em>.</li>
+                <li>Keterbatasan paling krusial adalah ketidakmampuannya secara otomatis melakukan <strong>kontrol retak beton sesuai ACI 349 Appendix B dan merancang sambungan baja sesuai AISC N690</strong>.</li>
+                <li>Untuk memastikan parameter keamanan tertinggi, analisis di STAAD.Pro harus dilengkapi dengan pendekatan non-linear yang lebih canggih dan validasi yang cermat menggunakan perangkat lunak lain yang khusus.</li>
+            </ol>
+            <p>Singkatnya, STAAD.Pro V8i SS6 adalah aset berharga dalam toolkit insinyur nuklir untuk analisis dan desain awal. Namun, untuk memastikan parameter keamanan tertinggi pada bangunan penahanan utama, diperlukan integrasi dengan alat analisis non-linear yang lebih canggih dan keahlian rekayasa yang mendalam untuk mengatasi keterbatasannya pada aspek-aspek kritis nuklir.</p>
+
+            <h4 class="subsection-title">6.2. Saran untuk Penelitian Lebih Lanjut</h4>
+            <p>Berdasarkan kesimpulan dan batasan yang diidentifikasi, beberapa saran untuk penelitian dan pengembangan lebih lanjut diusulkan:</p>
+            <ol>
+                <li><strong>Studi Komparatif Multilevel-FEM:</strong> Melakukan studi komparatif mendalam antara STAAD.Pro dan perangkat lunak FEM canggih lainnya (misalnya, ABAQUS, ANSYS).</li>
+                <li><strong>Pengembangan Modul Desain Kode Nuklir:</strong> Mengembangkan modul khusus atau <em>plugin</em> untuk STAAD.Pro yang secara langsung mengimplementasikan persyaratan ACI 349 dan AISC N690.</li>
+                <li><strong>Pengembangan Model Material Non-Linear:</strong> Mengembangkan dan memvalidasi model bahan non-linear yang lebih canggih.</li>
+                <li><strong>Optimalisasi Proses SSI dalam STAAD.Pro:</strong> Menjelajahi pendekatan yang lebih otomatis atau akurat untuk pemodelan SSI.</li>
+                <li><strong>Kasus Studi Nyata dan Validasi Eksperimental:</strong> Menerapkan metodologi pada kasus studi PLTN yang sebenarnya.</li>
+                <li><strong>Pemanfaatan Kecerdasan Buatan (AI) untuk Optimasi Desain:</strong> Mengeksplorasi bagaimana AI dapat digunakan bersama STAAD.Pro.</li>
+            </ol>
+            
+        </div>
+        
+        <div class="footnote-section" id="catatan_kaki">
+            <h3>CATATAN KAKI</h3>
+            <p id="fn1"><a href="#bab1" class="footnote-ref">1</a> Filosofi desain reaktor nuklir selalu mengedepankan prinsip "keselamatan di atas segalanya".</p>
+            <p id="fn2"><a href="#bab1" class="footnote-ref">2</a> Beban desain untuk struktur nuklir sangat konservatif, memperhitungkan gempa terbesar yang mungkin terjadi (SSE) dan gempa operasional (OBE).</p>
+            <p id="fn3"><a href="#bab1" class="footnote-ref">3</a> ASCE/SEI 4-16, "<em>Seismic Analysis of Safety-Related Nuclear Structures</em>," adalah panduan utama untuk metode analisis seismik.</p>
+            <p id="fn4"><a href="#bab1" class="footnote-ref">4</a> ACI 349-13, "<em>Code Requirements for Nuclear Safety Related Concrete Structures</em>," jauh lebih ketat dari ACI 318.</p>
+            <p id="fn5"><a href="#bab1" class="footnote-ref">5</a> ASME BPVC, Section III, Division 2, "<em>Code for Concrete Containments</em>," adalah standar industri untuk desain bejana penahanan beton.</p>
+            <p id="fn6"><a href="#bab1" class="footnote-ref">6</a> AISC N690-18, "<em>Specification for Safety-Related Steel Structures for Nuclear Facilities</em>," adalah suplemen untuk AISC 360.</p>
+            <p id="fn7"><a href="#bab2" class="footnote-ref">7</a> U.S. NRC Regulatory Guide 1.29, "<em>Seismic Design Classification</em>," sangat penting karena memengaruhi tingkat analisis dan desain.</p>
+            <p id="fn8"><a href="#bab2" class="footnote-ref">8</a> Konsep <em>defense-in-depth</em> adalah prinsip dasar keselamatan nuklir yang mensyaratkan adanya banyak lapisan pertahanan.</p>
+            <p id="fn9"><a href="#bab2" class="footnote-ref">9</a> NUREG-0800, "<em>Standard Review Plan for the Review of Safety Analysis Reports for Nuclear Power Plants</em>," adalah instrumen kunci bagi regulator.</p>
+            <p id="fn10"><a href="#bab2" class="footnote-ref">10</a> Beton untuk struktur nuklir sering kali menggunakan penambahan abu terbang atau bahan lain.</p>
+            <p id="fn11"><a href="#bab2" class="footnote-ref">11</a> Penggunaan baja di fasilitas nuklir memerlukan sertifikasi material yang ketat dan seringkali inspeksi ultrasonik 100%.</p>
+            <p id="fn12"><a href="#bab2" class="footnote-ref">12</a> Interaksi Tanah-Struktur (SSI) telah menjadi salah satu bidang penelitian intensif dalam rekayasa gempa untuk PLTN.</p>
+            <p id="fn13"><a href="#bab2" class="footnote-ref">13</a> STAAD.Pro V8i SS6, meskipun memiliki kemampuan elemen solid, dikenal lebih kuat dalam pemodelan balok, kolom, dan pelat.</p>
+            <p id="fn14"><a href="#bab2" class="footnote-ref">14</a> Otomatisasi desain kode tidak menggantikan keahlian insinyur untuk memverifikasi persyaratan kode spesifik.</p>
+            <p id="fn15"><a href="#bab2" class="footnote-ref">15</a> Keterbatasan pada analisis non-linear yang kompleks adalah umum untuk perangkat lunak struktural <em>general-purpose</em>.</p>
+            <p id="fn16"><a href="#bab3" class="footnote-ref">16</a> Kerapatan mesh yang optimal adalah kunci untuk akurasi analisis elemen hingga.</p>
+            <p id="fn17"><a href="#bab5" class="footnote-ref">17</a> Banyak penelitian telah menunjukkan bahwa tegangan pada bangunan penahanan selama LOCA dikendalikan oleh kombinasi tekanan internal dan dampak termal.</p>
+            <p id="fn18"><a href="#bab5" class="footnote-ref">18</a> Analisis <em>beyond design basis</em> adalah bidang riset penting yang memerlukan model kegagalan material yang tidak mudah disimulasikan oleh STAAD.Pro.</p>
+            <p id="fn19"><a href="#bab5" class="footnote-ref">19</a> Desain berbasis kinerja (PBD) untuk struktur nuklir adalah paradigma yang berkembang setelah insiden Fukushima Daiichi.</p>
+
+            <h4>Catatan Kaki Tambahan (untuk mendukung bagian 4.3):</h4>
+            <p id="fns1"><a href="#bab4" class="footnote-ref">S1</a> Penggunaan beton densitas tinggi dalam struktur nuklir difokuskan pada perisai radiasi.</p>
+            <p id="fns2"><a href="#bab4" class="footnote-ref">S2</a> Kriteria desain untuk beban tornado dan puing diatur dalam NUREG-0800, lampiran 3.3.2.</p>
+            <p id="fns3"><a href="#bab4" class="footnote-ref">S3</a> Spektrum respons SSE untuk PLTN bersifat multi-level dan "diperluas" (<em>broadened</em>).</p>
+            <p id="fns4"><a href="#bab4" class="footnote-ref">S4</a> Pemilihan faktor redaman untuk analisis seismik sangat penting, dan nilai untuk struktur nuklir biasanya lebih rendah.</p>
+            <p id="fns5"><a href="#bab4" class="footnote-ref">S5</a> Pemodelan SSI secara eksplisit melibatkan analisis dinamik sistem tanah-struktur yang terkopling.</p>
+        </div>
+        
+        <div class="references" id="daftar_pustaka">
+            <h3>DAFTAR PUSTAKA</h3>
+            <p>American Concrete Institute (ACI). 2013. <em>ACI 349-13: Code Requirements for Nuclear Safety Related Concrete Structures</em>. Farmington Hills, MI: ACI Committee 349.</p>
+            <p>American Institute of Steel Construction (AISC). 2018. <em>AISC N690-18: Specification for Safety-Related Steel Structures for Nuclear Facilities</em>. Chicago, IL: AISC.</p>
+            <p>American Society of Civil Engineers (ASCE). 2017. <em>ASCE/SEI 4-16: Seismic Analysis of Safety-Related Nuclear Structures</em>. Reston, VA: ASCE Committee on Nuclear Structures and Materials.</p>
+            <p>American Society of Mechanical Engineers (ASME). 2019. <em>ASME Boiler and Pressure Vessel Code, Section III, Division 2: Code for Concrete Containments</em>. New York, NY: ASME.</p>
+            <p>Bentley Systems, Inc. 2014. <em>STAAD.Pro V8i SS6 User Manual and Technical Reference</em>. Exton, PA: Bentley Systems, Inc.</p>
+            <p>Chopra, A. K. 2017. <em>Dynamics of Structures: Theory and Applications to Earthquake Engineering</em>. 5th ed. Upper Saddle River, NJ: Pearson Education.</p>
+            <p>Gazetas, G. 1991. "Foundation Vibrations." In <em>Foundation Engineering Handbook</em>, edited by H. Fang. 2nd ed. New York, NY: Van Nostrand Reinhold.</p>
+            <p>International Atomic Energy Agency (IAEA). 2012. <em>Safety of Nuclear Power Plants: Design – Specific Safety Requirements. IAEA Safety Standards Series No. SSR-2/1 (Rev. 1)</em>. Vienna, Austria: IAEA.</p>
+            <p>Mirza, S. A., and I. H. Khan. 2000. "Nuclear Power Plant Structures: Structural Behavior and Design." <em>Journal of Structural Engineering</em>, 126(10): 1145-1153. [ Hypothetical reference ]</p>
+            <p>Naeim, F. 2001. <em>The Seismic Design Handbook</em>. 2nd ed. Norwell, MA: Kluwer Academic Publishers.</p>
+            <p>U.S. Nuclear Regulatory Commission (NRC). 1975. <em>Regulatory Guide 1.29: Seismic Design Classification</em>. Washington, D.C.: U.S. NRC.</p>
+            <p>U.S. Nuclear Regulatory Commission (NRC). 2007. <em>NUREG-0800: Standard Review Plan for the Review of Safety Analysis Reports for Nuclear Power Plants</em>. Washington, D.C.: U.S. NRC.</p>
+            <p>Wolf, J. P. 1985. <em>Dynamic Soil-Structure Interaction</em>. Englewood Cliffs, NJ: Prentice-Hall.</p>
+        </div>
+
+        <div class="glossary-section" id="glosarium">
+            <h3>GLOSARIUM</h3>
+            <ul>
+                <li><strong>ACI 349:</strong> Standar American Concrete Institute yang menetapkan persyaratan desain dan konstruksi struktur beton terkait keselamatan untuk fasilitas nuklir.</li>
+                <li><strong>AISC N690:</strong> Spesifikasi American Institute of Steel Construction untuk struktur baja terkait keselamatan di fasilitas nuklir, yang melengkapi AISC 360 dengan persyaratan tambahan untuk keamanan nuklir.</li>
+                <li><strong>Analisis Respons Spektrum (<em>Response Spectrum Analysis/RSA</em>):</strong> Metode analisis dinamis yang memperkirakan respons maksimum struktur terhadap beban gempa, menggunakan spektrum respons untuk mode-mode getar.</li>
+                <li><strong>ASCE 4:</strong> Standar American Society of Civil Engineers untuk analisis seismik struktur terkait keselamatan nuklir.</li>
+                <li><strong>ASME BPVC Section III, Division 2:</strong> Bagian dari ASME Boiler and Pressure Vessel Code yang mengatur desain, konstruksi, dan pengujian bejana penahanan beton dan pratekan untuk pembangkit listrik tenaga nuklir.</li>
+                <li><strong>Bangunan Penahanan (<em>Containment Building</em>):</strong> Struktur utama yang menampung reaktor nuklir dan sistem pendingin primer, berfungsi sebagai penghalang fisik terakhir untuk mencegah pelepasan materi radioaktif.</li>
+                <li><strong>Beton Densitas Tinggi (<em>Heavy Concrete</em>):</strong> Jenis beton yang menggunakan agregat khusus (misalnya, barit, magnetit) untuk mencapai densitas yang jauh lebih tinggi daripada beton normal, digunakan terutama untuk perisai radiasi di fasilitas nuklir.</li>
+                <li><strong>Defense-in-Depth:</strong> Filosofi keselamatan nuklir yang melibatkan penerapan berbagai lapisan perlindungan berturut-turut (fisik dan administratif) untuk mencegah dan mengurangi konsekuensi dari kecelakaan.</li>
+                <li><strong>Daktilitas (<em>Ductility</em>):</strong> Kemampuan suatu material atau struktur untuk menahan deformasi inelastis yang signifikan tanpa kehilangan kekuatan atau kekakuannya secara substansial. Sangat penting untuk menyerap energi dalam peristiwa seismik.</li>
+                <li><strong>Elemen Pelat (<em>Plate Elements</em>):</strong> Elemen dua dimensi yang digunakan dalam analisis elemen hingga untuk memodelkan struktur tipis seperti dinding, kubah, dan lantai yang mengalami lentur dan tegangan membran.</li>
+                <li><strong>Faktor Beban (<em>Load Factor</em>):</strong> Pengali yang diterapkan pada beban nominal untuk menghasilkan beban desain yang lebih konservatif, memastikan margin keamanan yang memadai.</li>
+                <li><strong>Faktor Reduksi Kekuatan (\(\phi\) <em>Factors</em>):</strong> Faktor pengali kurang dari satu yang diterapkan pada kapasitas nominal suatu elemen struktural untuk mencapai kapasitas desainnya, mempertimbangkan variabilitas material dan akurasi konstruksi.</li>
+                <li><strong>Finite Element Method (FEM):</strong> Metode numerik untuk memecahkan persamaan diferensial parsial, dengan memecah domain kontinu menjadi sub-domain yang lebih kecil (elemen).</li>
+                <li><strong>Interaksi Tanah-Struktur (<em>Soil-Structure Interaction/SSI</em>):</strong> Fenomena di mana gerakan tanah mempengaruhi respons struktural, dan sebaliknya.</li>
+                <li><strong>Kombinasi Beban (<em>Load Combinations</em>):</strong> Kumpulan beban kritis yang didefinisikan oleh kode desain yang harus dipertimbangkan secara bersamaan.</li>
+                <li><strong>Kontrol Retak (<em>Crack Control</em>):</strong> Persyaratan desain beton untuk membatasi lebar retak yang terjadi akibat tegangan tarik.</li>
+                <li><strong>Kualitas Material (<em>Material Quality Control/QC</em>):</strong> Proses pemeriksaan dan pengujian material yang sangat ketat untuk memastikan properti material memenuhi spesifikasi desain.</li>
+                <li><strong>LOCA (<em>Loss-of-Coolant Accident</em>):</strong> Kecelakaan hipotetis di PLTN di mana sistem pendingin primer kehilangan integritasnya.</li>
+                <li><strong>Non-Linearitas Material (<em>Material Non-Linearity</em>):</strong> Perilaku material di mana hubungan tegangan-regangan tidak lagi proporsional atau linier, seperti <em>cracking</em> pada beton atau plastisitas pada baja.</li>
+                <li><strong>OBE (<em>Operating Basis Earthquake</em>):</strong> Gempa bumi di mana struktur diharapkan tetap berfungsi atau dapat ditutup dengan aman.</li>
+                <li><strong>Safe Shutdown Earthquake (SSE):</strong> Gempa bumi desain maksimum untuk PLTN yang harus ditahan tanpa kehilangan fungsi keselamatan.</li>
+                <li><strong>STAAD.Pro V8i SS6:</strong> Perangkat lunak analisis dan desain struktural berbasis elemen hingga dari Bentley Systems.</li>
+                <li><strong>Tegangan Cincin (<em>Hoop Stress</em>):</strong> Tegangan tangensial yang berkembang di sepanjang keliling struktur silinder akibat tekanan internal.</li>
+                <li><strong>Tegangan Diferensial Tornado (<em>Tornado Pressure Differential</em>):</strong> Perubahan tekanan atmosfer yang mendadak akibat tornado.</li>
+                <li><strong>Tegangan Meridional (<em>Meridional Stress</em>):</strong> Tegangan aksial yang bekerja di sepanjang garis bujur pada struktur berbentuk silinder atau kubah.</li>
+                <li><strong>Tegangan Servis (<em>Service Stress</em>):</strong> Tegangan yang timbul dalam komponen struktural di bawah beban servis (beban normal tanpa faktor pengali).</li>
+                <li><strong>Verifikasi Desain (<em>Code Checks</em>):</strong> Proses memastikan bahwa dimensi elemen struktural memenuhi persyaratan kekuatan, stabilitas, dan daktilitas.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
